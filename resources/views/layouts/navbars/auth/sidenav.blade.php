@@ -55,12 +55,4 @@
             </li>
         </ul>
     </div>
-
-    <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
-        <div class="sidenav-toggler-inner">
-            <i class="sidenav-toggler-line bg-black"></i>
-            <i class="sidenav-toggler-line bg-black"></i>
-            <i class="sidenav-toggler-line bg-black"></i>
-        </div>
-    </a>
 </aside>
