@@ -25949,3 +25949,18 @@
     /******/
     /******/
 })();
+
+// import EditorJS from "@editorjs/editorjs";
+// import Header from "@editorjs/header";
+// const EditorJS =require("@editorjs/editorjs");
+// const Header =require("@editorjs/header");
+
+const editor = new EditorJS({
+    /**
+     * Id of Element that should contain Editor instance
+     */
+    holder: "editorjs",
+    tools: {
+        header: Header,
+    },
+});
