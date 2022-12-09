@@ -380,8 +380,8 @@ const sidenav = document.getElementById('sidenav-main');
 let body = document.getElementsByTagName('body')[0];
 let className = 'g-sidenav-pinned';
 
+iconNavbarSidenav.addEventListener("click", toggleSidenav);
 if (iconNavbarSidenav) {
-  iconNavbarSidenav.addEventListener("click", toggleSidenav);
 }
 
 if (iconSidenav) {
@@ -395,7 +395,6 @@ function toggleSidenav() {
       sidenav.classList.remove('bg-white');
     }, 100);
     sidenav.classList.remove('bg-transparent');
-
   } else {
     body.classList.add(className);
     sidenav.classList.add('bg-white');
