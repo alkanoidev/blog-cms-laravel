@@ -25962,5 +25962,32 @@ const editor = new EditorJS({
     holder: "editorjs",
     tools: {
         header: Header,
+        image: SimpleImage,
+        linkTool: {
+            class: LinkTool,
+            config: {
+                endpoint: "http://localhost:8000/fetchUrl", // Your backend endpoint for url data fetching,
+            },
+        },
+        underline: Underline,
+        list: {
+            class: List,
+            inlineToolbar: true,
+            config: {
+                defaultStyle: "unordered",
+            },
+        },
+        quote: Quote,
+        raw: RawTool,
+        inlineCode: {
+            class: InlineCode,
+            shortcut: "CMD+SHIFT+M",
+        },
+        code: editorjsCodeflask,
+        paragraph: {
+            class: Paragraph,
+            inlineToolbar: true,
+        },
+        warning: Warning,
     },
 });
