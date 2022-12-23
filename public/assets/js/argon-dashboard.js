@@ -25991,3 +25991,19 @@ const editor = new EditorJS({
         warning: Warning,
     },
 });
+function saveData() {
+    editor
+        .save()
+        .then((outputData) => {
+            const edjsParser = edjsHTML();
+
+            let html = edjsParser.parse(outputData);
+
+            console.log(html);
+        })
+        .catch((error) => {
+            console.log("Saving failed: ", error);
+        });
+}
+
+document.querySelector("#save").addEventListener("click", saveData)
