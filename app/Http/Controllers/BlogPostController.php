@@ -15,7 +15,10 @@ class BlogPostController extends Controller
         $blog->title = "aaa";
         $blog->content = $request->content;
         $blog->user_id = "123123";  // na index page da se poravi nova
-        // i ond ana  save dugme samo update
+        // i onda na  save dugme samo update
+
+        //poziva ovu funkciju iz forme pre nego sa jsa
+        // vrv zato izbacuje gresku sql
         $blog->save();
 
         return redirect('/dashboard');
