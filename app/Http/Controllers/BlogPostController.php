@@ -14,7 +14,8 @@ class BlogPostController extends Controller
         Log::error($request->content."----------------------");
         $blog->title = "aaa";
         $blog->content = $request->content;
-        $blog->user_id = "123123";
+        $blog->user_id = "123123";  // na index page da se poravi nova
+        // i ond ana  save dugme samo update
         $blog->save();
 
         return redirect('/dashboard');

@@ -10,4 +10,6 @@ class BlogPost extends Model
     use HasFactory;
 
     public $table = 'blogpost';
+
+    public $fillable = ["id"];
 }
