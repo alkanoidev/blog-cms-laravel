@@ -25991,19 +25991,31 @@ const editor = new EditorJS({
         warning: Warning,
     },
 });
-function saveData() {
-    editor
-        .save()
-        .then((outputData) => {
-            const edjsParser = edjsHTML();
+    $('#save-blogpost').on('submit',function(){
+        editor
+            .save()
+            .then((outputData) => {
+                const edjsParser = edjsHTML();
+    
+                let html = edjsParser.parse(outputData);
+    
+                console.log(html);
+                
+                $.ajax({
+                type:'post',
+                url:$("#save-blogpost").attr('action'),
+                data: {
+                    content: html
+                },
+                success:function(data){
+                    console.log(data);
+                  }
+              });
+            })
+            .catch((error) => {
+                console.log("Saving failed: ", error);
+            });
+        
+    });
 
-            let html = edjsParser.parse(outputData);
-
-            console.log(html);
-        })
-        .catch((error) => {
-            console.log("Saving failed: ", error);
-        });
-}
-
-document.querySelector("#save").addEventListener("click", saveData)
+// document.querySelector("#save").addEventListener("click", saveData)

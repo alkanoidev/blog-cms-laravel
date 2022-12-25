@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogPostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,3 +42,5 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
+
+Route::post("/blogpost/store", [BlogPostController::class, "store"])->name('blogpost.store');
