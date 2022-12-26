@@ -11,10 +11,12 @@ class BlogPostController extends Controller
     public function store(Request $request)
     {
         $blog = new BlogPost;
-        Log::error($request->content."----------------------");
-        $blog->title = "aaa";
+        // Log::error($request->content."----------------------");
+        $blog->title = $request->title;
         $blog->content = $request->content;
-        $blog->user_id = "123123";  // na index page da se poravi nova
+        $blog->user_id = "123123"; 
+        
+        // na index page da se poravi nova
         // i onda na  save dugme samo update
 
         //poziva ovu funkciju iz forme pre nego sa jsa
