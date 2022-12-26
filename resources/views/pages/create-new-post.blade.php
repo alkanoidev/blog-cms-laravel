@@ -6,5 +6,6 @@
     {{-- <input type="text" disabled> --}}
     <div class="bg-white rounded-3" id="editorjs"></div>
     <button id="save" class="btn-primary mt-3 btn">Save</button>
+
 </main>
 @endsection
