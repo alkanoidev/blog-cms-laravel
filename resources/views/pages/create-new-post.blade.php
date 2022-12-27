@@ -6,5 +6,14 @@
         <div class="bg-white rounded-3" id="editorjs"></div>
         <button id="save" class="btn-primary mt-3 btn">Save</button>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </main>
 @endsection
