@@ -25990,6 +25990,11 @@ const editor = new EditorJS({
         },
         warning: Warning,
     },
+    onReady: async () => {
+    if (data !== undefined || data !== null) {
+      await editor.blocks.renderFromHTML(data);
+    }
+  },
 });
 
 $("#save").on("click", () => {
