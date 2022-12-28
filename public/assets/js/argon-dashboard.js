@@ -26002,20 +26002,9 @@ $("#save").on("click", () => {
         .save()
         .then((outputData) => {
             const edjsParser = edjsHTML();
-            console.log(outputData);
             let html = edjsParser.parse(outputData);
-
-            console.log(html);
-            let title;
-            
-            outputData.blocks.map(block => {
-                if(block.type == "header") {
-                    title = block.data.text;
-                    return;
-                }else{
-                    // ne postiji title
-                }
-             })
+            const block = outputData.blocks.find(block => block.type === "header");
+            const title = block.data.text;
             const htmlSingleLine = html.join("<br />");
 
             $.ajax({
