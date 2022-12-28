@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Validator;
 
 class BlogPostController extends Controller
 {
+    public function index($id)
+    {
+        $post = BlogPost::find($id);
+        echo "<pre>{$post}</pre>";
+    }
     public function show()
     {
         return view("pages.create-new-post");
@@ -47,5 +52,13 @@ class BlogPostController extends Controller
         BlogPost::destroy($postId);
 
         return redirect("/dashboard")->with(['message' => $message = "Post deleted successfully.", 'posts' => BlogPost::all()]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $post = BlogPost::find($id);
+        if ($request->isMethod("get")) {
+            return view("pages.edit-post");
+        }
     }
 }

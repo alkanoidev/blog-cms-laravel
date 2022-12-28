@@ -49,7 +49,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get("/create-new-post", [BlogPostController::class, "show"])->name("create-new-post");
 
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+	Route::get("/blogpost/{id}", [BlogPostController::class, "index"])->name('blogpost');
 	Route::post("/blogpost/store", [BlogPostController::class, "store"])->name('blogpost.store');
 	Route::post("/blogpost/delete/{postId}", [BlogPostController::class, "destroy"])->name('blogpost.delete');
-	// Route::post("/blogpost/update/{postId}", [BlogPostController::class, "update"])->name('blogpost.update');
+	Route::get("/blogpost/update/{id}", [BlogPostController::class, "update"])->name('blogpost.update');
+	Route::post("/blogpost/update/{id}", [BlogPostController::class, "update"])->name('blogpost.update');
 });
