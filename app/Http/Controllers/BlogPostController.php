@@ -12,7 +12,7 @@ class BlogPostController extends Controller
     public function index($id)
     {
         $post = BlogPost::find($id);
-        echo "<pre>{$post}</pre>";
+        return $post;
     }
     public function show()
     {
