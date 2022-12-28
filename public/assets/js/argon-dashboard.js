@@ -26009,8 +26009,9 @@ $("#save").on("click", () => {
             let title;
             
             outputData.blocks.map(block => {
-                if(block.type == "header" && block.data.level === 1) {
+                if(block.type == "header") {
                     title = block.data.text;
+                    return;
                 }else{
                     // ne postiji title
                 }

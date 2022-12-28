@@ -40,8 +40,6 @@ class BlogPostController extends Controller
         $blog->content = $request->content;
         $blog->user_id = Auth::id();
 
-        // na index page da se poravi nova
-        // i onda na  save dugme samo update
         $blog->save();
 
         return redirect('/dashboard');
@@ -51,7 +49,7 @@ class BlogPostController extends Controller
     {
         BlogPost::destroy($postId);
 
-        return redirect("/dashboard")->with(['message' => $message = "Post deleted successfully.", 'posts' => BlogPost::all()]);
+        return redirect("/dashboard")->with(['posts' => BlogPost::all()]);
     }
 
     public function update(Request $request, $id)
