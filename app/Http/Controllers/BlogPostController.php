@@ -84,5 +84,13 @@ class BlogPostController extends Controller
         if ($request->isMethod("get")) {
             return view("pages.edit-post");
         }
+        if ($request->isMethod("POST")) {
+            $post->title = $request->title;
+            $post->content = $request->content;
+            $post->user_id = Auth::id();
+            $post->save();
+
+            return redirect("dashboard");
+        }
     }
 }

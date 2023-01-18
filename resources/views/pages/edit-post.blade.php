@@ -17,14 +17,13 @@
                 </ul>
             </div>
         @endif
-        
-</main>
+
+    </main>
 
 @endsection
 @push('js')
-            
-        <script>
-            console.log("aa");
+    <script>
+        console.log("aa");
         const editor = new EditorJS({
             /**
              * Id of Element that should contain Editor instance
@@ -33,11 +32,11 @@
             tools: {
                 header: Header,
                 image: {
-                        class: ImageTool,
-                        config: {
-                            endpoints: {
-                                byFile: "/blogpost/upload-image", // Your backend file uploader endpoint
-                                byUrl: "http://localhost:8008/fetchUrl", // Your endpoint that provides uploading by Url
+                    class: ImageTool,
+                    config: {
+                        endpoints: {
+                            byFile: "/blogpost/upload-image", // Your backend file uploader endpoint
+                            byUrl: "http://localhost:8008/fetchUrl", // Your endpoint that provides uploading by Url
                         },
                     },
                 },
@@ -69,48 +68,47 @@
                 warning: Warning,
             },
             onReady: async () => {
-                // const id = findId(window.location.href);
-                console.log(window.location.pathname);
                 const exp = /.*(?:\D|^)(\d+)/;
                 const id = exp.exec(window.location.pathname)[1];
                 const res = await fetch(`/blogpost/${id}`);
                 const data = await res.json();
-                console.log(data);
-        
-                // console.log(data);
-        
+
+
                 if (data !== undefined || data !== null) {
-                  await editor.blocks.renderFromHTML(data.content);
+                    await editor.blocks.renderFromHTML(data.content);
                 }
             },
         });
-    
 
-        // $("#save").on("click", () => {
-        //     editor
-        //         .save()
-        //         .then((outputData) => {
-        //             const edjsParser = edjsHTML();
-        //             let html = edjsParser.parse(outputData);
-        //             const block = outputData.blocks.find(block => block.type === "header");
-        //             const title = block.data.text;
-        //             const htmlSingleLine = html.join("<br />");
-        
-        //             $.ajax({
-        //                 type: 'post',
-        //                 url: "blogpost/store",
-        //                 data: {
-        //                     title: title,
-        //                     content: htmlSingleLine
-        //                 },
-        //                 success: function (data) {
-        //                     console.log(data);
-        //                 }
-        //             });
-        //         })
-        //         .catch((error) => {
-        //             console.log("Saving failed: ", error);
-        //         });
-        // })
-        </script>
-        @endpush
+
+        $("#save").on("click", () => {
+            editor
+                .save()
+                .then((outputData) => {
+                    const edjsParser = edjsHTML();
+                    let html = edjsParser.parse(outputData);
+                    const block = outputData.blocks.find(block => block.type === "header");
+                    const title = block.data.text;
+                    const htmlSingleLine = html.join("<br />");
+
+                    const exp = /.*(?:\D|^)(\d+)/;
+                    const id = exp.exec(window.location.pathname)[1];
+
+                    $.ajax({
+                        type: 'post',
+                        url: "/blogpost/update/" + id,
+                        data: {
+                            title: title,
+                            content: htmlSingleLine
+                        },
+                        success: function(data) {
+                            console.log(data);
+                        }
+                    });
+                })
+                .catch((error) => {
+                    console.log("Saving failed: ", error);
+                });
+        })
+    </script>
+@endpush
