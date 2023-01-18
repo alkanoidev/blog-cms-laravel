@@ -32,7 +32,15 @@
             holder: "editorjs",
             tools: {
                 header: Header,
-                image: SimpleImage,
+                image: {
+                        class: ImageTool,
+                        config: {
+                            endpoints: {
+                                byFile: "/blogpost/upload-image", // Your backend file uploader endpoint
+                                byUrl: "http://localhost:8008/fetchUrl", // Your endpoint that provides uploading by Url
+                        },
+                    },
+                },
                 linkTool: {
                     class: LinkTool,
                     config: {

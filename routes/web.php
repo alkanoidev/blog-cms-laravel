@@ -55,4 +55,5 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post("/blogpost/delete/{postId}", [BlogPostController::class, "destroy"])->name('blogpost.delete');
 	Route::get("/blogpost/update/{id}", [BlogPostController::class, "update"])->name('blogpost.update');
 	Route::post("/blogpost/update/{id}", [BlogPostController::class, "update"])->name('blogpost.update');
+	Route::post("/blogpost/upload-image", [BlogPostController::class, "storeImage"])->name('blogpost.upload-image');
 });

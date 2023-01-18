@@ -45,6 +45,32 @@ class BlogPostController extends Controller
         return redirect('/dashboard');
     }
 
+    public function storeImage(Request $request)
+    {
+
+
+        $request->validate([
+            'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048'
+        ]);
+
+        // $imageName = time().'.'.$request->image->extension();
+        $imageName = $request->fileName;
+        // Public Folder
+        $request->image->move(public_path('images'), $imageName);
+
+        // //Store in Storage Folder
+        // $request->image->storeAs('images', $imageName);
+
+        // // Store in S3
+        // $request->image->storeAs('images', $imageName, 's3');
+
+        //Store Image in DB 
+
+
+        return back()->with('message', 'Image uploaded Successfully!')
+            ->with('image', $imageName);
+    }
+
     public function destroy($postId)
     {
         BlogPost::destroy($postId);
