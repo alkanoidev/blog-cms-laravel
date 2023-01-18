@@ -71,15 +71,17 @@
             onReady: async () => {
                 // const id = findId(window.location.href);
                 console.log(window.location.pathname);
-                // const res = await fetch(`/blogpost/${id}`);
-                // const data = await res.json();
-                console.log(res);
+                const exp = /.*(?:\D|^)(\d+)/;
+                const id = exp.exec(window.location.pathname)[1];
+                const res = await fetch(`/blogpost/${id}`);
+                const data = await res.json();
+                console.log(data);
         
                 // console.log(data);
         
-                // if (data !== undefined || data !== null) {
-                //   await editor.blocks.renderFromHTML(data);
-                // }
+                if (data !== undefined || data !== null) {
+                  await editor.blocks.renderFromHTML(data.content);
+                }
             },
         });
     
