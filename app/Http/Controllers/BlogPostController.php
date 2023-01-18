@@ -47,8 +47,6 @@ class BlogPostController extends Controller
 
     public function storeImage(Request $request)
     {
-
-
         $request->validate([
             'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048'
         ]);
@@ -81,7 +79,7 @@ class BlogPostController extends Controller
     public function update(Request $request, $id)
     {
         $post = BlogPost::find($id);
-        if ($request->isMethod("get")) {
+        if ($request->isMethod("GET")) {
             return view("pages.edit-post");
         }
         if ($request->isMethod("POST")) {
