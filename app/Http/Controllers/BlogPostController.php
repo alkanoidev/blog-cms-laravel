@@ -65,8 +65,12 @@ class BlogPostController extends Controller
         //Store Image in DB 
 
 
-        return back()->with('message', 'Image uploaded Successfully!')
-            ->with('image', $imageName);
+        // return back()->with('message', 'Image uploaded Successfully!')
+        //     ->with('image', $imageName);
+        return response()->json([
+            "success" => 1,
+            "file" => "http://locahost:8000/".$imageName,
+        ]);
     }
 
     public function destroy($postId)

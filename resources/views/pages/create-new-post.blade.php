@@ -29,6 +29,41 @@
                 image: {
                     class: ImageTool,
                     config: {
+                        // uploader: {
+                        //     uploadByFile(file){
+                        //         console.log(file);
+                        //         $.ajax({
+                        //             type: 'post',
+                        //             url: "/blogpost/upload-image",
+                        //             data: {
+                        //                 image: file,
+                        //                 fileName :file.name,
+                        //             },
+                        //             success: function(data) {
+                        //                 console.log(data);
+                        //             }
+                        //         }).then(
+                        //             () => {
+                        //                 return {
+                        //                     success: 1,
+                        //                     file: {
+                        //                         url: 'https://codex.so/upload/redactor_images/o_80beea670e49f04931ce9e3b2122ac70.jpg',
+                        //                         // any other image data you want to store, such as width, height, color, extension, etc
+                        //                     }
+                        //                 }
+                        //             }
+                        //         );
+                        //     // return MyAjax.upload(file).then(() => {
+                        //     //   return {
+                        //     //     success: 1,
+                        //     //     file: {
+                        //     //       url: 'https://codex.so/upload/redactor_images/o_80beea670e49f04931ce9e3b2122ac70.jpg',
+                        //     //       // any other image data you want to store, such as width, height, color, extension, etc
+                        //     //     }
+                        //     //   };
+                        //     // });
+                        //     }
+                        // },
                         endpoints: {
                             byFile: "/blogpost/upload-image", // Your backend file uploader endpoint
                             byUrl: "http://localhost:8008/fetchUrl", // Your endpoint that provides uploading by Url
