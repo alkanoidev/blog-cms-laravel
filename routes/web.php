@@ -41,9 +41,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
 	Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
-	Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
-	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
-	// Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::get("/dashboard", [HomeController::class, 'index'])->name("home");
 	Route::get("/user-management", [UserProfileController::class, "index"])->name("user-management");
 	Route::get("/create-new-post", [BlogPostController::class, "show"])->name("create-new-post");

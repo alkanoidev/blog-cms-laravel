@@ -26,14 +26,4 @@ class PageController extends Controller
     {
         return view("pages.profile-static");
     }
-
-    public function signin()
-    {
-        return view("pages.sign-in-static");
-    }
-
-    public function signup()
-    {
-        return view("pages.sign-up-static");
-    }
 }
