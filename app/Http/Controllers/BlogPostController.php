@@ -52,7 +52,7 @@ class BlogPostController extends Controller
         ]);
 
         // $imageName = time().'.'.$request->image->extension();
-        $imageName = $request->fileName;
+        // $imageName = $request->fileName;
         // Public Folder
         // $request->image->move(public_path('images'), $imageName);
 
@@ -63,6 +63,15 @@ class BlogPostController extends Controller
                 $filename = $file_extension;
                 $request->file('image')->move(public_path('images'), $filename);
                 $input['image'] = $filename;
+
+                // return response()->json([
+                //     "success" => 1,
+                //     "file" => ['url' => "http://locahost:8000/images/".$filename ]
+                // ]);
+                return response()->json([
+                    "success" => 1,
+                    "file" => ['url' => url("/images/$filename") ]
+                ]);
             }
 
         // //Store in Storage Folder
@@ -76,10 +85,13 @@ class BlogPostController extends Controller
 
         // return back()->with('message', 'Image uploaded Successfully!')
         //     ->with('image', $imageName);
-        return response()->json([
-            "success" => 1,
-            "file" => "http://locahost:8000/images/".$imageName,
-        ]);
+        // {
+        //     "success" : 1,
+        //     "file": {
+        //         "url" : "https://www.tesla.com/tesla_theme/assets/img/_vehicle_redesign/roadster_and_semi/roadster/hero.jpg",
+        //         // ... and any additional fields you want to store, such as width, height, color, extension, etc
+        //     }
+        // }
     }
 
     public function destroy($postId)

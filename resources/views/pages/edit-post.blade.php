@@ -23,7 +23,8 @@
 @endsection
 @push('js')
     <script>
-        console.log("aa");
+        let token = "{{ csrf_token()}}";
+
         const editor = new EditorJS({
             /**
              * Id of Element that should contain Editor instance
@@ -34,9 +35,13 @@
                 image: {
                     class: ImageTool,
                     config: {
+                        additionalRequestHeaders: {
+                            "X-CSRF-TOKEN": token
+                        },
                         endpoints: {
+                            accept: 'images/*',
                             byFile: "/blogpost/upload-image", // Your backend file uploader endpoint
-                            byUrl: "http://localhost:8008/fetchUrl", // Your endpoint that provides uploading by Url
+                            byUrl: "{{ url('/images/') }}", // Your endpoint that provides uploading by Url
                         },
                     },
                 },
