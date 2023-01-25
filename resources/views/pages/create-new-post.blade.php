@@ -22,6 +22,8 @@
 
 @push('js')
     <script>
+        let token = "{{ csrf_token()}}";
+
         const editor = new EditorJS({
             holder: "editorjs",
             tools: {
@@ -64,6 +66,9 @@
                         //     // });
                         //     }
                         // },
+                        additionalRequestHeaders: {
+                            "X-CSRF-TOKEN": token
+                        },
                         endpoints: {
                             byFile: "/blogpost/upload-image", // Your backend file uploader endpoint
                             byUrl: "http://localhost:8008/fetchUrl", // Your endpoint that provides uploading by Url

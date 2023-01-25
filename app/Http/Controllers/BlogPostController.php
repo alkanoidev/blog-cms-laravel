@@ -69,7 +69,7 @@ class BlogPostController extends Controller
         //     ->with('image', $imageName);
         return response()->json([
             "success" => 1,
-            "file" => "http://locahost:8000/".$imageName,
+            "file" => "http://locahost:8000/images/".$imageName,
         ]);
     }
 
