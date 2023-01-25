@@ -54,7 +54,16 @@ class BlogPostController extends Controller
         // $imageName = time().'.'.$request->image->extension();
         $imageName = $request->fileName;
         // Public Folder
-        $request->image->move(public_path('images'), $imageName);
+        // $request->image->move(public_path('images'), $imageName);
+
+        $input = $request->all();
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $file_extension = $file->getClientOriginalName();
+                $filename = $file_extension;
+                $request->file('image')->move(public_path('images'), $filename);
+                $input['image'] = $filename;
+            }
 
         // //Store in Storage Folder
         // $request->image->storeAs('images', $imageName);
