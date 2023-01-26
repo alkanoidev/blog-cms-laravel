@@ -29,6 +29,7 @@
                                             @csrf
                                             <button class="btn btn-secondary">Update</button>
                                         </form>
+                                        <a href="/blogpost/update/{{ $item->id }}">Update 1</a>
                                         <form method="POST" action="/blogpost/delete/{{ $item->id }}">
                                             @csrf
                                             <button class="btn btn-danger">Delete</button>
@@ -39,6 +40,7 @@
                         @endforeach
                     </tbody>
                 </table>
+            <div>{!! $posts[3]->content !!}</div>
             </div>
         </div>
     </div>
