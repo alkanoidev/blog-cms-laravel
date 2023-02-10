@@ -1,12 +1,11 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    <main class="card mt-4 mx-4">
-        <div class="card-body">
-            <h2 class="ml-3">Edit post</h2>
-            <div class="bg-white rounded-3" id="editorjs"></div>
+    <main class="card mt-4 mx-4" id="edit-page">
+        <input type="text" name="title" id="input-title" class="form-control" />
+        <div contentEditable="true" id="edit-content-div"></div>
+        <div class="save-button-div">
             <button id="save" class="btn-primary mt-3 btn">Save</button>
-
         </div>
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -20,96 +19,70 @@
 
     </main>
 
-@endsection
-@push('js')
+    @endsection
+    @push('js')
     <script>
-        let token = "{{ csrf_token()}}";
+        const titleInput = document.getElementById('input-title');
+        const editContentDiv = document.getElementById("edit-content-div");
+        (async() => {
+            const exp = /.*(?:\D|^)(\d+)/;
+            const id = exp.exec(window.location.pathname)[1];
+            const res = await fetch(`/blogpost/${id}`);
+            const data = await res.json();
+    
+            if (data !== undefined || data !== null) {
+                editContentDiv.innerHTML = data.content;
+                titleInput.value = data.title;
+            }
+            // image drag & drop
+            let handleDrag = function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+            };
+            let handleDrop = function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                x = e.clientX;
+                y = e.clientY;
+                let file = e.dataTransfer.files[0];
+                if (file.type.match('image.*')) {
+                    let reader = new FileReader();
+                    reader.onload = (function(theFile) {
+                        let dataURI = theFile.target.result;
+                        let img = document.createElement("img");
+                        img.src = dataURI;
 
-        const editor = new EditorJS({
-            /**
-             * Id of Element that should contain Editor instance
-             */
-            holder: "editorjs",
-            tools: {
-                header: Header,
-                image: {
-                    class: ImageTool,
-                    config: {
-                        additionalRequestHeaders: {
-                            "X-CSRF-TOKEN": token
-                        },
-                        endpoints: {
-                            accept: 'images/*',
-                            byFile: "/blogpost/upload-image", // Your backend file uploader endpoint
-                            byUrl: "{{ url('/images/') }}", // Your endpoint that provides uploading by Url
-                        },
-                    },
-                },
-                linkTool: {
-                    class: LinkTool,
-                    config: {
-                        endpoint: "http://localhost:8000/fetchUrl", // Your backend endpoint for url data fetching,
-                    },
-                },
-                underline: Underline,
-                list: {
-                    class: List,
-                    inlineToolbar: true,
-                    config: {
-                        defaultStyle: "unordered",
-                    },
-                },
-                quote: Quote,
-                raw: RawTool,
-                inlineCode: {
-                    class: InlineCode,
-                    shortcut: "CMD+SHIFT+M",
-                },
-                code: editorjsCodeflask,
-                paragraph: {
-                    class: Paragraph,
-                    inlineToolbar: true,
-                },
-                warning: Warning,
-            },
-            onReady: async () => {
-                const exp = /.*(?:\D|^)(\d+)/;
-                const id = exp.exec(window.location.pathname)[1];
-                const res = await fetch(`/blogpost/${id}`);
-                const data = await res.json();
-
-
-                if (data !== undefined || data !== null) {
-                    await editor.blocks.renderFromHTML(data.content);
-                }
-            },
-        });
-
-
-        $("#save").on("click", () => {
-            editor
-                .save()
-                .then((outputData) => {
-                    const edjsParser = edjsHTML();
-                    let html = edjsParser.parse(outputData);
-                    const block = outputData.blocks.find(block => block.type === "header");
-                    const title = block.data.text;
-                    const htmlSingleLine = html.join("<br />");
-
-                    const exp = /.*(?:\D|^)(\d+)/;
-                    const id = exp.exec(window.location.pathname)[1];
-
-                    $.ajax({
-                        type: 'post',
-                        url: "/blogpost/update/" + id,
-                        data: {
-                            title: title,
-                            content: htmlSingleLine
-                        },
-                        success: function(data) {
-                            console.log(data);
+                        if (document.caretRangeFromPoint) {
+                            range = document.caretRangeFromPoint(x, y);
+                            range.insertNode(img);
+                        }
+                        else
+                        {
+                            console.log('could not find carat');
                         }
                     });
+                    reader.readAsDataURL(file);
+                }
+            };
+
+            let dropZone = document.getElementById('edit-content-div');
+            dropZone.addEventListener('dragover', handleDrag, false);
+            dropZone.addEventListener('drop', handleDrop, false);
+        })()
+
+        $("#save").on("click", () => {
+                const exp = /.*(?:\D|^)(\d+)/;
+                const id = exp.exec(window.location.pathname)[1];
+                $.ajax({
+                    type: 'post',
+                    url: "/blogpost/update/" + id,
+                    data: {
+                        title: titleInput.value,
+                        content:  editContentDiv.innerHTML
+                    },
+                    success: function(data) {
+                        console.log(data);
+                    }
                 })
                 .catch((error) => {
                     console.log("Saving failed: ", error);
@@ -117,3 +90,19 @@
         })
     </script>
 @endpush
+
+<style>
+    #edit-page {
+        padding: 1rem;
+    }
+    #edit-content-div{
+        margin-top: 1rem;
+    }
+    #edit-content-div:focus {
+        outline: none;
+        border: none;
+    }
+    .save-button-div{
+        margin: 0px auto;
+    }
+</style>
