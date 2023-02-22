@@ -2,10 +2,15 @@
 
 @section('content')
     <main class="card mt-4 mx-4" id="edit-page">
-        <input type="text" name="title" id="input-title" class="form-control" />
-        <div contentEditable="true" id="edit-content-div"></div>
-        <div class="save-button-div">
-            <button id="save" class="btn-primary mt-3 btn">Save</button>
+        <div class="container1">
+            <div class="input-title-group">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="input-title" class="form-control" />
+            </div>
+            <div contentEditable="true" id="edit-content-div" class="form-control"></div>
+            <div class="save-button-div">
+                <button id="save" class="btn-primary mt-3 btn">Save</button>
+            </div>
         </div>
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -98,6 +103,12 @@
     }
     #edit-content-div{
         margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    #edit-content-div > img {
+        width: 100%;
     }
     #edit-content-div:focus {
         outline: none;
@@ -105,5 +116,13 @@
     }
     .save-button-div{
         margin: 0px auto;
+    }
+    .container1 {
+        width: 100%;
+        max-width: 800px;
+        margin: 0px auto;
+    }
+    .input-title-group label{
+        font-size: 1rem;
     }
 </style>
