@@ -54,6 +54,7 @@
 
                         if (document.caretRangeFromPoint) {
                             range = document.caretRangeFromPoint(x, y);
+                            range.innerHTML += "<br>"
                             range.insertNode(img);
                         }
                         else
