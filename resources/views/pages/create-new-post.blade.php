@@ -9,7 +9,7 @@
                     <label for="title">Title:</label>
                     <input type="text" name="title" id="input-title" class="form-control mb-3" />
                 </div>
-                <div class="bg-white rounded-3 form-control" id="editorjs"></div>
+                <div class="bg-white" id="editorjs"></div>
                 <button id="save" class="btn-primary mt-3 btn">Save</button>
             </div>
         </div>
