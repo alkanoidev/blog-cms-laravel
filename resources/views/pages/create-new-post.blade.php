@@ -4,6 +4,7 @@
     <main class="card mt-4 mx-4">
         <div class="card-body">
             <h2 class="ml-3">Create new post</h2>
+            <input type="text" name="title" id="input-title" class="form-control" />
             <div class="bg-white rounded-3" id="editorjs"></div>
             <button id="save" class="btn-primary mt-3 btn">Save</button>
         </div>
@@ -31,41 +32,7 @@
                 image: {
                     class: ImageTool,
                     config: {
-                        // uploader: {
-                        //     uploadByFile(file){
-                        //         console.log(file);
-                        //         $.ajax({
-                        //             type: 'post',
-                        //             url: "/blogpost/upload-image",
-                        //             data: {
-                        //                 image: file,
-                        //                 fileName :file.name,
-                        //             },
-                        //             success: function(data) {
-                        //                 console.log(data);
-                        //             }
-                        //         }).then(
-                        //             () => {
-                        //                 return {
-                        //                     success: 1,
-                        //                     file: {
-                        //                         url: 'https://codex.so/upload/redactor_images/o_80beea670e49f04931ce9e3b2122ac70.jpg',
-                        //                         // any other image data you want to store, such as width, height, color, extension, etc
-                        //                     }
-                        //                 }
-                        //             }
-                        //         );
-                        //     // return MyAjax.upload(file).then(() => {
-                        //     //   return {
-                        //     //     success: 1,
-                        //     //     file: {
-                        //     //       url: 'https://codex.so/upload/redactor_images/o_80beea670e49f04931ce9e3b2122ac70.jpg',
-                        //     //       // any other image data you want to store, such as width, height, color, extension, etc
-                        //     //     }
-                        //     //   };
-                        //     // });
-                        //     }
-                        // },
+                        
                         additionalRequestHeaders: {
                             "X-CSRF-TOKEN": token
                         },
@@ -109,18 +76,13 @@
             editor
                 .save()
                 .then((outputData) => {
-                    const edjsParser = edjsHTML();
-                    let html = edjsParser.parse(outputData);
-                    const block = outputData.blocks.find(block => block.type === "header");
-                    const title = block.data.text;
-                    const htmlSingleLine = html.join("<br />");
 
                     $.ajax({
                         type: 'post',
                         url: "blogpost/store",
                         data: {
-                            title: title,
-                            content: htmlSingleLine
+                            title: document.getElementById("input-title").value,
+                            content: JSON.stringify(outputData)
                         },
                         success: function(data) {
                             console.log(data);

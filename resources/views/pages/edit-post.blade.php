@@ -4,6 +4,7 @@
     <main class="card mt-4 mx-4">
         <div class="card-body">
             <h2 class="ml-3">Edit post</h2>
+            <input type="text" name="title" id="input-title" class="form-control" />
             <div class="bg-white rounded-3" id="editorjs"></div>
             <button id="save" class="btn-primary mt-3 btn">Save</button>
 
@@ -40,8 +41,8 @@
                         },
                         endpoints: {
                             accept: 'images/*',
-                            byFile: "/blogpost/upload-image", // Your backend file uploader endpoint
-                            byUrl: "{{ url('/images/') }}", // Your endpoint that provides uploading by Url
+                            byFile: "/blogpost/upload-image",
+                            // byUrl: "{{ url('/images/') }}",
                         },
                     },
                 },
@@ -77,10 +78,11 @@
                 const id = exp.exec(window.location.pathname)[1];
                 const res = await fetch(`/blogpost/${id}`);
                 const data = await res.json();
-
-
+                const content = JSON.parse(data.content);
+                document.getElementById("input-title").value = data.title;
+                
                 if (data !== undefined || data !== null) {
-                    await editor.blocks.renderFromHTML(data.content);
+                    await editor.blocks.render(content);
                 }
             },
         });
@@ -90,12 +92,6 @@
             editor
                 .save()
                 .then((outputData) => {
-                    const edjsParser = edjsHTML();
-                    let html = edjsParser.parse(outputData);
-                    const block = outputData.blocks.find(block => block.type === "header");
-                    const title = block.data.text;
-                    const htmlSingleLine = html.join("<br />");
-
                     const exp = /.*(?:\D|^)(\d+)/;
                     const id = exp.exec(window.location.pathname)[1];
 
@@ -103,8 +99,8 @@
                         type: 'post',
                         url: "/blogpost/update/" + id,
                         data: {
-                            title: title,
-                            content: htmlSingleLine
+                            title: document.getElementById("input-title").value,
+                            content: JSON.stringify(outputData)
                         },
                         success: function(data) {
                             console.log(data);

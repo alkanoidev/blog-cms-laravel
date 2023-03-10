@@ -40,7 +40,6 @@
                         @endforeach
                     </tbody>
                 </table>
-            <div>{!! $posts[3]->content !!}</div>
             </div>
         </div>
     </div>
