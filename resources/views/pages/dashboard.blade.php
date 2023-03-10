@@ -1,7 +1,8 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    <div class="row mt-4 mx-4">
+    <div class="row mx-2 mt-2">
+        <h3 class="bg-white mt-2 card p-2">Blog Dashboard</h3>
         <div class="card mb-4">
             <div class="table-responsive">
                 <table class="table ml-5">
@@ -29,7 +30,6 @@
                                             @csrf
                                             <button class="btn btn-secondary">Update</button>
                                         </form>
-                                        <a href="/blogpost/update/{{ $item->id }}">Update 1</a>
                                         <form method="POST" action="/blogpost/delete/{{ $item->id }}">
                                             @csrf
                                             <button class="btn btn-danger">Delete</button>

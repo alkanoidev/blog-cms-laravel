@@ -2,13 +2,17 @@
 
 @section('content')
     <main class="card mt-4 mx-4">
-        <div class="card-body">
-            <h2 class="ml-3">Create new post</h2>
-            <input type="text" name="title" id="input-title" class="form-control" />
-            <div class="bg-white rounded-3" id="editorjs"></div>
-            <button id="save" class="btn-primary mt-3 btn">Save</button>
+        <div class="card-body" id="container">
+            <div class="container1">
+                <h2 class="ml-3">Create new post</h2>
+                <div class="input-title-group">
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="input-title" class="form-control mb-3" />
+                </div>
+                <div class="bg-white rounded-3 form-control" id="editorjs"></div>
+                <button id="save" class="btn-primary mt-3 btn">Save</button>
+            </div>
         </div>
-
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -20,7 +24,19 @@
         @endif
     </main>
 @endsection
-
+<style>
+    .input-title-group label{
+        font-size: 1rem;
+    }
+    .container1 {
+        width: 100%;
+        max-width: 800px;
+        margin: 0px auto;
+    }
+    #editorjs img {
+        border-radius: 20px;
+    }
+</style>
 @push('js')
     <script>
         let token = "{{ csrf_token()}}";
