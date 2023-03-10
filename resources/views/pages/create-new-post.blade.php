@@ -2,16 +2,10 @@
 
 @section('content')
     <main class="card mt-4 mx-4">
-        <div class="card-body" id="container">
-            <div class="container1">
-                <h2 class="ml-3">Create new post</h2>
-                <div class="input-title-group">
-                    <label for="title">Title:</label>
-                    <input type="text" name="title" id="input-title" class="form-control mb-3" />
-                </div>
-                <div class="bg-white rounded-3 form-control" id="editorjs"></div>
-                <button id="save" class="btn-primary mt-3 btn">Save</button>
-            </div>
+        <div class="card-body">
+            <h2 class="ml-3">Create new post</h2>
+            <div class="bg-white rounded-3" id="editorjs"></div>
+            <button id="save" class="btn-primary mt-3 btn">Save</button>
         </div>
 
         @if ($errors->any())
@@ -37,20 +31,55 @@
                 image: {
                     class: ImageTool,
                     config: {
+                        // uploader: {
+                        //     uploadByFile(file){
+                        //         console.log(file);
+                        //         $.ajax({
+                        //             type: 'post',
+                        //             url: "/blogpost/upload-image",
+                        //             data: {
+                        //                 image: file,
+                        //                 fileName :file.name,
+                        //             },
+                        //             success: function(data) {
+                        //                 console.log(data);
+                        //             }
+                        //         }).then(
+                        //             () => {
+                        //                 return {
+                        //                     success: 1,
+                        //                     file: {
+                        //                         url: 'https://codex.so/upload/redactor_images/o_80beea670e49f04931ce9e3b2122ac70.jpg',
+                        //                         // any other image data you want to store, such as width, height, color, extension, etc
+                        //                     }
+                        //                 }
+                        //             }
+                        //         );
+                        //     // return MyAjax.upload(file).then(() => {
+                        //     //   return {
+                        //     //     success: 1,
+                        //     //     file: {
+                        //     //       url: 'https://codex.so/upload/redactor_images/o_80beea670e49f04931ce9e3b2122ac70.jpg',
+                        //     //       // any other image data you want to store, such as width, height, color, extension, etc
+                        //     //     }
+                        //     //   };
+                        //     // });
+                        //     }
+                        // },
                         additionalRequestHeaders: {
                             "X-CSRF-TOKEN": token
                         },
                         endpoints: {
                             accept: 'images/*',
-                            byFile: "/blogpost/upload-image",
-                            byUrl: "{{ url('/images/') }}",
+                            byFile: "/blogpost/upload-image", // Your backend file uploader endpoint
+                            byUrl: "{{ url('/images/') }}", // Your endpoint that provides uploading by Url
                         },
                     },
                 },
                 linkTool: {
                     class: LinkTool,
                     config: {
-                        endpoint: "http://localhost:8000/fetchUrl",
+                        endpoint: "http://localhost:8000/fetchUrl", // Your backend endpoint for url data fetching,
                     },
                 },
                 underline: Underline,
@@ -82,13 +111,15 @@
                 .then((outputData) => {
                     const edjsParser = edjsHTML();
                     let html = edjsParser.parse(outputData);
+                    const block = outputData.blocks.find(block => block.type === "header");
+                    const title = block.data.text;
                     const htmlSingleLine = html.join("<br />");
 
                     $.ajax({
                         type: 'post',
                         url: "blogpost/store",
                         data: {
-                            title: document.getElementById("input-title").value,
+                            title: title,
                             content: htmlSingleLine
                         },
                         success: function(data) {
@@ -102,17 +133,3 @@
         })
     </script>
 @endpush
-
-<style>
-    .input-title-group label{
-        font-size: 1rem;
-    }
-    .container1 {
-        width: 100%;
-        max-width: 800px;
-        margin: 0px auto;
-    }
-    #editorjs img {
-        border-radius: 20px;
-    }
-</style>
