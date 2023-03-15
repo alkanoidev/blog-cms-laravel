@@ -23,7 +23,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,200" />
-    
+
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -50,10 +50,9 @@
                     ['profile', 'profile-static']))
                 <div class="min-height-300 position-absolute w-100"></div>
             @elseif (in_array(request()->route()->getName(),
-                    ['profile-static', 'profile']))
-                <div class="position-absolute w-100 min-height-300 top-0"
-                    style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg'); background-position-y: 50%;">
-                    <span class="mask bg-primary opacity-6"></span>
+                    ['profile-static', 'profile', 'dashboard']))
+                <div class="position-absolute w-100 min-height-300 top-0" style="background-position-y: 50%;">
+                    <span class="mask bg-primary"></span>
                 </div>
             @endif
             @include('layouts.navbars.auth.sidenav')

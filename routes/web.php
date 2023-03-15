@@ -35,13 +35,13 @@ Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest
 Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
 Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
-Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
 	Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
-	Route::get("/dashboard", [HomeController::class, 'index'])->name("home");
+	Route::get("/dashboard", [HomeController::class, 'index'])->name("dashboard");
 	Route::get("/user-management", [UserProfileController::class, "index"])->name("user-management");
 	Route::get("/create-new-post", [BlogPostController::class, "show"])->name("create-new-post");
 

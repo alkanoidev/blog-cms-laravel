@@ -1,9 +1,9 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-900'])
 
 @section('content')
-    <div class="row mx-2 mt-2">
-        <h3 class="bg-gray-800 mt-2 card py-2 pl-8 text-white">Blog Dashboard</h3>
-        <div class="card mb-4 bg-gray-800">
+    <div class="row mx-2 mt-2 z-10">
+        <h3 class="bg-gray-800 mt-2 rounded-3 py-2 pl-8 text-white">Blog Dashboard</h3>
+        <div class="rounded-3 mb-4 bg-gray-800">
             <div class="table-responsive">
                 <table class="table bg-gray-800 ml-5">
                     <thead>

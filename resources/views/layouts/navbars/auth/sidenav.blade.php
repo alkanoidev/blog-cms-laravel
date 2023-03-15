@@ -3,7 +3,7 @@
     id="sidenav-main">
     <div class="sidenav-header">
 
-        <a class="navbar-brand m-0" href="{{ route('home') }}" target="_blank">
+        <a class="navbar-brand m-0" href="{{ route('dashboard') }}" target="_blank">
             {{-- <img src="./img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo"> --}}
             <span class="ms-1 text-white text-2xl font-weight-bold">Blog Dashboard</span>
         </a>
@@ -12,8 +12,8 @@
     <div class="collapse navbar-collapse w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}"
-                    href="{{ route('home') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}"
+                    href="{{ route('dashboard') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <span class="material-symbols-rounded text-white">
