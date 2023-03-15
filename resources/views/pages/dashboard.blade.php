@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="row mx-2 mt-2">
-        <h3 class="bg-white mt-2 card p-2">Blog Dashboard</h3>
-        <div class="card mb-4">
+        <h3 class="bg-gray-800 mt-2 card py-2 pl-8 text-white">Blog Dashboard</h3>
+        <div class="card mb-4 bg-gray-800">
             <div class="table-responsive">
-                <table class="table ml-5">
+                <table class="table bg-gray-800 ml-5">
                     <thead>
-                        <tr>
+                        <tr class="text-white">
                             <th scope="col">#</th>
                             <th scope="col">Title</th>
                             <th scope="col">User Id</th>
@@ -18,7 +18,7 @@
                     </thead>
                     <tbody>
                         @foreach ($posts as $item)
-                            <tr>
+                            <tr class="text-white">
                                 <th scope="row">{{ $item->id }}</th>
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->user_id }}</td>

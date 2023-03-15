@@ -1,15 +1,15 @@
-@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
+@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-900'])
 
 @section('content')
-    <main class="card mt-4 mx-4">
+    <main class="card mt-4 mx-4 bg-gray-800">
         <div class="card-body" id="container">
             <div class="container1">
-                <h2 class="ml-3">Create new post</h2>
+                <h2 class="ml-3 text-white">Create new post</h2>
                 <div class="input-title-group">
-                    <label for="title">Title:</label>
+                    <label for="title" class="text-white">Title:</label>
                     <input type="text" name="title" id="input-title" class="form-control mb-3" />
                 </div>
-                <div class="bg-white" id="editorjs"></div>
+                <div id="editorjs" class="card text-black"></div>
                 <button id="save" class="btn-primary mt-3 btn">Save</button>
             </div>
         </div>
@@ -25,6 +25,10 @@
     </main>
 @endsection
 <style>
+    #input-title{
+        border-radius: 1rem !important;
+        border: none !important;
+    }
     .input-title-group label{
         font-size: 1rem;
     }
@@ -33,8 +37,19 @@
         max-width: 800px;
         margin: 0px auto;
     }
+    #editorjs {
+        background: #fff !important;
+    }
     #editorjs img {
         border-radius: 20px;
+    }
+    #editorjs * {
+        color: #000;
+    }
+    .btn{
+        border-radius: 1rem !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
     }
 </style>
 @push('js')
