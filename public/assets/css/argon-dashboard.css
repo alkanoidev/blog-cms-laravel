@@ -2458,7 +2458,7 @@ progress {
   }
 }
 
-/* .table {
+.table {
   --bs-table-bg: transparent;
   --bs-table-accent-bg: transparent;
   --bs-table-striped-color: #67748e;
@@ -2656,7 +2656,7 @@ progress {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-} */
+}
 .form-label {
   margin-bottom: 0.5rem;
   font-size: 0.75rem;
