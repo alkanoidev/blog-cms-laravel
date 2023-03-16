@@ -19,11 +19,12 @@
     <link href={{ asset('assets/css/nucleo-svg.css') }} rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" />
-
+    <link rel="stylesheet" href={{ asset('assets/css/app.css') }}>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,200" />
 
+    @vite('resources/css/app.css')
 </head>
 
 <body class="{{ $class ?? '' }}">
