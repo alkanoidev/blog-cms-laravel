@@ -21,6 +21,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\UserController;
 
 
 Route::get('/', function () {
@@ -53,4 +54,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get("/blogpost/update/{id}", [BlogPostController::class, "update"])->name('blogpost.update');
 	Route::post("/blogpost/update/{id}", [BlogPostController::class, "update"])->name('blogpost.update');
 	Route::post("/blogpost/upload-image", [BlogPostController::class, "storeImage"])->name('blogpost.upload-image');
+
+	Route::controller(UserController::class)->group(function() {
+		Route::post('/user/delete/{id}', "destroy")->name('user.delete');
+	});
 });

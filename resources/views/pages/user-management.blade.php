@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="card text-white bg-gray-800 mb-4">
                 <div class="card-header bg-gray-800 pb-0">
-                    <h6 class="text-white">Users</h6>
+                    <h6 class="text-white">User Management</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
@@ -17,7 +17,7 @@
                                     <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7 ps-2">
                                         Email
                                     </th>
-                                    <th class="text-center text-uppercase text-white text-xxs font-weight-bolder opacity-7">
+                                    <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7">
                                         Create Date</th>
                                     <th class="text-center text-uppercase text-white text-xxs font-weight-bolder opacity-7">
                                         Action</th>
@@ -32,13 +32,16 @@
                                         <td>
                                             <p class="text-sm font-weight-bold mb-0">{{ $user->email }}</p>
                                         </td>
-                                        <td class="align-middle text-center text-sm">
+                                        <td>
                                             <p class="text-sm font-weight-bold mb-0">{{ $user->created_at }}</p>
                                         </td>
                                         <td class="align-middle text-end">
                                             <div class="d-flex px-3 py-1 gap-1 justify-content-center align-items-center">
-                                                <button class="btn btn-secondary">Edit</button>
-                                                <button class="btn btn-danger">Delete</button>
+                                                {{-- <a href="{{ route('user.delete', $user->id) }}"  class="btn btn-danger">Delete</a> --}}
+                                                <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                                                    @csrf
+                                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
