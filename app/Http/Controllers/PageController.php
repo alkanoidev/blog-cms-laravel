@@ -21,9 +21,4 @@ class PageController extends Controller
         // return abort(404);
         return view("pages.dashboard");
     }
-
-    public function profile()
-    {
-        return view("pages.profile-static");
-    }
 }

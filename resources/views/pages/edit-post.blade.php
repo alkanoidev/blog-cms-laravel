@@ -1,5 +1,9 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-900'])
 
+@section('head')
+    <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" />
+@endsection
+
 @section('content')
     <main class="card mt-4 mx-4">
         <div class="card-body" id="container">
@@ -25,21 +29,23 @@
     </main>
 @endsection
 <style>
-    .input-title-group label{
+    .input-title-group label {
         font-size: 1rem;
     }
+
     .container1 {
         width: 100%;
         max-width: 800px;
         margin: 0px auto;
     }
+
     #editorjs img {
         border-radius: 20px;
     }
 </style>
 @push('js')
     <script>
-        let token = "{{ csrf_token()}}";
+        let token = "{{ csrf_token() }}";
 
         const editor = new EditorJS({
             /**

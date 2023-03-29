@@ -1,5 +1,9 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-900'])
 
+@section('head')
+    <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" />
+@endsection
+
 @section('content')
     <div class="row mx-2 mt-3 z-10">
         <div class="col-12">
@@ -47,11 +51,13 @@
                                         </td>
                                         <td class="align-middle text-end">
                                             <div class="d-flex gap-1 justify-content-center align-items-center">
-                                                <form method="GET" class="m-0" action="/blogpost/update/{{ $item->id }}">
+                                                <form method="GET" class="m-0"
+                                                    action="/blogpost/update/{{ $item->id }}">
                                                     @csrf
                                                     <button class="btn btn-secondary m-0">Update</button>
                                                 </form>
-                                                <form method="POST" class="m-0" action="/blogpost/delete/{{ $item->id }}">
+                                                <form method="POST" class="m-0"
+                                                    action="/blogpost/delete/{{ $item->id }}">
                                                     @csrf
                                                     <button class="btn btn-danger m-0">Delete</button>
                                                 </form>
@@ -79,6 +85,7 @@
         background-color: #252a2e;
         border-radius: 5px !important;
     }
+
     .card {
         box-shadow: none !important;
     }
