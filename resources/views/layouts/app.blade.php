@@ -14,7 +14,7 @@
     @yield('head')
 </head>
 
-<body class="{{ $class ?? '' }}">
+<body class="{{ $class ?? '' }} bg-light dark:bg-dark">
     @yield('content')
 </body>
 
