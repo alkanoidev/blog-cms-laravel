@@ -22,11 +22,14 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 
-Route::get('/', function () {
-	return redirect('/dashboard');
-})->middleware('auth')->name("dashboard");
+Route::get('/', [HomeController::class, "index"]);
+
+// Route::get('/', function () {
+// 	return redirect('/dashboard');
+// })->middleware('auth')->name("dashboard");
 
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
@@ -36,12 +39,12 @@ Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest
 Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
 Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
-	Route::get("/dashboard", [HomeController::class, 'index'])->name("dashboard");
+	Route::get("/dashboard", [DashboardController::class, 'index'])->name("dashboard");
 	Route::get("/user-management", [UserProfileController::class, "index"])->name("user-management");
 	Route::get("/create-new-post", [BlogPostController::class, "show"])->name("create-new-post");
 

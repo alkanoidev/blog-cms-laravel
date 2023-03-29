@@ -25,6 +25,8 @@ class HomeController extends Controller
     public function index()
     {
         $posts = BlogPost::all();
-        return view('pages.dashboard')->with("posts", $posts);
+        // return view('pages.dashboard')->with("posts", $posts);
+        return view('pages.home')->with('posts', $posts);
     }
+
 }
