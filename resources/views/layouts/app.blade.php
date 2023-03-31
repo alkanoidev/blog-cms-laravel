@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full w-full">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,7 @@
     @yield('head')
 </head>
 
-<body class="{{ $class ?? '' }} bg-light dark:bg-dark">
+<body class="{{ $class ?? '' }} bg-light dark:bg-dark h-full w-full">
     @yield('content')
 </body>
 

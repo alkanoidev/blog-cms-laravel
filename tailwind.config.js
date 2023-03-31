@@ -1,18 +1,26 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "media",
-  content: [
-    "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-    "./resources/**/*.vue",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        light: "#fff",
-        dark: "#000"
-      }
+    darkMode: "class",
+    content: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+    ],
+    theme: {
+        extend: {
+            colors: {
+                light: "#fff",
+                dark: "#121212",
+                primary: {
+                    light: "#E8EFF4",
+                },
+                on: {
+                    primary: {
+                        light: "#164565",
+                    },
+                },
+            },
+        },
     },
-  },
-  plugins: [],
-}
+    plugins: [],
+};
