@@ -1,14 +1,17 @@
-<aside class="sidebar w-64 absolute sm:relative bg-primary-light text-on-primary-light shadow md:h-full flex-col justify-between hidden sm:flex rounded-r-3xl">
-    <div class="flex flex-col pl-[24px] pt-[24px]">
+<aside class="sidebar w-80 absolute sm:relative bg-primary-light text-on-primary-light shadow md:h-full flex-col justify-between hidden sm:flex rounded-r-3xl">
+    <div class="flex flex-col px-3 pt-[24px]">
         <h1 class="text-xl font-bold">Blog</h1>
 
         <div>
             <h2 class="font-bold">Kategorije</h2>
+            <div>
+                <x-sidebar.button></x-sidebar.button>
+            </div>
         </div>
     </div>
 </aside>
 
-<aside class="w-64 z-40 absolute inset-0 bg-primary-light shadow sm:hidden flex transition duration-150 ease-in-out"
+<aside class="w-80 z-40 absolute inset-0 bg-primary-light shadow sm:hidden flex transition duration-150 ease-in-out"
     id="mobile-nav">
     <button aria-label="toggle sidebar" id="openSideBar"
         class="h-10 w-10 bg-gray-800 absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 rounded focus:ring-gray-800"

@@ -13,6 +13,7 @@ module.exports = {
                 dark: "#121212",
                 primary: {
                     light: "#E8EFF4",
+                    "light-surface": "#C5E0F3",
                 },
                 on: {
                     primary: {
