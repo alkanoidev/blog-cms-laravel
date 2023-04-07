@@ -6,10 +6,12 @@
         <div>
             <h2 class="font-bold">Kategorije</h2>
             <div>
-                <x-sidebar.button selected="{{Route::current()->getName() == 'home'}}" icon="change_history" title="Sve Kategorije"></x-sidebar.button>
+                <x-sidebar.button selected="{{ Route::current()->getName() == 'home' }}" icon="change_history"
+                    title="Sve Kategorije"></x-sidebar.button>
             </div>
             <div>
-                <x-sidebar.button selected="{{Route::current()->getName() == 'android'}}" icon="change_history" title="Android"></x-sidebar.button>
+                <x-sidebar.button selected="{{ Route::current()->getName() == 'android' }}" icon="change_history"
+                    title="Android"></x-sidebar.button>
             </div>
         </div>
     </div>
@@ -17,36 +19,21 @@
 
 <aside class="w-64 z-40 absolute inset-0 bg-primary-light shadow sm:hidden flex transition duration-150 ease-in-out"
     id="mobile-nav">
-    <button aria-label="toggle sidebar" id="openSideBar"
-        class="h-10 w-10 bg-gray-800 absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 rounded focus:ring-gray-800"
-        onclick="sidebarHandler(true)">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-adjustments" width="20"
-            height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" />
-            <circle cx="6" cy="10" r="2" />
-            <line x1="6" y1="4" x2="6" y2="8" />
-            <line x1="6" y1="12" x2="6" y2="20" />
-            <circle cx="12" cy="16" r="2" />
-            <line x1="12" y1="4" x2="12" y2="14" />
-            <line x1="12" y1="18" x2="12" y2="20" />
-            <circle cx="18" cy="7" r="2" />
-            <line x1="18" y1="4" x2="18" y2="5" />
-            <line x1="18" y1="9" x2="18" y2="20" />
-        </svg>
-    </button>
-    <button aria-label="Close sidebar" id="closeSideBar"
-        class="hidden h-10 w-10 bg-gray-800 absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer text-white"
-        onclick="sidebarHandler(false)">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="20" height="20"
-            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" />
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-    </button>
 </aside>
+<button aria-label="toggle sidebar" id="openSideBar"
+    class="w-10 h-10 sm:hidden bg-primary-light fixed right-2 top-2 flex items-center shadow justify-center cursor-pointer rounded-xl"
+    onclick="sidebarHandler(true)">
+    <span class="material-symbols-rounded text-on-primary-light">
+        menu
+    </span>
+</button>
+<button aria-label="Close sidebar" id="closeSideBar"
+    class="w-10 h-10 hidden sm:hidden bg-primary-light fixed right-2 top-2 flex items-center shadow justify-center cursor-pointer rounded-xl"
+    onclick="sidebarHandler(false)">
+    <span class="material-symbols-rounded text-on-primary-light">
+        close
+    </span>
+</button>
 
 <script>
     var sideBar = document.getElementById("mobile-nav");
