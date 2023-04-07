@@ -17,7 +17,7 @@
     </div>
 </aside>
 
-<aside class="w-64 z-40 absolute inset-0 bg-primary-light shadow sm:hidden flex transition duration-150 ease-in-out"
+<aside class="w-64 z-40 absolute inset-0 bg-primary-light shadow sm:hidden flex transition duration-150 ease-in-out rounded-r-3xl"
     id="mobile-nav">
 </aside>
 <button aria-label="toggle sidebar" id="openSideBar"
