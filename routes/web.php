@@ -25,7 +25,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 
 
-Route::get('/', [HomeController::class, "index"]);
+Route::get('/', [HomeController::class, "index"])->name("home");
 
 // Route::get('/', function () {
 // 	return redirect('/dashboard');

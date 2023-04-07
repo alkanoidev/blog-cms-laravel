@@ -1,11 +1,15 @@
-<aside class="sidebar w-80 absolute sm:relative bg-primary-light text-on-primary-light shadow md:h-full flex-col justify-between hidden sm:flex rounded-r-3xl">
+<aside
+    class="sidebar w-80 absolute sm:relative bg-primary-light text-on-primary-light shadow md:h-full flex-col justify-between hidden sm:flex rounded-r-3xl">
     <div class="flex flex-col px-3 pt-[24px]">
         <h1 class="text-xl font-bold">Blog</h1>
 
         <div>
             <h2 class="font-bold">Kategorije</h2>
             <div>
-                <x-sidebar.button :selected="true"></x-sidebar.button>
+                <x-sidebar.button selected="{{Route::current()->getName() == 'home'}}" icon="change_history" title="Sve Kategorije"></x-sidebar.button>
+            </div>
+            <div>
+                <x-sidebar.button selected="{{Route::current()->getName() == 'android'}}" icon="change_history" title="Android"></x-sidebar.button>
             </div>
         </div>
     </div>

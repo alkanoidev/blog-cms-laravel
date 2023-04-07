@@ -11,10 +11,11 @@ class Button extends Component
      *
      * @return void
      */
-    public function __construct(public bool $selected)
-    {
-        //
-    }
+    public function __construct(
+        public bool $selected,
+        public string $icon, 
+        public string $title 
+    ) {}
 
     /**
      * Get the view / contents that represent the component.
