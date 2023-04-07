@@ -5,13 +5,13 @@
         <div>
             <h2 class="font-bold">Kategorije</h2>
             <div>
-                <x-sidebar.button></x-sidebar.button>
+                <x-sidebar.button :selected="true"></x-sidebar.button>
             </div>
         </div>
     </div>
 </aside>
 
-<aside class="w-80 z-40 absolute inset-0 bg-primary-light shadow sm:hidden flex transition duration-150 ease-in-out"
+<aside class="w-64 z-40 absolute inset-0 bg-primary-light shadow sm:hidden flex transition duration-150 ease-in-out"
     id="mobile-nav">
     <button aria-label="toggle sidebar" id="openSideBar"
         class="h-10 w-10 bg-gray-800 absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 rounded focus:ring-gray-800"
@@ -48,7 +48,7 @@
     var sideBar = document.getElementById("mobile-nav");
     var openSidebar = document.getElementById("openSideBar");
     var closeSidebar = document.getElementById("closeSideBar");
-    sideBar.style.transform = "translateX(-260px)";
+    sideBar.style.transform = "translateX(-16rem)";
 
     function sidebarHandler(flag) {
         if (flag) {
@@ -56,7 +56,7 @@
             openSidebar.classList.add("hidden");
             closeSidebar.classList.remove("hidden");
         } else {
-            sideBar.style.transform = "translateX(-260px)";
+            sideBar.style.transform = "translateX(-16rem)";
             closeSidebar.classList.add("hidden");
             openSidebar.classList.remove("hidden");
         }
