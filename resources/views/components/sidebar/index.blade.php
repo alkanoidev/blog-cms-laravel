@@ -1,10 +1,10 @@
 <aside
-    class="sidebar w-80 absolute sm:relative bg-primary-light text-on-primary-light shadow md:h-full flex-col justify-between hidden sm:flex rounded-r-3xl">
+    class="sidebar w-80 absolute sm:relative bg-primary-container-light/50 dark:bg-primary-container-dark/50 text-on-primary-container-light dark:text-on-primary-container-dark shadow md:h-full flex-col justify-between hidden sm:flex rounded-r-3xl">
     <div class="flex flex-col px-3 pt-[24px]">
-        <h1 class="text-xl font-bold">Blog</h1>
+        <h1 class="text-2xl pl-4 pb-6 font-bold text-primary-container-dark dark:text-primary-container-light">Blog</h1>
 
         <div>
-            <h2 class="font-bold">Kategorije</h2>
+            <h2 class="font-semibold pb-2 pl-4 text-xl">Kategorije</h2>
             <div>
                 <x-sidebar.button selected="{{ Route::current()->getName() == 'home' }}" icon="change_history"
                     title="Sve Kategorije"></x-sidebar.button>
@@ -17,23 +17,19 @@
     </div>
 </aside>
 
-<aside class="w-64 z-40 absolute inset-0 bg-primary-light shadow sm:hidden flex transition duration-150 ease-in-out rounded-r-3xl"
+<aside
+    class="w-64 z-40 absolute inset-0 bg-primary-container-light/50 dark:bg-primary-container-dark/50 shadow sm:hidden flex transition duration-150 ease-in-out rounded-r-3xl"
     id="mobile-nav">
 </aside>
-<button aria-label="toggle sidebar" id="openSideBar"
-    class="w-10 h-10 sm:hidden bg-primary-light fixed right-2 top-2 flex items-center shadow justify-center cursor-pointer rounded-xl"
-    onclick="sidebarHandler(true)">
-    <span class="material-symbols-rounded text-on-primary-light">
-        menu
-    </span>
-</button>
-<button aria-label="Close sidebar" id="closeSideBar"
-    class="w-10 h-10 hidden sm:hidden bg-primary-light fixed right-2 top-2 flex items-center shadow justify-center cursor-pointer rounded-xl"
+<div aria-label="toggle sidebar" id="openSideBar" onclick="sidebarHandler(true)"
+    class="w-10 h-10 sm:hidden fixed right-2 top-2 flex items-center justify-center cursor-pointer">
+    <x-buttons.icon-button-tonal icon="menu" />
+</div>
+<div aria-label="Close sidebar" id="closeSideBar"
+    class="w-10 h-10 hidden sm:hidden fixed right-2 top-2 flex items-center justify-center cursor-pointer"
     onclick="sidebarHandler(false)">
-    <span class="material-symbols-rounded text-on-primary-light">
-        close
-    </span>
-</button>
+    <x-buttons.icon-button-tonal icon="close" />
+</div>
 
 <script>
     var sideBar = document.getElementById("mobile-nav");
