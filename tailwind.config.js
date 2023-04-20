@@ -9,16 +9,6 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                // primary: {
-                //     light: "#E8EFF4",
-                //     "light-surface": "#C5E0F3",
-                // },
-                // on: {
-                //     primary: {
-                //         light: "#164565",
-                //     },
-                // },
-
                 dark: "#121212",
                 "on-dark": "#e2e2e5",
                 "off-dark": "#2a2a2a",
@@ -37,10 +27,16 @@ module.exports = {
 
                 secondary: { dark: "#6adbae", light: "#006c4e" },
                 "on-secondary": "#003827",
-                "secondary-container": "#00513a",
-                "on-secondary-container": "#87f8c9",
+                "secondary-container": {
+                    dark: "#00513a",
+                    light: "#87f8c9",
+                },
+                "on-secondary-container": {
+                    dark: "#87f8c9",
+                    light: "#002115"
+                },
 
-                surface: { dark: "#1a1c1e", light: "#f0f0f4" },
+                surface: { dark: "#1a1c1e", light: "#E8EFF4" },
                 "on-surface": { dark: "#e2e2e5", light: "#1a1c1e" },
 
                 outline: { dark: "#8c9198", light: "#72787e" },
