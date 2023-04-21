@@ -19,7 +19,12 @@ module.exports = {
 
                 primary: { dark: "#94ccff", light: "#006399" },
                 "on-primary": { dark: "#003352", light: "#ffffff" },
-                "primary-container": { dark: "#004b74", light: "#cde5ff" },
+                "primary-container": {
+                    dark: "#004b74",
+                    light: "#cde5ff",
+                    "hover-light": "#b0cee0",
+                    "hover-dark": "#b0cee0",
+                },
                 "on-primary-container": { dark: "#cde5ff", light: "#001d32" },
 
                 "deep-sky": "#041621",
@@ -33,7 +38,7 @@ module.exports = {
                 },
                 "on-secondary-container": {
                     dark: "#87f8c9",
-                    light: "#002115"
+                    light: "#002115",
                 },
 
                 surface: { dark: "#1a1c1e", light: "#E8EFF4" },

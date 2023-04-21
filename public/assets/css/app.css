@@ -5,3 +5,6 @@
 .card{
     box-shadow: none !important;
 }
+html{
+    font-family: 'Roboto', sans-serif;
+}

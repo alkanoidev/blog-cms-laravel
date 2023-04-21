@@ -11,6 +11,21 @@
                 </div>
                 <x-buttons.icon-button-tonal icon="dark_mode" />
             </div>
+            <div class="mt-6 from-primary-light to-secondary-light rounded-3xl w-full h-[450px] grid place-items-center py-6 bg-cover
+            bg-[url('https://images.unsplash.com/photo-1681927269046-1263e3282bb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')]
+            z-0 relative
+            
+            ">
+                <div class="text-center px-3 lg:px-0">
+                    <h1 class="sm:text-2xl text-3xl font-bold text-on-primary-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, nostrum.</h1>
+                    <p class="sm:text-lg text-base max-w-2xl mx-auto text-on-primary-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, placeat ad? Quam, vitae natus accusantium cupiditate consequuntur laudantium ea omnis.</p>
+
+                    <div class="mt-12">
+                        <x-buttons.button-tonal title="Procitaj Vise" href="#" icon="" />
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
 @endsection

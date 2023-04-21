@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Buttons;
 
 use Illuminate\View\Component;
 
-class ButtonFilled extends Component
+class ButtonTonal extends Component
 {
     /**
      * Create a new component instance.
@@ -24,6 +24,6 @@ class ButtonFilled extends Component
      */
     public function render()
     {
-        return view('components.button-filled');
+        return view('components.buttons.button-tonal');
     }
 }
