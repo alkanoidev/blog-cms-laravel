@@ -1,10 +1,10 @@
-@props(['title' => null, 'icon' => null,"href" => null])
+@props(['title' => null, 'icon' => null, 'href' => null, 'classes' => ''])
 <a aria-label={{ $title }} href={{ $href }}
-    class="py-3 px-6 transition text-center rounded-full font-semibold whitespace-nowrap
+    class="py-3 px-6 transition text-center {{ $classes }} rounded-full font-semibold whitespace-nowrap
           inline-flex gap-2 justify-center
           dark:bg-primary-container-dark dark:text-on-primary-container-dark bg-primary-container-light text-on-primary-container-light
-          dark:hover:bg-primary-dark hover:bg-primary-container-hover-light
-          dark:focus:bg-[#4397d6] focus:bg-[#b0cee0] focus:outline-none">
+          dark:hover:bg-on-primary-dark hover:bg-[#b5cfeb]
+          dark:focus:bg-on-primary-dark focus:bg-[#a4bfdb] focus:outline-none">
     {{ $title }}
     {{ $slot }}
     {{ $icon ? $icon : null }}

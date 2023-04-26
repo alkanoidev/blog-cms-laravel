@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\Buttons;
+namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class ButtonTonal extends Component
+class BlogPostCard extends Component
 {
     /**
      * Create a new component instance.
@@ -12,11 +12,8 @@ class ButtonTonal extends Component
      * @return void
      */
     public function __construct(
-        public string $title,
-        public string $icon = "",
-        public string $href = "",
-        public string $classes =""
-    ) {}  
+        public string $imgSrc, public string $title, public string $description, public string $href
+    ) {}
 
     /**
      * Get the view / contents that represent the component.
@@ -25,6 +22,6 @@ class ButtonTonal extends Component
      */
     public function render()
     {
-        return view('components.buttons.button-tonal');
+        return view('components.blog-post-card');
     }
 }

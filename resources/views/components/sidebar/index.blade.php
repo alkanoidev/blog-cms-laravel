@@ -1,7 +1,7 @@
 <aside
-    class="sidebar w-80 relative bg-surface-light dark:bg-surface-dark text-on-primary-container-light dark:text-on-primary-container-dark shadow md:h-full flex-col justify-between hidden sm:flex rounded-r-3xl">
+    class="sidebar w-80 fixed bg-surface-light dark:bg-surface-dark text-on-surface-light dark:text-on-surface-dark lg:h-full flex-col justify-between hidden lg:flex rounded-r-3xl">
     <div class="flex flex-col px-3 pt-[24px]">
-        <h1 class="text-2xl pl-4 pb-6 font-bold text-primary-container-dark dark:text-primary-container-light">Blog</h1>
+        <h1 class="text-2xl pl-4 pb-6 font-bold text-on-surface-light dark:text-on-surface-dark">Blog</h1>
 
         <div>
             <h2 class="font-semibold pb-2 pl-4 text-xl">Kategorije</h2>
@@ -18,15 +18,15 @@
 </aside>
 
 <aside
-    class="w-64 z-40 absolute inset-0 bg-surface-light dark:bg-surface-dark text-on-primary-container-light dark:text-on-primary-container-dark shadow sm:hidden flex transition duration-150 ease-in-out rounded-r-3xl"
+    class="w-64 z-40 fixed inset-0 bg-surface-light dark:bg-surface-dark text-on-surface-light dark:text-on-surface-dark lg:hidden flex transition duration-150 ease-in-out rounded-r-3xl"
     id="mobile-nav">
 </aside>
 <div aria-label="toggle sidebar" id="openSideBar" onclick="sidebarHandler(true)"
-    class="w-14 h-14 sm:hidden z-10 fixed right-2 top-2 flex items-center justify-center cursor-pointer">
+    class="w-14 h-14 lg:hidden z-10 fixed right-2 top-2 flex items-center justify-center cursor-pointer">
     <x-buttons.icon-button-tonal icon="menu" />
 </div>
 <div aria-label="Close sidebar" id="closeSideBar"
-    class="w-14 h-14 hidden sm:hidden z-10 fixed right-2 top-2 flex items-center justify-center cursor-pointer"
+    class="w-14 h-14 hidden lg:hidden z-10 fixed right-2 top-2 flex items-center justify-center cursor-pointer"
     onclick="sidebarHandler(false)">
     <x-buttons.icon-button-tonal icon="close" />
 </div>
