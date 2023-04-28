@@ -11,7 +11,7 @@ class IconButtonTonal extends Component
      *
      * @return void
      */
-    public function __construct(public string $icon)
+    public function __construct(public string $icon, public string $id = "")
     {
         //
     }
