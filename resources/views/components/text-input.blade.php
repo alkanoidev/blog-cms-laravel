@@ -1,11 +1,15 @@
 @props(['icon' => null, 'placeholder' => null, 'name' => null])
 
 <div class="relative">
-<input
+    <input
         class="bg-surface-light dark:bg-surface-dark pl-6 pr-12 h-14 w-full rounded-full 
                 text-lg text-primary-container-dark dark:text-primary-container-light
                 placeholder:text-primary-container-dark dark:placeholder:text-primary-container-light
-                focus:shadow-md transition-shadow duration-100 focus:outline-none"
+                transition-shadow duration-100 focus:outline-none
+                hover:bg-primary-light dark:hover:bg-primary-dark
+                hover:bg-opacity-[12%] dark:hover:bg-opacity-[8%]
+              focus:bg-primary-light dark:focus:bg-primary-dark
+                focus:bg-opacity-[20%] dark:focus:bg-opacity-[12%]"
         type="text" name="{{ $name }}" placeholder="{{ $placeholder }}">
 
     <span
