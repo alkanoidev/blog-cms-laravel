@@ -15,7 +15,7 @@ class ButtonTonal extends Component
         public string $title,
         public string $icon = "",
         public string $href = "",
-        public string $classes =""
+        public string $classes ="",
     ) {}  
 
     /**
