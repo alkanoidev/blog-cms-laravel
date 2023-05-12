@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('head')
+    <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" />
+@endsection
+
 @section('content')
     {{-- <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
@@ -10,11 +14,10 @@
     </div>  --}}
     <main class="main-content mt-0">
         <section>
-            <div class="page-header">
+            <div class="page-header vh-100">
                 <div class="container">
-                    <div class="d-flex justify-content-center align-items-center">
-                        {{-- <div class="d-flex flex-column mx-lg-0"> --}}
-                            <div class="card card-plain">
+                    <div class="d-flex h-100 justify-content-center align-items-center">
+                            <div class="card">
                                 <div class="card-header pb-0 text-start">
                                     <h4 class="font-weight-bolder">Sign In</h4>
                                     <p class="mb-0">Enter your email and password to sign in</p>
@@ -55,7 +58,6 @@
                                     </p>
                                 </div>
                             </div>
-                        {{-- </div> --}}
                     </div>
                 </div>
             </div>

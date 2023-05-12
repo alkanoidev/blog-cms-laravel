@@ -3,13 +3,12 @@
 @section('content')
     <div class="flex h-full relative z-0">
         <x-sidebar />
-
         <main id="main" class="lg:ml-80 w-full pt-2 px-2 lg:pt-4 lg:px-6">
             <div class="lg:space-x-6 space-x-2 flex lg:justify-end justify-between w-full lg:pr-0 pr-24">
                 <div class="lg:w-80 w-full">
                     <x-text-input placeholder="Pretrazi" icon="search" name="search" />
                 </div>
-                    <x-buttons.icon-button-tonal id="toggleThemeBtn" icon="dark_mode" type="large" />
+                <x-buttons.icon-button-tonal id="toggleThemeBtn" icon="dark_mode" type="large" />
             </div>
             <div
                 class="mt-4 from-primary-light to-secondary-light rounded-3xl w-full h-[450px] grid place-items-center py-6 bg-cover
@@ -31,30 +30,19 @@
             </div>
 
             <div class="flex w-full flex-wrap justify-center gap-4 mt-4">
-                <x-blog-post-card
-                    imgSrc="https://images.unsplash.com/photo-1681927269046-1263e3282bb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                    title="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque, blanditiis?"
-                    description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta eligendi optio dolorem unde voluptas maxime a eum necessitatibus cumque placeat."
-                    href="#" />
-                <x-blog-post-card
-                    imgSrc="https://images.unsplash.com/photo-1681927269046-1263e3282bb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                    title="Lorem dasdsadsdas"
-                    description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, quibusdam."
-                    href="#" />
-                <x-blog-post-card
-                    imgSrc="https://images.unsplash.com/photo-1681927269046-1263e3282bb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                    title="Lorem dasdsadsdas"
-                    description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, quibusdam."
-                    href="#" />
-                <x-blog-post-card
-                    imgSrc="https://images.unsplash.com/photo-1681927269046-1263e3282bb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                    title="Lorem dasdsadsdas"
-                    description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, quibusdam."
-                    href="#" />
-
+                @foreach ($posts as $post)
+                    <x-blog-post-card
+                        imgSrc="https://images.unsplash.com/photo-1681927269046-1263e3282bb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                        title="{{ $post->title }}"
+                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, quibusdam."
+                        href="#" />
+                @endforeach
             </div>
-
+            <div class="mx-auto">
+                {{ $posts->links("vendor.pagination.tailwind") }}
+            </div>
         </main>
+
 
         <script defer>
             const toggleThemeBtn = document.getElementById("toggleThemeBtn");
@@ -77,3 +65,5 @@
         </script>
     </div>
 @endsection
+
+<script></script>

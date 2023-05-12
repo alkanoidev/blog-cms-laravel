@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('head')
+    <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" />
+@endsection
+
 @section('content')
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">

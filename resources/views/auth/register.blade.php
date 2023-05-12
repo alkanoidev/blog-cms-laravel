@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('head')
+    <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" />
+@endsection
+
 @section('content')
     {{-- @include('layouts.navbars.guest.navbar') --}}
     <main class="main-content  mt-0">
