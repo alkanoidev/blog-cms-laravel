@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class BlogPostController extends Controller
@@ -26,23 +27,40 @@ class BlogPostController extends Controller
             'title' => "required|max:255",
             'content' => "required",
         ], $messages = [
-            'title.required' => 'Please specify the title by entering and heading block.',
-            'content.required' => 'Please enter the blog post content.',
-        ]);
+                'title.required' => 'Please specify the title by entering and heading block.',
+                'content.required' => 'Please enter the blog post content.',
+            ]);
 
         if ($validator->fails()) {
             return redirect('create-new-post')
                 ->withErrors($validator)
                 ->withInput();
         }
+        $readTime = $this->estimateReadingTime($request->content_html);
 
         $blog->title = $request->title;
         $blog->content = $request->content;
+        $blog->reading_time = $readTime;
         $blog->user_id = Auth::id();
 
         $blog->save();
 
         return redirect('/dashboard');
+    }
+
+    /**
+     * Function to calculate the estimated reading time of the given text.
+     * 
+     * @param string $text The text to calculate the reading time for.
+     * @param string $wpm The rate of words per minute to use.
+     * @return float
+     */
+    function estimateReadingTime($text, $wpm = 200)
+    {
+        $totalWords = str_word_count(strip_tags($text));
+        $minutes = floor($totalWords / $wpm);
+
+        return $minutes;
     }
 
     public function storeImage(Request $request)
@@ -57,22 +75,22 @@ class BlogPostController extends Controller
         // $request->image->move(public_path('images'), $imageName);
 
         $input = $request->all();
-            if ($request->hasFile('image')) {
-                $file = $request->file('image');
-                $file_extension = $file->getClientOriginalName();
-                $filename = $file_extension;
-                $request->file('image')->move(public_path('images'), $filename);
-                $input['image'] = $filename;
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $file_extension = $file->getClientOriginalName();
+            $filename = $file_extension;
+            $request->file('image')->move(public_path('images'), $filename);
+            $input['image'] = $filename;
 
-                // return response()->json([
-                //     "success" => 1,
-                //     "file" => ['url' => "http://locahost:8000/images/".$filename ]
-                // ]);
-                return response()->json([
-                    "success" => 1,
-                    "file" => ['url' => url("/images/$filename") ]
-                ]);
-            }
+            // return response()->json([
+            //     "success" => 1,
+            //     "file" => ['url' => "http://locahost:8000/images/".$filename ]
+            // ]);
+            return response()->json([
+                "success" => 1,
+                "file" => ['url' => url("/images/$filename")]
+            ]);
+        }
 
         // //Store in Storage Folder
         // $request->image->storeAs('images', $imageName);

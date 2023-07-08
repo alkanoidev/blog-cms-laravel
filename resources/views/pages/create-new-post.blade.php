@@ -29,28 +29,34 @@
     </main>
 @endsection
 <style>
-    #input-title{
+    #input-title {
         border-radius: 1rem !important;
         border: none !important;
     }
-    .input-title-group label{
+
+    .input-title-group label {
         font-size: 1rem;
     }
+
     .container1 {
         width: 100%;
         max-width: 800px;
         margin: 0px auto;
     }
+
     #editorjs {
         background: #fff !important;
     }
+
     #editorjs img {
         border-radius: 20px;
     }
+
     #editorjs * {
         color: #000;
     }
-    .btn{
+
+    .btn {
         border-radius: 1rem !important;
         padding-left: 2rem !important;
         padding-right: 2rem !important;
@@ -58,7 +64,7 @@
 </style>
 @push('js')
     <script>
-        let token = "{{ csrf_token()}}";
+        let token = "{{ csrf_token() }}";
 
         const editor = new EditorJS({
             holder: "editorjs",
@@ -67,7 +73,7 @@
                 image: {
                     class: ImageTool,
                     config: {
-                        
+
                         additionalRequestHeaders: {
                             "X-CSRF-TOKEN": token
                         },
@@ -86,7 +92,7 @@
                 },
                 underline: Underline,
                 list: {
-                    class: List, 
+                    class: List,
                     inlineToolbar: true,
                     config: {
                         defaultStyle: "unordered",
@@ -111,13 +117,16 @@
             editor
                 .save()
                 .then((outputData) => {
-
+                    const edjsParser = edjsHTML();
+                    const html = edjsParser.parse(outputData).join(' ').toString();
+                    console.log(html);
                     $.ajax({
                         type: 'post',
                         url: "blogpost/store",
                         data: {
                             title: document.getElementById("input-title").value,
-                            content: JSON.stringify(outputData)
+                            content: JSON.stringify(outputData),
+                            content_html: html
                         },
                         success: function(data) {
                             console.log(data);
