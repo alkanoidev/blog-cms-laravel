@@ -38,10 +38,10 @@ Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('gue
 Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::prefix("dashboard")->middleware('auth')->group(function () {
+	Route::get("/", [DashboardController::class, 'index'])->name("dashboard");
 	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
-	Route::get("/dashboard", [DashboardController::class, 'index'])->name("dashboard");
 	Route::get("/user-management", [UserProfileController::class, "index"])->name("user-management");
 	Route::get("/blogpost/create-new-post", [BlogPostController::class, "create"])->name("create-new-post");
 
@@ -54,7 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post("/blogpost/update/{id}", [BlogPostController::class, "update"])->name('blogpost.update');
 	Route::post("/blogpost/upload-image", [BlogPostController::class, "storeImage"])->name('blogpost.upload-image');
 
-	Route::controller(UserController::class)->group(function() {
+	Route::controller(UserController::class)->group(function () {
 		Route::post('/user/delete/{id}', "destroy")->name('user.delete');
 	});
 });

@@ -97,7 +97,7 @@
             onReady: async () => {
                 const exp = /.*(?:\D|^)(\d+)/;
                 const id = exp.exec(window.location.pathname)[1];
-                const res = await fetch(`/blogpost/${id}`);
+                const res = await fetch(`/dashboard/blogpost/${id}`);
                 const data = await res.json();
                 const content = JSON.parse(data.content);
                 document.getElementById("input-title").value = data.title;
@@ -118,7 +118,7 @@
 
                     $.ajax({
                         type: 'post',
-                        url: "/blogpost/update/" + id,
+                        url: "/dashboard/blogpost/update/" + id,
                         data: {
                             title: document.getElementById("input-title").value,
                             content: JSON.stringify(outputData)

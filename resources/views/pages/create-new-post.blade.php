@@ -79,7 +79,7 @@
                         },
                         endpoints: {
                             accept: 'images/*',
-                            byFile: "/blogpost/upload-image", // Your backend file uploader endpoint
+                            byFile: "/dashboard/blogpost/upload-image", // Your backend file uploader endpoint
                             byUrl: "{{ url('/images/') }}", // Your endpoint that provides uploading by Url
                         },
                     },
@@ -122,7 +122,7 @@
                     console.log(html);
                     $.ajax({
                         type: 'post',
-                        url: "blogpost/store",
+                        url: "/dashboard/blogpost/store",
                         data: {
                             title: document.getElementById("input-title").value,
                             content: JSON.stringify(outputData),

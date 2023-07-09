@@ -3,7 +3,7 @@
     id="sidenav-main">
     <div class="sidenav-header">
 
-        <a class="navbar-brand m-0" href="{{ route('dashboard') }}" target="_blank">
+        <a class="navbar-brand m-0" href="{{ route('dashboard') }}">
             {{-- <img src="./img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo"> --}}
             <span class="ms-1 text-white text-2xl font-weight-bold">Blog Dashboard</span>
         </a>

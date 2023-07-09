@@ -52,12 +52,12 @@
                                         <td class="align-middle text-end">
                                             <div class="d-flex gap-1 justify-content-center align-items-center">
                                                 <form method="GET" class="m-0"
-                                                    action="/blogpost/update/{{ $item->id }}">
+                                                    action="{{ route('blogpost.update', ['id' => $item->id]) }}">
                                                     @csrf
                                                     <button class="btn btn-secondary m-0">Update</button>
                                                 </form>
                                                 <form method="POST" class="m-0"
-                                                    action="/blogpost/delete/{{ $item->id }}">
+                                                    action="/dashboard/blogpost/delete/{{ $item->id }}">
                                                     @csrf
                                                     <button class="btn btn-danger m-0">Delete</button>
                                                 </form>
