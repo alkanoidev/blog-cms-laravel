@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use AlAminFirdows\LaravelEditorJs\LaravelEditorJs;
 
@@ -19,18 +18,13 @@ class BlogPostController extends Controller
 
     public function show($post)
     {
-        $blogpost = BlogPost::where('title', $post)->limit(1)->get();
-        if (count($blogpost) == 0) {
-            return abort(404);
-        }
-        // echo $blogpost;
-        // $html = $this->jsonToHtml($blogpost[0]->content);
+        $blogpost = BlogPost::where('title', $post)->firstOrFail();
 
-        $html = new LaravelEditorJs();
-        $html1 = $html->render($blogpost[0]->content);
+        $parser = new LaravelEditorJs();
 
-        echo $html1;
-        // echo $html;
+        $html = $parser->render($blogpost[0]->content);
+
+        echo $html;
     }
 
     public function create()
