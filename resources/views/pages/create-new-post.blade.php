@@ -119,7 +119,6 @@
                 .then((outputData) => {
                     const edjsParser = edjsHTML();
                     const html = edjsParser.parse(outputData).join(' ').toString();
-                    console.log(html);
                     $.ajax({
                         type: 'post',
                         url: "/dashboard/blogpost/store",

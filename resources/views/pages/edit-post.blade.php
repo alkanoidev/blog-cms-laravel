@@ -115,13 +115,16 @@
                 .then((outputData) => {
                     const exp = /.*(?:\D|^)(\d+)/;
                     const id = exp.exec(window.location.pathname)[1];
-
+                    
+                    const edjsParser = edjsHTML();
+                    const html = edjsParser.parse(outputData).join(' ').toString();
                     $.ajax({
                         type: 'post',
                         url: "/dashboard/blogpost/update/" + id,
                         data: {
                             title: document.getElementById("input-title").value,
-                            content: JSON.stringify(outputData)
+                            content: JSON.stringify(outputData),
+                            content_html: html
                         },
                         success: function(data) {
                             console.log(data);
