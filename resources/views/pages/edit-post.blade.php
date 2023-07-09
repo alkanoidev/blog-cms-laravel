@@ -8,7 +8,7 @@
     <main class="card mt-4 mx-4">
         <div class="card-body" id="container">
             <div class="container1">
-                <h2 class="ml-3">Create new post</h2>
+                <h2 class="ml-3">Edit Post</h2>
                 <div class="input-title-group">
                     <label for="title">Title:</label>
                     <input type="text" name="title" id="input-title" class="form-control mb-3" />
@@ -87,7 +87,7 @@
                     class: InlineCode,
                     shortcut: "CMD+SHIFT+M",
                 },
-                code: editorjsCodeflask,
+                code: CodeTool,
                 paragraph: {
                     class: Paragraph,
                     inlineToolbar: true,
