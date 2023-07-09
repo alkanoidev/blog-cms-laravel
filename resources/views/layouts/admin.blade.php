@@ -99,6 +99,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/paragraph@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/warning@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/@calumk/editorjs-codeflask@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@2.0.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/editorjs-html@3.4.0/build/edjsHTML.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"

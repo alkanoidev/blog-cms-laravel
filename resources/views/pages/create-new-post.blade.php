@@ -104,7 +104,7 @@
                     class: InlineCode,
                     shortcut: "CMD+SHIFT+M",
                 },
-                code: editorjsCodeflask,
+                code: CodeTool,
                 paragraph: {
                     class: Paragraph,
                     inlineToolbar: true,

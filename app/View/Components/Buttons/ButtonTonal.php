@@ -12,11 +12,12 @@ class ButtonTonal extends Component
      * @return void
      */
     public function __construct(
-        public string $title,
+        public string $title = "",
         public string $icon = "",
         public string $href = "",
-        public string $classes ="",
-    ) {}  
+        public string $classes = "",
+    ) {
+    }
 
     /**
      * Get the view / contents that represent the component.

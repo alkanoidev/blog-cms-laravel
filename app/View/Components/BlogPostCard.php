@@ -12,8 +12,12 @@ class BlogPostCard extends Component
      * @return void
      */
     public function __construct(
-        public string $imgSrc, public string $title, public string $description, public string $href
-    ) {}
+        public string $imgSrc,
+        public string $title,
+        public string $description,
+        public string $href = ""
+    ) {
+    }
 
     /**
      * Get the view / contents that represent the component.

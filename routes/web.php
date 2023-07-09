@@ -26,6 +26,7 @@ use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', [HomeController::class, "index"])->name("home");
+Route::get('/post/{post}', [BlogPostController::class, "show"])->name("/");
 
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
@@ -42,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
 	Route::get("/dashboard", [DashboardController::class, 'index'])->name("dashboard");
 	Route::get("/user-management", [UserProfileController::class, "index"])->name("user-management");
-	Route::get("/create-new-post", [BlogPostController::class, "show"])->name("create-new-post");
+	Route::get("/create-new-post", [BlogPostController::class, "create"])->name("create-new-post");
 
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 

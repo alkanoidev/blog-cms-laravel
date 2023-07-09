@@ -7,26 +7,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\View\View
-     */
     public function index()
     {
         $posts = BlogPost::paginate(10);
-        // return view('pages.dashboard')->with("posts", $posts);
         return view('pages.home')->with('posts', $posts);
     }
-
 }

@@ -1,4 +1,4 @@
-@props(['imgSrc' => null, 'title' => null, 'description' => null, 'href' => null])
+@props(['imgSrc' => null, 'title' => null, 'description' => null, 'href' => ""])
 <article
     class="bg-surface-light dark:bg-surface-dark text-on-surface-light dark:text-on-surface-dark
            rounded-3xl w-full sm:max-w-sm flex flex-col">
@@ -9,6 +9,6 @@
 
     </div>
     <div class="p-4 ml-auto mt-auto">
-        <x-buttons.button-tonal title="Procitaj Vise" href={{ $href }} />
+        <x-buttons.button-tonal title="Procitaj Vise" href="{{ $href }}" />
     </div>
 </article>

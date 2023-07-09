@@ -12,8 +12,12 @@ class TextInput extends Component
      * @return void
      */
     public function __construct(
-        public string $icon, public string $placeholder, public string $name
-    ) {}
+        public string $icon,
+        public string $placeholder,
+        public string $name,
+        public string $classes = ""
+    ) {
+    }
 
     /**
      * Get the view / contents that represent the component.

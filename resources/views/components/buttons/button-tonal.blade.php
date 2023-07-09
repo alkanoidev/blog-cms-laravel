@@ -1,4 +1,4 @@
-@props(['title' => null, 'icon' => null, 'href' => null, 'classes' => ''])
+@props(['title' => null, 'icon' => null, 'href' => "", 'classes' => ''])
 <a aria-label={{ $title }} href={{ $href }}
     class="py-3 px-6 transition text-center {{ $classes }} rounded-full font-semibold whitespace-nowrap
           inline-flex gap-2 justify-center

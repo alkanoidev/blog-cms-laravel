@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use AlAminFirdows\LaravelEditorJs\LaravelEditorJs;
 
 class BlogPostController extends Controller
 {
@@ -15,7 +16,24 @@ class BlogPostController extends Controller
         $post = BlogPost::find($id);
         return $post;
     }
-    public function show()
+
+    public function show($post)
+    {
+        $blogpost = BlogPost::where('title', $post)->limit(1)->get();
+        if (count($blogpost) == 0) {
+            return abort(404);
+        }
+        // echo $blogpost;
+        // $html = $this->jsonToHtml($blogpost[0]->content);
+
+        $html = new LaravelEditorJs();
+        $html1 = $html->render($blogpost[0]->content);
+
+        echo $html1;
+        // echo $html;
+    }
+
+    public function create()
     {
         return view("pages.create-new-post");
     }
@@ -26,6 +44,7 @@ class BlogPostController extends Controller
         $validator = Validator::make($request->all(), $rules = [
             'title' => "required|max:255",
             'content' => "required",
+            'content_html' => 'required'
         ], $messages = [
                 'title.required' => 'Please specify the title by entering and heading block.',
                 'content.required' => 'Please enter the blog post content.',
@@ -40,6 +59,7 @@ class BlogPostController extends Controller
 
         $blog->title = $request->title;
         $blog->content = $request->content;
+        $blog->content_html = $request->content_html;
         $blog->reading_time = $readTime;
         $blog->user_id = Auth::id();
 

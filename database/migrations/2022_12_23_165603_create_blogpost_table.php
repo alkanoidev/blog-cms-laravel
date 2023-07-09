@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("title");
             $table->json("content");
             $table->smallInteger('reading_time');
+            $table->longText('content_html');
             $table->string("user_id");
             $table->timestamps();
         });
