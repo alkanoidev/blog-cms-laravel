@@ -1,0 +1,50 @@
+.post-body h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.post-body h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.post-body h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.post-body h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.post-body h5 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.post-body h6 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.post-body p {
+    margin: .5rem 0rem .5rem .5rem;
+}
+
+.post-body b {
+    font-weight: bold;
+}
+
+.post-body blockquote {
+    @apply bg-surface-light my-5 rounded-2xl dark:bg-surface-dark p-4 flex gap-2 items-center;
+}
+
+.post-body blockquote p {
+    margin: 0px;
+}
+
+.post-body blockquote::before {
+    content: ">";
+    @apply text-3xl text-primary-light dark:text-primary-dark;
+}

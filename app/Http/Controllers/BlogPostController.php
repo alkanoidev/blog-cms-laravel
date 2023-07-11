@@ -21,7 +21,6 @@ class BlogPostController extends Controller
         $blogpost = BlogPost::where('title', $post)->firstOrFail();
 
         $parser = new LaravelEditorJs();
-
         $html = $parser->render($blogpost->content);
 
         return view("pages.post")->with(["body" => $html, "post" => $blogpost]);
@@ -49,6 +48,7 @@ class BlogPostController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+
         $readTime = $this->estimateReadingTime($request->content_html);
 
         $blog->title = $request->title;
@@ -66,12 +66,8 @@ class BlogPostController extends Controller
         return redirect('/dashboard');
     }
 
-    /**
-     * Function to calculate the estimated reading time of the given text.
-     * 
-     * @param string $text The text to calculate the reading time for.
-     * @param string $wpm The rate of words per minute to use.
-     * @return float
+    /* 
+     * wpm - words per minute
      */
     function estimateReadingTime($text, $wpm = 200)
     {
