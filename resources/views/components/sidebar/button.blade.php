@@ -5,12 +5,12 @@
             dark:hover:bg-on-primary-dark hover:bg-[#b5cfeb]
             dark:focus:bg-on-primary-dark focus:bg-[#a4bfdb] focus:outline-none'
         : 'bg-none' }} 
-        flex px-5 py-4 w-full rounded-full transition">
+        flex px-5 py-3 w-full rounded-full transition">
     <div class="space-x-2 flex items-center">
-        <span class="material-symbols-rounded h-6 w-6 text-primary-container-dark dark:text-primary-container-light">
+        <span class="material-symbols-rounded text-2xl text-primary-container-dark dark:text-primary-container-light">
             {{ $icon }}
         </span>
         <span
-            class="text-lg font-semibold text-primary-container-dark dark:text-primary-container-light">{{ $title }}</span>
+            class="text-base font-semibold text-primary-container-dark dark:text-primary-container-light">{{ $title }}</span>
     </div>
 </a>
