@@ -62,7 +62,7 @@
                         },
                         endpoints: {
                             accept: 'images/*',
-                            byFile: "/blogpost/upload-image",
+                            byFile: "/dashboard/blogpost/upload-image",
                             // byUrl: "{{ url('/images/') }}",
                         },
                     },

@@ -29,7 +29,7 @@
 }
 
 .post-body p {
-    margin: .5rem 0rem .5rem .5rem;
+    margin: 0.5rem 0rem 0.5rem 0.5rem;
 }
 
 .post-body b {
@@ -47,4 +47,8 @@
 .post-body blockquote::before {
     content: ">";
     @apply text-3xl text-primary-light dark:text-primary-dark;
+}
+
+.post-body img {
+    border-radius: 1rem;
 }
