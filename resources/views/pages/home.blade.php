@@ -1,4 +1,4 @@
-@extends('layouts.app',["title" => "Početna"])
+@extends('layouts.app', ['title' => 'Početna'])
 
 @section('content')
     <div class="flex h-full relative z-0">
@@ -44,5 +44,3 @@
         </main>
     </div>
 @endsection
-
-<script></script>

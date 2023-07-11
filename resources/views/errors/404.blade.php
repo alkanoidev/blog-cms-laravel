@@ -1,34 +1,18 @@
-<!DOCTYPE html>
-<html lang="en" class="h-full w-full">
+@extends('layouts.app', ['title' => 'Početna'])
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ config('app.name') }} | 404 Došlo je do greške</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,200" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap"
-        rel="stylesheet">
+@section('content')
+    <div class="h-full w-full grid place-content-center">
 
-    @vite('resources/css/app.css')
-    @yield('head')
-</head>
+        <main class="text-center space-y-4">
+            <div>
+                <h1 class="text-3xl text-on-light dark:text-on-dark">Došlo je do greške</h1>
+                <h2 class="text-3xl text-primary-light dark:text-primary-dark font-bold">404</h2>
+            </div>
+            <p class="max-w-sm text-on-light dark:text-on-dark">Stranica nije pronađena. Moguće je da tražena stranica više
+                ne postoji ili je link
+                pogrešan/promenjen.</p>
+            <x-buttons.button-filled title="Nazad" href="{{ url()->previous() }}" />
+        </main>
 
-<body class="{{ $class ?? '' }} bg-light dark:bg-dark h-full w-full grid place-content-center">
-    <main class="text-center space-y-4">
-        <div>
-            <h1 class="text-3xl text-on-light dark:text-on-dark">Došlo je do greške</h1>
-            <h2 class="text-3xl text-primary-light dark:text-primary-dark font-bold">404</h2>
-        </div>
-        <p class="max-w-sm text-on-light dark:text-on-dark">Stranica nije pronađena. Moguće je da tražena stranica više ne postoji ili je link
-            pogrešan/promenjen.</p>
-        <x-buttons.button-filled title="Nazad" href="{{ url()->previous() }}" />
-    </main>
-</body>
-
-</html>
+    </div>
+@endsection
