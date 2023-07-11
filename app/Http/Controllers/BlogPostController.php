@@ -22,9 +22,9 @@ class BlogPostController extends Controller
 
         $parser = new LaravelEditorJs();
 
-        $html = $parser->render($blogpost[0]->content);
+        $html = $parser->render($blogpost->content);
 
-        echo $html;
+        return view("pages.post")->with(["body" => $html, "post" => $blogpost]);
     }
 
     public function create()
@@ -53,7 +53,11 @@ class BlogPostController extends Controller
 
         $blog->title = $request->title;
         $blog->content = $request->content;
-        $blog->content_html = $request->content_html;
+
+        $parser = new LaravelEditorJs();
+        $html = $parser->render($request->content);
+
+        $blog->content_html = $html;
         $blog->reading_time = $readTime;
         $blog->user_id = Auth::id();
 
@@ -140,9 +144,18 @@ class BlogPostController extends Controller
             return view("pages.edit-post");
         }
         if ($request->isMethod("POST")) {
+            $readTime = $this->estimateReadingTime($request->content_html);
+
             $post->title = $request->title;
             $post->content = $request->content;
+
+            $parser = new LaravelEditorJs();
+            $html = $parser->render($request->content);
+
+            $post->content_html = $html;
+            $post->reading_time = $readTime;
             $post->user_id = Auth::id();
+
             $post->save();
 
             return redirect("dashboard");
