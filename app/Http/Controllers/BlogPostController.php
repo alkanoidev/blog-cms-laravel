@@ -21,7 +21,7 @@ class BlogPostController extends Controller
         $blogpost = BlogPost::where('title', $post)->firstOrFail();
 
         $parser = new LaravelEditorJs();
-        $html = $parser->render($blogpost->content);
+        $html = $parser->render($blogpost->body_json);
 
         return view("pages.post")->with(["body" => $html, "post" => $blogpost]);
     }
@@ -36,8 +36,8 @@ class BlogPostController extends Controller
 
         $validator = Validator::make($request->all(), $rules = [
             'title' => "required|max:255",
-            'content' => "required",
-            'content_html' => 'required'
+            'body_json' => "required",
+            'body_html' => 'required'
         ], $messages = [
                 'title.required' => 'Please specify the title by entering and heading block.',
                 'content.required' => 'Please enter the blog post content.',
@@ -49,15 +49,15 @@ class BlogPostController extends Controller
                 ->withInput();
         }
 
-        $readTime = $this->estimateReadingTime($request->content_html);
+        $readTime = $this->estimateReadingTime($request->body_html);
 
         $blog->title = $request->title;
-        $blog->content = $request->content;
+        $blog->body_json = $request->body_json;
 
         $parser = new LaravelEditorJs();
-        $html = $parser->render($request->content);
+        $html = $parser->render($request->body_json);
 
-        $blog->content_html = $html;
+        $blog->body_html = $html;
         $blog->reading_time = $readTime;
         $blog->user_id = Auth::id();
 
@@ -140,7 +140,7 @@ class BlogPostController extends Controller
             return view("pages.edit-post");
         }
         if ($request->isMethod("POST")) {
-            $readTime = $this->estimateReadingTime($request->content_html);
+            $readTime = $this->estimateReadingTime($request->body_html);
 
             $post->title = $request->title;
             $post->content = $request->content;
@@ -148,7 +148,7 @@ class BlogPostController extends Controller
             $parser = new LaravelEditorJs();
             $html = $parser->render($request->content);
 
-            $post->content_html = $html;
+            $post->body_html = $html;
             $post->reading_time = $readTime;
             $post->user_id = Auth::id();
 

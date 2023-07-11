@@ -124,8 +124,8 @@
                         url: "/dashboard/blogpost/store",
                         data: {
                             title: document.getElementById("input-title").value,
-                            content: JSON.stringify(outputData),
-                            content_html: html
+                            body_json: JSON.stringify(outputData),
+                            body_html: html
                         },
                         success: function(data) {
                             console.log(data);

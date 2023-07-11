@@ -99,11 +99,11 @@
                 const id = exp.exec(window.location.pathname)[1];
                 const res = await fetch(`/dashboard/blogpost/${id}`);
                 const data = await res.json();
-                const content = JSON.parse(data.content);
+                const body_json = JSON.parse(data.body_json);
                 document.getElementById("input-title").value = data.title;
 
                 if (data !== undefined || data !== null) {
-                    await editor.blocks.render(content);
+                    await editor.blocks.render(body_json);
                 }
             },
         });
@@ -124,8 +124,8 @@
                         url: "/dashboard/blogpost/update/" + id,
                         data: {
                             title: document.getElementById("input-title").value,
-                            content: JSON.stringify(outputData),
-                            content_html: html
+                            body_json: JSON.stringify(outputData),
+                            body_html: html
                         },
                         success: function(data) {
                             console.log(data);
