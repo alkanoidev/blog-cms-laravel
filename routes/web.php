@@ -26,7 +26,7 @@ use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', [HomeController::class, "index"])->name("home");
-Route::get('/post/{post}', [BlogPostController::class, "show"])->name("/");
+Route::get('/post/{slug}', [BlogPostController::class, "show"])->name("home.post");
 
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');

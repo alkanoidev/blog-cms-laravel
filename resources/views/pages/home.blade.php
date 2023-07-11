@@ -35,7 +35,7 @@
                         imgSrc="https://images.unsplash.com/photo-1681927269046-1263e3282bb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                         title="{{ $post->title }}"
                         description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, quibusdam."
-                        href="/post/{{ $post->title }}" />
+                        href="/post/{{ $post->slug }}" />
                 @endforeach
             </div>
             <div class="mx-auto">

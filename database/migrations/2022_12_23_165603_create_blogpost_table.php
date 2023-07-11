@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('blogpost', function (Blueprint $table) {
             $table->id();
             $table->string("title");
+            $table->string('slug');
             $table->json("body_json");
             $table->smallInteger('reading_time');
             $table->longText('body_html');

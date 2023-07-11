@@ -16,9 +16,9 @@ class BlogPostController extends Controller
         return $post;
     }
 
-    public function show($post)
+    public function show($slug)
     {
-        $blogpost = BlogPost::where('title', $post)->firstOrFail();
+        $blogpost = BlogPost::where('slug', $slug)->firstOrFail();
 
         $parser = new LaravelEditorJs();
         $html = $parser->render($blogpost->body_json);
@@ -52,6 +52,7 @@ class BlogPostController extends Controller
         $readTime = $this->estimateReadingTime($request->body_html);
 
         $blog->title = $request->title;
+        $blog->slug = self::createSlug($request->title);
         $blog->body_json = $request->body_json;
 
         $parser = new LaravelEditorJs();
@@ -69,12 +70,23 @@ class BlogPostController extends Controller
     /* 
      * wpm - words per minute
      */
-    function estimateReadingTime($text, $wpm = 200)
+    function estimateReadingTime(string $text, $wpm = 200)
     {
         $totalWords = str_word_count(strip_tags($text));
         $minutes = floor($totalWords / $wpm);
 
         return $minutes;
+    }
+
+    /*
+     * Ecapes spaces from title to generate valid slug for the route 
+     */
+    function createSlug(string $text): string
+    {
+        $data_slug = trim($text, " ");
+        $search = array('/', '\\', ':', ';', '!', '@', '#', '$', '%', '^', '*', '(', ')', '_', '+', '=', '|', '{', '}', '[', ']', '"', "'", '<', '>', ',', '?', '~', '`', '&', ' ', '.');
+        $data_slug = str_replace($search, "", $data_slug);
+        return $data_slug;
     }
 
     public function storeImage(Request $request)
@@ -143,10 +155,11 @@ class BlogPostController extends Controller
             $readTime = $this->estimateReadingTime($request->body_html);
 
             $post->title = $request->title;
-            $post->content = $request->content;
+            $post->slug = self::createSlug($request->title);
+            $post->body_json = $request->body_json;
 
             $parser = new LaravelEditorJs();
-            $html = $parser->render($request->content);
+            $html = $parser->render($request->body_json);
 
             $post->body_html = $html;
             $post->reading_time = $readTime;
