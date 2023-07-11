@@ -45,6 +45,7 @@
 }
 
 .post-body blockquote p {
+    @apply text-base;
     margin: 0px;
 }
 

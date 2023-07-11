@@ -15,9 +15,11 @@
 
             <div
                 class="mx-auto 2xl:max-w-4xl xl:max-w-4xl lg:max-w-3xl md:max-w-md sm:max-w-sm max-w-5xl pt-4
-                        flex flex-col gap-4">
+                        flex flex-col gap-4
+                        lg:px-0 px-2
+                        ">
 
-                <h1 class="text-4xl font-bold text-on-light dark:text-on-dark">{{ $post->title }}</h1>
+                <h1 class="md:text-4xl text-3xl font-bold text-on-light dark:text-on-dark">{{ $post->title }}</h1>
                 <ul class="w-min">
                     <li
                         class="ring-2 ring-on-light dark:ring-on-dark text-sm text-on-light dark:text-on-dark font-semibold font-sans px-2 py-1 rounded-lg">

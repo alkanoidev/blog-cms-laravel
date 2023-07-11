@@ -19,7 +19,7 @@
     @yield('head')
 </head>
 
-<body class="{{ $class ?? '' }} bg-light dark:bg-dark h-full w-full">
+<body class="{{ $class ?? '' }} bg-light dark:bg-dark h-full w-full lg:px-0">
     @yield('content')
 
     <script defer>
