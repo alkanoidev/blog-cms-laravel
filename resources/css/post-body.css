@@ -1,3 +1,7 @@
+.post-body {
+    @apply text-on-light dark:text-on-dark;
+}
+
 .post-body h1 {
     font-size: 1.8rem;
     font-weight: 600;

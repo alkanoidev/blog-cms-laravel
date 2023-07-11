@@ -42,27 +42,6 @@
                 {{ $posts->links('vendor.pagination.tailwind') }}
             </div>
         </main>
-
-
-        <script defer>
-            const toggleThemeBtn = document.getElementById("toggleThemeBtn");
-
-            const html = document.documentElement;
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                html.classList.add("dark");
-            } else {
-                html.classList.remove("dark");
-            }
-
-            toggleThemeBtn.addEventListener("click", () => {
-                const theme = html.classList.contains("light") ? "light" : "dark";
-                if (theme === "light") {
-                    html.classList.toggle("dark");
-                } else {
-                    html.classList.toggle("dark");
-                }
-            })
-        </script>
     </div>
 @endsection
 

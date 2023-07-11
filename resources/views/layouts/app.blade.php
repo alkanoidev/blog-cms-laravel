@@ -21,6 +21,44 @@
 
 <body class="{{ $class ?? '' }} bg-light dark:bg-dark h-full w-full">
     @yield('content')
+
+    <script defer>
+        const toggleThemeBtn = document.getElementById("toggleThemeBtn");
+
+        const html = document.documentElement;
+
+        if (localStorage.getItem("theme") != null) {
+            if (localStorage.getItem("theme") == "dark" || localStorage.getItem("theme") === "dark") {
+                html.classList.add("dark");
+                localStorage.setItem("theme", "dark");
+            } else {
+                html.classList.remove("dark");
+                localStorage.setItem("theme", "light");
+            }
+        } else {
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                html.classList.add("dark");
+                localStorage.setItem("theme", "dark");
+            } else {
+                html.classList.remove("dark");
+                localStorage.setItem("theme", "light");
+            }
+        }
+
+        toggleThemeBtn.addEventListener("click", () => {
+            const theme = html.classList.contains("dark") ? "dark" : "light";
+            if (theme === "light") {
+                html.classList.toggle("dark");
+                localStorage.setItem("theme", "dark");
+                console.log(localStorage.getItem("theme"));
+            } else {
+                html.classList.toggle("dark");
+                localStorage.setItem("theme", "light");
+                console.log(localStorage.getItem("theme"));
+
+            }
+        })
+    </script>
 </body>
 
 </html>
