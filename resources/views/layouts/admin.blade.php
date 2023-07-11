@@ -9,7 +9,7 @@
     <title>
         {{ config('app.name') }} | Dashboard
     </title>
-    <!--     Fonts and icons     -->
+    <!-- Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
     <link href={{ asset('/assets/css/nucleo-icons.css') }} rel="stylesheet" />

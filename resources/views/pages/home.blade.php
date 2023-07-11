@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',["title" => "Početna"])
 
 @section('content')
     <div class="flex h-full relative z-0">
