@@ -45,6 +45,19 @@
                         {{ $post->reading_time }} min
                     </li>
                 </ul>
+                <div class="flex items-center gap-2 text-on-light dark:text-on-dark text-lg">
+                    <span class="author-avatar">
+                        {!! $author->avatar !!}
+
+                    </span>
+                    <h2>{{ $author->firstname }} {{ $author->lastname }}
+                        <br>
+                        <span class="opacity-80">
+
+                            {{ $author->username }}
+                        </span>
+                    </h2>
+                </div>
 
                 <article class="post-body">
                     {!! $body !!}
@@ -72,4 +85,12 @@
             document.querySelector("#search-form").submit();
         })
     </script>
+
+    <style scoped>
+        .author-avatar svg {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+        }
+    </style>
 @endsection

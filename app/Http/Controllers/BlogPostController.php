@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -20,10 +21,16 @@ class BlogPostController extends Controller
     {
         $blogpost = BlogPost::where('slug', $slug)->firstOrFail();
 
+        $author = User::find($blogpost->user_id);
+
         $parser = new LaravelEditorJs();
         $html = $parser->render($blogpost->body_json);
 
-        return view("pages.post")->with(["body" => $html, "post" => $blogpost]);
+        return view("pages.post")->with([
+            "body" => $html,
+            "post" => $blogpost,
+            "author" => $author
+        ]);
     }
 
     public function create()
