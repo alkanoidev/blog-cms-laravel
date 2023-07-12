@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Početna'])
+@extends('layouts.app', ['title' => 'Došlo je do greške'])
 
 @section('content')
     <div class="h-full w-full grid place-content-center">

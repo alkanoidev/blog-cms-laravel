@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ["title" => "Reset Password"])
 
 @section('head')
     <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" />
