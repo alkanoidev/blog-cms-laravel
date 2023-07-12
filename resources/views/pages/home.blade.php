@@ -4,7 +4,7 @@
     <div class="flex h-full relative z-0">
         <x-sidebar />
         <main id="main" class="lg:ml-80 w-full pt-2 px-2 lg:pt-4 lg:px-6">
-            <div class="lg:space-x-6 space-x-2 flex justify-end w-full lg:pr-0 pr-24">
+            <div class="lg:space-x-2 space-x-2 flex justify-end w-full lg:pr-0 pr-24">
                 <div class="relative lg:w-80" id="search-container">
                     <form action="/search" method="GET" id="search-form">
                         <x-text-input placeholder="Pretrazi" icon="search" name="q" id="search-input"
