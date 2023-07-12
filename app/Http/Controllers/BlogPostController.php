@@ -64,7 +64,33 @@ class BlogPostController extends Controller
 
         $blog->save();
 
-        return redirect('/dashboard');
+        return redirect()->route("dashboard");
+    }
+
+    public function update(Request $request, $id)
+    {
+        if ($request->isMethod("GET")) {
+            return view("pages.edit-post");
+        }
+        if ($request->isMethod("POST")) {
+            $post = BlogPost::find($id);
+            $readTime = $this->estimateReadingTime($request->body_html);
+
+            $post->title = $request->title;
+            $post->slug = self::createSlug($request->title);
+            $post->body_json = $request->body_json;
+
+            $parser = new LaravelEditorJs();
+            $html = $parser->render($request->body_json);
+
+            $post->body_html = $html;
+            $post->reading_time = $readTime;
+            $post->user_id = Auth::id();
+
+            $post->save();
+
+            return redirect()->route("dashboard");
+        }
     }
 
     /* 
@@ -143,31 +169,5 @@ class BlogPostController extends Controller
         BlogPost::destroy($postId);
 
         return redirect("/dashboard")->with(['posts' => BlogPost::all()]);
-    }
-
-    public function update(Request $request, $id)
-    {
-        $post = BlogPost::find($id);
-        if ($request->isMethod("GET")) {
-            return view("pages.edit-post");
-        }
-        if ($request->isMethod("POST")) {
-            $readTime = $this->estimateReadingTime($request->body_html);
-
-            $post->title = $request->title;
-            $post->slug = self::createSlug($request->title);
-            $post->body_json = $request->body_json;
-
-            $parser = new LaravelEditorJs();
-            $html = $parser->render($request->body_json);
-
-            $post->body_html = $html;
-            $post->reading_time = $readTime;
-            $post->user_id = Auth::id();
-
-            $post->save();
-
-            return redirect("dashboard");
-        }
     }
 }

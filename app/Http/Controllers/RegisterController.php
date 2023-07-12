@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 // use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Http;
 
 class RegisterController extends Controller
 {
@@ -21,6 +22,11 @@ class RegisterController extends Controller
             'terms' => 'required'
         ]);
         $user = User::create($attributes);
+
+        $response = Http::get("https://source.boringavatars.com/beam/120?square=true");
+        $avatar = $response->body();
+        $user->avatar = $avatar;
+
         auth()->login($user);
 
         return redirect('/dashboard');

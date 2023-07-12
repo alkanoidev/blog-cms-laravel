@@ -9,9 +9,7 @@
         <div class="card-body p-3">
             <div class="row gx-4">
                 <div class="col-auto">
-                    <div class="avatar avatar-xl position-relative">
-                        <img src="/img/team-1.jpg" alt="profile_image" class="w-100 border-radius-lg">
-                    </div>
+                    {!! auth()->user()->avatar !!}
                 </div>
                 <div class="col-auto my-auto text-white">
                     <div class="h-100">
@@ -19,7 +17,7 @@
                             {{ auth()->user()->firstname ?? 'Firstname' }} {{ auth()->user()->lastname ?? 'Lastname' }}
                         </h5>
                         <p class="mb-0 font-weight-bold text-sm">
-                            Public Relations
+                            {{ auth()->user()->username }}
                         </p>
                     </div>
                 </div>
@@ -52,7 +50,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label text-white">Email address</label>
+                                    <label for="example-text-input" class="form-control-label text-white">Email
+                                        address</label>
                                     <input class="form-control" type="email" name="email"
                                         value="{{ old('email', auth()->user()->email) }}">
                                 </div>
@@ -98,7 +97,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label text-white">Postal code</label>
+                                    <label for="example-text-input" class="form-control-label text-white">Postal
+                                        code</label>
                                     <input class="form-control" type="text" name="postal"
                                         value="{{ old('postal', auth()->user()->postal) }}">
                                 </div>
@@ -123,10 +123,10 @@
     </div>
 @endsection
 
-<style>
-    .avatar,
-    .avatar-xl {
-        margin: 0px !important;
-        padding: 0px !important;
+<style scoped>
+    svg {
+        height: 4rem;
+        width: 4rem;
+        border-radius: .5rem;
     }
 </style>

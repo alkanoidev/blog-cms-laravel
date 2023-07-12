@@ -16,7 +16,14 @@
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
+                                    <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Avatar
+                                    </th>
                                     <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7">Username
+                                    </th>
+                                    <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7">Firstname
+                                    </th>
+                                    <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7">Lastname
                                     </th>
                                     <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7 ps-2">
                                         Email
@@ -31,7 +38,18 @@
                                 @foreach ($users as $user)
                                     <tr class="text-white table-row">
                                         <td>
+                                            <p class="text-sm font-weight-bold mb-0">
+                                                {!! $user->avatar !!}
+                                            </p>
+                                        </td>
+                                        <td>
                                             <p class="text-sm font-weight-bold mb-0">{{ $user->username }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm font-weight-bold mb-0">{{ $user->firstname }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm font-weight-bold mb-0">{{ $user->lastname }}</p>
                                         </td>
                                         <td>
                                             <p class="text-sm font-weight-bold mb-0">{{ $user->email }}</p>
@@ -59,7 +77,7 @@
     </div>
 @endsection
 
-<style>
+<style scoped>
     .table-row {
         border-style: none !important;
         border-color: transparent;
@@ -73,5 +91,11 @@
 
     .card {
         box-shadow: none !important;
+    }
+
+    svg {
+        height: 3rem;
+        width: 3rem;
+        border-radius: .5rem;
     }
 </style>

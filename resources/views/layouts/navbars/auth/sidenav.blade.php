@@ -4,8 +4,9 @@
     <div class="sidenav-header">
 
         <a class="navbar-brand m-0" href="{{ route('dashboard') }}">
-            {{-- <img src="./img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo"> --}}
+            <img src="/img/logo.svg" class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-1 text-white text-2xl font-weight-bold">Blog Dashboard</span>
+
         </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -74,6 +75,16 @@
                         <span class="nav-link-text ms-1 text-white">Log out</span>
                     </a>
                 </form>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link">
+                    <div
+                        class="avatar text-white icon-md text-center me-2 d-flex align-items-center justify-content-center">
+                        {!! auth()->user()->avatar !!}
+                    </div>
+                    <span class="nav-link-text ms-1 text-white">{{ auth()->user()->firstname }}
+                        {{ auth()->user()->lastname }}</span>
+                </div>
             </li>
         </ul>
     </div>
