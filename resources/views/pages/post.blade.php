@@ -17,7 +17,6 @@
             <img src="/img/ui/background.svg" class="w-full absolute -z-10 rounded-b-2xl hidden dark:block" alt="">
             <img src="/img/ui/background-light.svg" class="w-full absolute -z-10 rounded-b-2xl block dark:hidden"
                 alt="">
-
             <div
                 class="mx-auto 2xl:max-w-4xl xl:max-w-4xl lg:max-w-3xl md:max-w-md sm:max-w-sm max-w-5xl pt-4
                         flex flex-col gap-4
