@@ -55,12 +55,9 @@
             if (theme === "light") {
                 html.classList.toggle("dark");
                 localStorage.setItem("theme", "dark");
-                console.log(localStorage.getItem("theme"));
             } else {
                 html.classList.toggle("dark");
                 localStorage.setItem("theme", "light");
-                console.log(localStorage.getItem("theme"));
-
             }
         })
     </script>
