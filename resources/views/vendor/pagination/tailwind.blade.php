@@ -83,9 +83,9 @@
                                             class="bg-primary-dark dark:bg-primary-light shadow w-12 h-12
                                                     flex items-center justify-center rounded-full font-medium text-base
                                                     text-on-light dark:text-on-dark
-                                                    hover:bg-primary-light dark:hover:bg-primary-dark
-                                                    hover:bg-opacity-[12%] dark:hover:bg-opacity-[12%]
-                                                    focus:bg-primary-light dark:focus:bg-primary-dark
+                                                    hover:bg-primary-dark dark:hover:bg-primary-light
+                                                    hover:bg-opacity-60 dark:hover:bg-opacity-60
+                                                    focus:bg-primary-dark dark:focus:bg-primary-light
                                                     focus:bg-opacity-[20%] dark:focus:bg-opacity-[20%]">{{ $page }}</span>
                                     </span>
                                 @else
