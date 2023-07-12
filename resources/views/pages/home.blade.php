@@ -6,7 +6,9 @@
         <main id="main" class="lg:ml-80 w-full pt-2 px-2 lg:pt-4 lg:px-6">
             <div class="lg:space-x-6 space-x-2 flex lg:justify-end justify-between w-full lg:pr-0 pr-24">
                 <div class="lg:w-80 w-full">
-                    <x-text-input placeholder="Pretrazi" icon="search" name="search" />
+                    <form action="/search" method="GET" id="search-form">
+                        <x-text-input placeholder="Pretrazi" icon="search" name="q" id="search-input" classes="" />
+                    </form>
                 </div>
                 <x-buttons.icon-button-tonal id="toggleThemeBtn" icon="dark_mode" type="large" />
             </div>
@@ -38,9 +40,17 @@
                         href="/post/{{ $post->slug }}" />
                 @endforeach
             </div>
-            <div class="mx-auto">
+            <div class="flex justify-center mt-4">
                 {{ $posts->links('vendor.pagination.tailwind') }}
             </div>
         </main>
     </div>
+    <script>
+        const searchInput = document.querySelector("#search-input");
+        searchInput.addEventListener("submit", (e) => {
+            setTimeout(() => {
+                document.querySelector("#search-form").submit();
+            }, 1000);
+        })
+    </script>
 @endsection

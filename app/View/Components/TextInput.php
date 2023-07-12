@@ -15,7 +15,8 @@ class TextInput extends Component
         public string $icon,
         public string $placeholder,
         public string $name,
-        public string $classes = ""
+        public string $classes = "",
+        public string $id
     ) {
     }
 
