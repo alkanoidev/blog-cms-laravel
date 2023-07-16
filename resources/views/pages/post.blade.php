@@ -67,7 +67,7 @@
                 </div>
 
                 <article class="post-body">
-                    {!! $body !!}
+                    {!! htmlspecialchars_decode($body) !!}
 
                 </article>
             </div>

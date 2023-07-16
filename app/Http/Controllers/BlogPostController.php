@@ -65,7 +65,7 @@ class BlogPostController extends Controller
         $parser = new LaravelEditorJs();
         $html = $parser->render($request->body_json);
 
-        $blog->body_html = $html;
+        $blog->body_html = htmlspecialchars_decode($html);
         $blog->reading_time = $readTime;
         $blog->user_id = Auth::id();
 
@@ -90,7 +90,7 @@ class BlogPostController extends Controller
             $parser = new LaravelEditorJs();
             $html = $parser->render($request->body_json);
 
-            $post->body_html = $html;
+            $post->body_html = htmlspecialchars_decode($html);
             $post->reading_time = $readTime;
             $post->user_id = Auth::id();
 
