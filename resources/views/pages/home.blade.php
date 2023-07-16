@@ -27,7 +27,7 @@
                         laudantium ea omnis.</p>
 
                     <div class="mt-12">
-                        <x-buttons.button-tonal title="Procitaj Vise" href="#" icon="" />
+                        <x-buttons.button-tonal title="Procitaj Vise" href="#" />
                     </div>
                 </div>
             </div>

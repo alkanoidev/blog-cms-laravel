@@ -5,10 +5,13 @@
           dark:bg-primary-container-dark dark:text-on-primary-container-dark bg-primary-container-light text-on-primary-container-light
           dark:hover:bg-on-primary-dark hover:bg-[#b5cfeb]
           dark:focus:bg-on-primary-dark focus:bg-[#a4bfdb] focus:outline-none">
-    <span
-        class="material-symbols-rounded flex items-center justify-center w-6 h-6 text-2xl text-primary-container-dark dark:text-primary-container-light">
-        {{ $icon ? $icon : null }}
-    </span>
+
+    @if (!empty($icon))
+        <span
+            class="material-symbols-rounded flex items-center justify-center w-6 h-6 text-2xl text-primary-container-dark dark:text-primary-container-light">
+            {{ $icon }}
+        </span>
+    @endif
     {{ $title }}
     {{ $slot }}
 
