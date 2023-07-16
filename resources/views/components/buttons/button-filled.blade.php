@@ -7,5 +7,8 @@
           dark:focus:bg-[#4397d6] focus:bg-[#004b74] focus:outline-none">
     {{ $title }}
     {{ $slot }}
-    {{ $icon ? $icon : null }}
+    <span
+        class="material-symbols-rounded flex items-center justify-center w-6 h-6 text-2xl text-primary-container-dark dark:text-primary-container-light">
+        {{ $icon ? $icon : null }}
+    </span>
 </a>

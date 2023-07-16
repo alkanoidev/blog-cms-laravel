@@ -2,17 +2,25 @@
 
 @section('content')
     <div class="flex h-full relative z-0">
-        <main id="main" class="w-full">
-            <div
-                class="lg:space-x-6 space-x-2 px-2 lg:px-6 flex lg:justify-end justify-between w-full lg:pr-2 pr-24 pb-4 pt-2">
-                <div class="relative lg:w-80" id="search-container">
-                    <form action="/search" method="GET" id="search-form">
-                        <x-text-input placeholder="Pretrazi" icon="search" name="q" id="search-input"
-                            classes="" />
-                    </form>
+        <x-sidebar />
+
+        <main id="main" class="lg:ml-80 w-full relative">
+            <div class="flex flex-shrink lg:pr-2 pr-24 pb-4 pt-2 px-2 lg:space-x-6 space-x-2 lg:px-6 items-center">
+
+                <x-buttons.button-tonal title="Nazad" icon="arrow_left_alt" href="{{ url()->previous() }}" />
+                <div
+                    class="lg:space-x-6 space-x-2 flex lg:justify-end justify-between w-full">
+
+                    <div class="relative lg:w-80" id="search-container">
+                        <form action="/search" method="GET" id="search-form">
+                            <x-text-input placeholder="Pretrazi" icon="search" name="q" id="search-input"
+                                classes="" />
+                        </form>
+                    </div>
+                    <x-buttons.icon-button-tonal id="toggleThemeBtn" icon="dark_mode" type="large" />
                 </div>
-                <x-buttons.icon-button-tonal id="toggleThemeBtn" icon="dark_mode" type="large" />
             </div>
+
 
             <img src="/img/ui/background.svg" class="w-full absolute -z-10 rounded-b-2xl hidden dark:block" alt="">
             <img src="/img/ui/background-light.svg" class="w-full absolute -z-10 rounded-b-2xl block dark:hidden"
