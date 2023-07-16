@@ -1,8 +1,12 @@
 <aside
     class="sidebar w-80 fixed bg-surface-light dark:bg-surface-dark text-on-surface-light dark:text-on-surface-dark lg:h-full flex-col justify-between hidden lg:flex rounded-r-3xl">
     <div class="flex flex-col px-3 pt-[24px]">
-        <h1 class="text-2xl pl-4 pb-6 font-bold text-on-surface-light dark:text-on-surface-dark">Blog</h1>
-
+        <a class="navbar-brand m-0 pl-4 pb-6 flex items-center space-x-2" href="{{ route('home') }}">
+            <img src="/img/logo.svg" class="h-8" alt="main_logo">
+            <span class="text-2xl font-bold text-on-surface-light dark:text-on-surface-dark">
+                {{ config('app.name') }}
+            </span>
+        </a>
         <div>
             <h2 class="font-semibold pb-2 pl-4 text-xl">Kategorije</h2>
             <div>
