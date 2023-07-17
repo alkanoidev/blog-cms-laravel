@@ -18,7 +18,7 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href={{ asset('assets/css/nucleo-svg.css') }} rel="stylesheet" />
     <!-- CSS Files -->
-    <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" />
+    {{-- <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" /> --}}
     <link rel="stylesheet" href={{ asset('assets/css/app.css') }}>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet"
@@ -28,6 +28,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap"
         rel="stylesheet">
+
+    @vite(['resources/scss/argon-dashboard.scss', 'resources/js/app.js'])
 
     @yield('head')
 </head>

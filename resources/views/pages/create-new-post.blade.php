@@ -1,7 +1,7 @@
 @extends('layouts.admin', ['class' => 'g-sidenav-show bg-gray-900'])
 
 @section('head')
-    <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" />
+    {{-- <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" /> --}}
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
                     <label for="title" class="text-white">Title:</label>
                     <input type="text" name="title" id="input-title" class="form-control mb-3" />
                 </div>
-                <div id="editorjs" class="card text-black"></div>
+                <div id="editorjs" class="text-black"></div>
                 <button id="save" class="btn-primary mt-3 btn">Save</button>
             </div>
         </div>
@@ -29,10 +29,6 @@
     </main>
 @endsection
 <style>
-    #input-title {
-        border-radius: 1rem !important;
-        border: none !important;
-    }
 
     .input-title-group label {
         font-size: 1rem;
@@ -44,16 +40,8 @@
         margin: 0px auto;
     }
 
-    #editorjs {
-        background: #fff !important;
-    }
-
     #editorjs img {
         border-radius: 20px;
-    }
-
-    #editorjs * {
-        color: #000;
     }
 
     .btn {

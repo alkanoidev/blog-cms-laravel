@@ -1,0 +1,108 @@
+// EditorJS Styles
+.codex-editor {
+    .ce-block {
+        background-color: $gray-800;
+        color: $gray-300;
+    }
+    .ce-block--selected {
+        background-color: $gray-700;
+        .ce-block__content {
+            background-color: $gray-700 !important;
+            .cdx-block {
+                background-color: $gray-700 !important;
+            }
+        }
+    }
+    .ce-header {
+        color: $gray-100;
+    }
+    *::selection {
+        background-color: $blue;
+        color: white;
+    }
+    .ce-popover {
+        background-color: $gray-600;
+        border: none;
+        .ce-popover-item__icon {
+            background: $gray-700;
+            border: none;
+            box-shadow: none;
+            svg * {
+                stroke: white;
+            }
+        }
+        .ce-popover-item {
+            .ce-popover-item__title {
+                color: white;
+            }
+            &:hover {
+                background-color: $gray-700;
+            }
+        }
+        .cdx-search-field {
+            background: $gray-700;
+            .cdx-search-field__icon {
+                svg * {
+                    stroke: white;
+                }
+            }
+            input {
+                color: white;
+                &::placeholder {
+                    color: $gray-200;
+                }
+            }
+        }
+        .ce-popover__nothing-found-message {
+            color: white;
+        }
+    }
+    .ce-toolbar {
+        .ce-toolbar__plus {
+            background-color: $gray-600;
+            &:hover {
+                background-color: $gray-700;
+            }
+            svg {
+                path {
+                    stroke: $gray-200;
+                }
+            }
+        }
+        .ce-toolbar__settings-btn {
+            background-color: $gray-600;
+            &:hover {
+                background-color: $gray-700;
+            }
+            svg {
+                path {
+                    stroke: $gray-200;
+                }
+            }
+        }
+    }
+    .ce-popover__items {
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: $gray-400;
+            border-radius: 1rem;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: $gray-500;
+        }
+    }
+    .image-tool__caption {
+        @apply form-control;
+    }
+}

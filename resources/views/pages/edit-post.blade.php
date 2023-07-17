@@ -1,19 +1,19 @@
 @extends('layouts.admin', ['class' => 'g-sidenav-show bg-gray-900'])
 
 @section('head')
-    <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" />
+    {{-- <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" /> --}}
 @endsection
 
 @section('content')
-    <main class="card mt-4 mx-4">
+    <main class="card mt-4 mx-4 bg-gray-800">
         <div class="card-body" id="container">
             <div class="container1">
-                <h2 class="ml-3">Edit Post</h2>
+                <h2 class="ml-3 text-white">Edit Post</h2>
                 <div class="input-title-group">
-                    <label for="title">Title:</label>
+                    <label for="title" class="text-white">Title:</label>
                     <input type="text" name="title" id="input-title" class="form-control mb-3" />
                 </div>
-                <div class="bg-white" id="editorjs"></div>
+                <div id="editorjs" class="text-black"></div>
                 <button id="save" class="btn-primary mt-3 btn">Save</button>
             </div>
         </div>
@@ -41,6 +41,12 @@
 
     #editorjs img {
         border-radius: 20px;
+    }
+
+    .btn {
+        border-radius: 1rem !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
     }
 </style>
 @push('js')
@@ -115,10 +121,10 @@
                 .then((outputData) => {
                     const exp = /.*(?:\D|^)(\d+)/;
                     const id = exp.exec(window.location.pathname)[1];
-                    
+
                     const edjsParser = edjsHTML();
                     const html = edjsParser.parse(outputData).join(' ').toString();
-                    
+
                     $.ajax({
                         type: 'post',
                         url: "/dashboard/blogpost/update/" + id,

@@ -1,7 +1,7 @@
 @extends('layouts.admin', ['class' => 'g-sidenav-show bg-gray-900'])
 
 @section('head')
-    <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" />
+    {{-- <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" /> --}}
 @endsection
 
 @section('content')
