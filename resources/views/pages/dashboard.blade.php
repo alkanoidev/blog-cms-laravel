@@ -89,4 +89,9 @@
     .card {
         box-shadow: none !important;
     }
+    svg {
+        height: 3rem;
+        width: 3rem;
+        border-radius: .5rem;
+    }
 </style>

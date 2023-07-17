@@ -48,6 +48,12 @@
         padding-left: 2rem !important;
         padding-right: 2rem !important;
     }
+
+    svg {
+        height: 3rem;
+        width: 3rem;
+        border-radius: .5rem;
+    }
 </style>
 @push('js')
     <script>

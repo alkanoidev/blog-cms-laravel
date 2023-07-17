@@ -29,7 +29,6 @@
     </main>
 @endsection
 <style>
-
     .input-title-group label {
         font-size: 1rem;
     }
@@ -48,6 +47,12 @@
         border-radius: 1rem !important;
         padding-left: 2rem !important;
         padding-right: 2rem !important;
+    }
+
+    svg {
+        height: 3rem;
+        width: 3rem;
+        border-radius: .5rem;
     }
 </style>
 @push('js')
