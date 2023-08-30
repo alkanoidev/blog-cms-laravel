@@ -1,5 +1,5 @@
 <aside
-    class="sidebar w-80 fixed bg-surface-light dark:bg-surface-dark text-on-surface-light dark:text-on-surface-dark lg:h-full flex-col justify-between hidden lg:flex rounded-r-3xl">
+    class="sidebar w-64 fixed bg-surface-light dark:bg-surface-dark text-on-surface-light dark:text-on-surface-dark lg:h-full flex-col justify-between hidden lg:flex rounded-r-3xl">
     <div class="flex flex-col px-3 pt-[24px]">
         <a class="navbar-brand m-0 pl-4 pb-6 flex items-center space-x-2" href="{{ route('home') }}">
             <img src="/img/logo.svg" class="h-8" alt="main_logo">

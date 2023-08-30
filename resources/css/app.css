@@ -1,4 +1,5 @@
 @import url("post-body.css");
+@import url("prism.css");
 
 @tailwind base;
 @tailwind components;

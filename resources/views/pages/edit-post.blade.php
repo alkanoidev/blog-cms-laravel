@@ -131,13 +131,15 @@
                     const edjsParser = edjsHTML();
                     const html = edjsParser.parse(outputData).join(' ').toString();
 
+                    const thumbnailImage = outputData.blocks[0].data.file.url;
                     $.ajax({
                         type: 'post',
                         url: "/dashboard/blogpost/update/" + id,
                         data: {
                             title: document.getElementById("input-title").value,
                             body_json: JSON.stringify(outputData),
-                            body_html: html
+                            body_html: html,
+                            thumbnail_image: thumbnailImage
                         },
                         success: function(data) {
                             console.log(data);

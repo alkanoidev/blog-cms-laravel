@@ -28,7 +28,131 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap"
         rel="stylesheet">
+    <style>
+        /* PrismJS 1.29.0
+        https://prismjs.com/download.html#themes=prism-dark&languages=markup+css+clike+javascript+c+csharp+cpp+go+go-module+java+json+kotlin+less+makefile+markdown+markup-templating+php+jsx+tsx+ruby+rust+sass+scss+sql+typescript */
+        code[class*=language-],
+        pre[class*=language-] {
+            color: #fff;
+            background: 0 0;
+            text-shadow: 0 -.1em .2em #000;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 1em;
+            text-align: left;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            word-wrap: normal;
+            line-height: 1.5;
+            -moz-tab-size: 4;
+            -o-tab-size: 4;
+            tab-size: 4;
+            -webkit-hyphens: none;
+            -moz-hyphens: none;
+            -ms-hyphens: none;
+            hyphens: none
+        }
 
+        @media print {
+
+            code[class*=language-],
+            pre[class*=language-] {
+                text-shadow: none
+            }
+        }
+
+        :not(pre)>code[class*=language-],
+        pre[class*=language-] {
+            background: #4c3f33
+        }
+
+        pre[class*=language-] {
+            padding: 1em;
+            margin: .5em 0;
+            overflow: auto;
+            border: .3em solid #7a6651;
+            border-radius: .5em;
+            box-shadow: 1px 1px .5em #000 inset
+        }
+
+        :not(pre)>code[class*=language-] {
+            padding: .15em .2em .05em;
+            border-radius: .3em;
+            border: .13em solid #7a6651;
+            box-shadow: 1px 1px .3em -.1em #000 inset;
+            white-space: normal
+        }
+
+        .token.cdata,
+        .token.comment,
+        .token.doctype,
+        .token.prolog {
+            color: #997f66
+        }
+
+        .token.punctuation {
+            opacity: .7
+        }
+
+        .token.namespace {
+            opacity: .7
+        }
+
+        .token.boolean,
+        .token.constant,
+        .token.number,
+        .token.property,
+        .token.symbol,
+        .token.tag {
+            color: #d1939e
+        }
+
+        .token.attr-name,
+        .token.builtin,
+        .token.char,
+        .token.inserted,
+        .token.selector,
+        .token.string {
+            color: #bce051
+        }
+
+        .language-css .token.string,
+        .style .token.string,
+        .token.entity,
+        .token.operator,
+        .token.url,
+        .token.variable {
+            color: #f4b73d
+        }
+
+        .token.atrule,
+        .token.attr-value,
+        .token.keyword {
+            color: #d1939e
+        }
+
+        .token.important,
+        .token.regex {
+            color: #e90
+        }
+
+        .token.bold,
+        .token.important {
+            font-weight: 700
+        }
+
+        .token.italic {
+            font-style: italic
+        }
+
+        .token.entity {
+            cursor: help
+        }
+
+        .token.deleted {
+            color: red
+        }
+    </style>
     @vite(['resources/scss/argon-dashboard.scss', 'resources/js/app.js'])
 
     @yield('head')
@@ -97,17 +221,17 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/raw"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/inline-code@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/paragraph@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/warning@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@calumk/editorjs-codeflask@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@2.0.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/editorjs-html@3.4.0/build/edjsHTML.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/paraswaykole/editor-js-code@latest/dist/bundle.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
-    <script type="module" src={{asset("assets/js/argon-dashboard.js")}}></script>
+    <script type="module" src={{ asset('assets/js/argon-dashboard.js') }}></script>
 
     <script type="text/javascript">
         $(document).ready(function() {

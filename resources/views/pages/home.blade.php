@@ -3,7 +3,7 @@
 @section('content')
     <div class="flex h-full relative z-0">
         <x-sidebar />
-        <main id="main" class="lg:ml-80 w-full pt-2 px-2 lg:pt-4 lg:px-6">
+        <main id="main" class="lg:ml-64 w-full pt-2 px-2 lg:pt-4 lg:px-6">
             <div class="lg:space-x-2 space-x-2 flex justify-end w-full lg:pr-0 pr-24">
                 <div class="relative lg:w-80" id="search-container">
                     <form action="/search" method="GET" id="search-form">
@@ -34,9 +34,7 @@
 
             <div class="flex w-full flex-wrap justify-center gap-4 mt-4">
                 @foreach ($posts as $post)
-                    <x-blog-post-card
-                        imgSrc="https://images.unsplash.com/photo-1681927269046-1263e3282bb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                        title="{{ $post->title }}"
+                    <x-blog-post-card thumbnailImage="{{ $post->thumbnail_image }}" title="{{ $post->title }}"
                         description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, quibusdam."
                         href="/post/{{ $post->slug }}" />
                 @endforeach

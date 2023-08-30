@@ -21,6 +21,7 @@ return new class extends Migration
             $table->smallInteger('reading_time');
             $table->longText('body_html');
             $table->string("user_id");
+            $table->string("thumbnail_image")->nullable();
             $table->timestamps();
         });
     }

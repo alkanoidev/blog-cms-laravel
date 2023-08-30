@@ -4,7 +4,7 @@
     <div class="flex h-full relative z-0">
         <x-sidebar />
 
-        <main id="main" class="lg:ml-80 w-full relative">
+        <main id="main" class="lg:ml-64 w-full relative">
             <div class="flex flex-shrink lg:pr-2 pr-24 pb-4 pt-2 px-2 lg:space-x-6 space-x-2 lg:px-6 items-center">
 
                 <x-buttons.button-tonal title="Nazad" icon="arrow_left_alt" href="{{ url()->previous() }}" />
@@ -67,7 +67,7 @@
                 </div>
 
                 <article class="post-body">
-                    {!! htmlspecialchars_decode($body) !!}
+                    {!! htmlspecialchars_decode($post->body_html) !!}
 
                 </article>
             </div>

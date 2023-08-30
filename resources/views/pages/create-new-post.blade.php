@@ -56,7 +56,41 @@
     }
 </style>
 @push('js')
-    <script>
+    <script type="module">
+        class CodeTool1 {
+            constructor({
+                data
+            }) {
+                this.data = data;
+                this.wrapper = undefined;
+            }
+
+            static get toolbox() {
+                return {
+                    title: 'Code',
+                    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>'
+                };
+            }
+            render() {
+                this.wrapper = document.createElement('div');
+                const textarea = document.createElement('textarea');
+                textarea.style.width = "100%";
+
+                const languageInput = document.createElement('input');
+
+                this.wrapper.append(textarea);
+                this.wrapper.append(languageInput);
+
+                return this.wrapper;
+            }
+            save(blockContent) {
+                const code = blockContent.querySelector('textarea').value;
+                return {
+                    code: code
+                }
+            }
+        }
+
         let token = "{{ csrf_token() }}";
 
         const editor = new EditorJS({
@@ -109,16 +143,28 @@
         $("#save").on("click", () => {
             editor
                 .save()
-                .then((outputData) => {
+                .then(async (outputData) => {
                     const edjsParser = edjsHTML();
                     const html = edjsParser.parse(outputData).join(' ').toString();
+
+                    const placeholderImage = await fetch("https://picsum.photos/1000/500.webp").then(res =>
+                        res
+                        .url)
+                    const thumbnailImage = typeof outputData.blocks[0].data.file !== "undefined" ?
+                        outputData
+                        .blocks[
+                            0].data.file.url : placeholderImage;
+
+                    console.log(outputData);
+
                     $.ajax({
                         type: 'post',
                         url: "/dashboard/blogpost/store",
                         data: {
                             title: document.getElementById("input-title").value,
                             body_json: JSON.stringify(outputData),
-                            body_html: html
+                            body_html: html,
+                            thumbnail_image: thumbnailImage
                         },
                         success: function(data) {
                             console.log(data);
