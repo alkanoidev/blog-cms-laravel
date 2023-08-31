@@ -63,9 +63,6 @@ class BlogPostController extends Controller
         $post->body_json = $request->body_json;
         $post->thumbnail_image = $request->thumbnail_image;
 
-        // $parser = new LaravelEditorJs();
-        // $html = $parser->render($request->body_json);
-
         $post->body_html = htmlspecialchars_decode($request->body_html);
         $post->reading_time = $readTime;
         $post->user_id = Auth::id();
@@ -89,11 +86,7 @@ class BlogPostController extends Controller
             $post->body_json = $request->body_json;
             $post->thumbnail_image = $request->thumbnail_image;
 
-
-            $parser = new LaravelEditorJs();
-            $html = $parser->render($request->body_json);
-
-            $post->body_html = htmlspecialchars_decode($html);
+            $post->body_html = htmlspecialchars_decode($request->body_html);
             $post->reading_time = $readTime;
             $post->user_id = Auth::id();
 

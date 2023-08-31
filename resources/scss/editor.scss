@@ -105,4 +105,15 @@
     .image-tool__caption {
         @apply form-control;
     }
+    .ce-code {
+        .ce-code__languagecode {
+            @apply form-control;
+        }
+        .ce-code__textarea {
+            background-color: $gray-700;
+            outline: none;
+            border: 1px solid $gray-500;
+            @apply form-control;
+        }
+    }
 }

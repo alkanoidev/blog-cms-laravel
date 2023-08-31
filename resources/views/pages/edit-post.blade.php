@@ -120,18 +120,29 @@
             },
         });
 
-
+        function codeParser(block) {
+            return `<pre><code class="language-${block.data.languageCode}"> ${block.data.code} </code></pre>`;
+        }
         $("#save").on("click", () => {
             editor
                 .save()
-                .then((outputData) => {
+                .then(async (outputData) => {
                     const exp = /.*(?:\D|^)(\d+)/;
                     const id = exp.exec(window.location.pathname)[1];
 
-                    const edjsParser = edjsHTML();
+                    const edjsParser = edjsHTML({
+                        code: codeParser
+                    });
                     const html = edjsParser.parse(outputData).join(' ').toString();
 
-                    const thumbnailImage = outputData.blocks[0].data.file.url;
+                    const placeholderImage = await fetch("https://picsum.photos/1000/500.webp").then(res =>
+                        res
+                        .url)
+                    const thumbnailImage = typeof outputData.blocks[0].data.file !== "undefined" ?
+                        outputData
+                        .blocks[
+                            0].data.file.url : placeholderImage;
+
                     $.ajax({
                         type: 'post',
                         url: "/dashboard/blogpost/update/" + id,
