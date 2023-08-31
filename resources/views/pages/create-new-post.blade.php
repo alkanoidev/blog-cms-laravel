@@ -13,6 +13,10 @@
                     <label for="title" class="text-white">Title:</label>
                     <input type="text" name="title" id="input-title" class="form-control mb-3" />
                 </div>
+                <div class="input-title-group">
+                    <label for="title" class="text-white">Description:</label>
+                    <textarea name="desription" id="input-desription" rows="4" class="form-control mb-3"></textarea>
+                </div>
                 <div id="editorjs" class="text-black"></div>
                 <button id="save" class="btn-primary mt-3 btn">Save</button>
             </div>
@@ -127,13 +131,12 @@
                         .blocks[
                             0].data.file.url : placeholderImage;
 
-                    console.log(outputData);
-
                     $.ajax({
                         type: 'post',
                         url: "/dashboard/blogpost/store",
                         data: {
                             title: document.getElementById("input-title").value,
+                            description: document.getElementById("input-desription").value,
                             body_json: JSON.stringify(outputData),
                             body_html: html,
                             thumbnail_image: thumbnailImage

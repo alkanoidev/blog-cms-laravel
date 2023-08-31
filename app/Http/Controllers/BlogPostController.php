@@ -59,6 +59,7 @@ class BlogPostController extends Controller
         $readTime = $this->estimateReadingTime($request->body_html);
 
         $post->title = $request->title;
+        $post->description = $request->description;
         $post->slug = self::createSlug($request->title);
         $post->body_json = $request->body_json;
         $post->thumbnail_image = $request->thumbnail_image;
@@ -82,6 +83,7 @@ class BlogPostController extends Controller
             $readTime = $this->estimateReadingTime($request->body_html);
 
             $post->title = $request->title;
+            $post->description = $request->description;
             $post->slug = self::createSlug($request->title);
             $post->body_json = $request->body_json;
             $post->thumbnail_image = $request->thumbnail_image;

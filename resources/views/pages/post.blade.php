@@ -8,8 +8,7 @@
             <div class="flex flex-shrink lg:pr-2 pr-24 pb-4 pt-2 px-2 lg:space-x-6 space-x-2 lg:px-6 items-center">
 
                 <x-buttons.button-tonal title="Nazad" icon="arrow_left_alt" href="{{ url()->previous() }}" />
-                <div
-                    class="lg:space-x-6 space-x-2 flex lg:justify-end justify-between w-full">
+                <div class="lg:space-x-6 space-x-2 flex lg:justify-end justify-between w-full">
 
                     <div class="relative lg:w-80" id="search-container">
                         <form action="/search" method="GET" id="search-form">
@@ -32,6 +31,7 @@
                         ">
 
                 <h1 class="md:text-4xl text-3xl font-bold text-on-light dark:text-on-dark">{{ $post->title }}</h1>
+                <p class="text-on-light dark:text-on-dark text-lg">{{ $post->description }}</p>
                 <ul class="w-min">
                     <li
                         class="ring-2 ring-on-light dark:ring-on-dark text-sm text-on-light dark:text-on-dark font-semibold font-sans px-2 py-1 rounded-lg">
@@ -65,7 +65,9 @@
                         </span>
                     </h2>
                 </div>
-
+                <div>
+                    <img class="rounded-xl" src="{{ $post->thumbnail_image }}" alt="{{ $post->title }}">
+                </div>
                 <article class="post-body">
                     {!! htmlspecialchars_decode($post->body_html) !!}
 

@@ -13,6 +13,10 @@
                     <label for="title" class="text-white">Title:</label>
                     <input type="text" name="title" id="input-title" class="form-control mb-3" />
                 </div>
+                <div class="input-title-group">
+                    <label for="title" class="text-white">Description:</label>
+                    <textarea name="desription" id="input-desription" rows="4" class="form-control mb-3"></textarea>
+                </div>
                 <div id="editorjs" class="text-black"></div>
                 <button id="save" class="btn-primary mt-3 btn">Save</button>
             </div>
@@ -113,6 +117,7 @@
                 const data = await res.json();
                 const body_json = JSON.parse(data.body_json);
                 document.getElementById("input-title").value = data.title;
+                document.getElementById("input-desription").value = data.description;
 
                 if (data !== undefined || data !== null) {
                     await editor.blocks.render(body_json);
@@ -148,6 +153,7 @@
                         url: "/dashboard/blogpost/update/" + id,
                         data: {
                             title: document.getElementById("input-title").value,
+                            description: document.getElementById("input-desription").value,
                             body_json: JSON.stringify(outputData),
                             body_html: html,
                             thumbnail_image: thumbnailImage

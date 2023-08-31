@@ -35,8 +35,7 @@
             <div class="flex w-full flex-wrap justify-center gap-4 mt-4">
                 @foreach ($posts as $post)
                     <x-blog-post-card thumbnailImage="{{ $post->thumbnail_image }}" title="{{ $post->title }}"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, quibusdam."
-                        href="/post/{{ $post->slug }}" />
+                        description="{{ substr($post->description, 0, 120) . ' ...' }}" href="/post/{{ $post->slug }}" />
                 @endforeach
             </div>
             <div class="flex justify-center mt-4">

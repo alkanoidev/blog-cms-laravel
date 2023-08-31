@@ -6,7 +6,6 @@
     <div class="flex flex-col px-4 pt-4">
         <h1 class="font-bold text-2xl">{{ $title }}</h1>
         <p class="text-base mt-2">{{ $description }}</p>
-
     </div>
     <div class="p-4 ml-auto mt-auto">
         <x-buttons.button-tonal title="Procitaj Vise" href="{{ $href }}" />
