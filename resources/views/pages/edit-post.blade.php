@@ -15,7 +15,7 @@
                 </div>
                 <div class="input-title-group">
                     <label for="title" class="text-white">Description:</label>
-                    <textarea name="desription" id="input-desription" rows="4" class="form-control mb-3"></textarea>
+                    <textarea required name="desription" id="input-desription" rows="4" class="form-control mb-3"></textarea>
                 </div>
                 <div id="editorjs" class="text-black"></div>
                 <button id="save" class="btn-primary mt-3 btn">Save</button>

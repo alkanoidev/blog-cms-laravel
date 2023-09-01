@@ -22,7 +22,7 @@ return new class extends Migration
             $table->longText('body_html');
             $table->string("user_id");
             $table->string("thumbnail_image")->nullable();
-            $table->text("description");
+            $table->text("description")->nullable();
             $table->timestamps();
         });
     }

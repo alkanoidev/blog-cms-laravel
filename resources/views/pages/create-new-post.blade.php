@@ -15,7 +15,7 @@
                 </div>
                 <div class="input-title-group">
                     <label for="title" class="text-white">Description:</label>
-                    <textarea name="desription" id="input-desription" rows="4" class="form-control mb-3"></textarea>
+                    <textarea required name="desription" id="input-desription" rows="4" class="form-control mb-3"></textarea>
                 </div>
                 <div id="editorjs" class="text-black"></div>
                 <button id="save" class="btn-primary mt-3 btn">Save</button>
@@ -121,7 +121,6 @@
                     const edjsParser = edjsHTML({
                         code: codeParser
                     });
-                    const html = edjsParser.parse(outputData).join(' ').toString();
 
                     const placeholderImage = await fetch("https://picsum.photos/1000/500.webp").then(res =>
                         res
@@ -130,6 +129,12 @@
                         outputData
                         .blocks[
                             0].data.file.url : placeholderImage;
+
+                    if (outputData.blocks[0].type === "image") {
+                        outputData.blocks.shift();
+                    }
+
+                    const html = edjsParser.parse(outputData).join(' ').toString();
 
                     $.ajax({
                         type: 'post',

@@ -11,8 +11,10 @@ class BlogPostSearchController extends Controller
     {
         $searchQuerey = $request->query('q');
 
-        $posts = BlogPost::query()->where('title', 'LIKE', "%" . $searchQuerey . "%")->paginate(10);
+        $result = BlogPost::query()->where('title', 'LIKE', "%" . $searchQuerey . "%")->paginate(10);
 
-        return view('pages.home', ['posts' => $posts]);
+        $highlightedPost = BlogPost::latest()->first();
+
+        return view('pages.home', ["result" => $result, "highlightedPost" => $highlightedPost]);
     }
 }

@@ -10,6 +10,8 @@ class HomeController extends Controller
     public function index()
     {
         $posts = BlogPost::paginate(10);
-        return view('pages.home')->with('posts', $posts);
+        $highlightedPost = BlogPost::latest()->first();
+
+        return view('pages.home')->with(['posts' => $posts, "highlightedPost" => $highlightedPost]);
     }
 }

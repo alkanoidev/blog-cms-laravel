@@ -27,6 +27,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('adminadmin'),
             'avatar' => $avatar
         ]);
-
+        \App\Models\BlogPost::factory(10)->create();
     }
 }
