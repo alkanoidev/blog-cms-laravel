@@ -5,7 +5,7 @@
             dark:hover:bg-on-primary-dark hover:bg-[#b5cfeb]
             dark:focus:bg-on-primary-dark focus:bg-[#a4bfdb] focus:outline-none'
         : 'bg-none' }} 
-        flex px-5 py-3 w-full rounded-full transition">
+        flex px-5 py-3 w-full rounded-full">
     <div class="space-x-2 flex items-center">
         <span class="material-symbols-rounded text-2xl text-primary-container-dark dark:text-primary-container-light">
             {{ $icon }}
