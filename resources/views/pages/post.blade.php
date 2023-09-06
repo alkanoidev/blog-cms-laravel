@@ -57,13 +57,7 @@
                         {!! $author->avatar !!}
 
                     </span>
-                    <h2>{{ $author->firstname }} {{ $author->lastname }}
-                        <br>
-                        <span class="opacity-80">
-
-                            {{ $author->username }}
-                        </span>
-                    </h2>
+                    <h2>{{ $author->firstname }} {{ $author->lastname }}</h2>
                 </div>
                 <div>
                     <img class="rounded-xl" src="{{ $post->thumbnail_image }}" alt="{{ $post->title }}">
