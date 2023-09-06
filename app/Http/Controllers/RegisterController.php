@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 // use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
     public function create()
     {
+        $response = Http::get("https://source.boringavatars.com/beam/120?square=true");
+        $avatar = $response->body();
+        Log::error("HERE \n\n" . $avatar);
         return view('auth.register');
     }
 
@@ -21,11 +25,15 @@ class RegisterController extends Controller
             'password' => 'required|min:5|max:255',
             'terms' => 'required'
         ]);
-        $user = User::create($attributes);
 
         $response = Http::get("https://source.boringavatars.com/beam/120?square=true");
         $avatar = $response->body();
-        $user->avatar = $avatar;
+
+        $user = User::create([
+            ...$attributes,
+            "avatar" => $avatar,
+
+        ]);
 
         auth()->login($user);
 

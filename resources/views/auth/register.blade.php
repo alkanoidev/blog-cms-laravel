@@ -1,4 +1,4 @@
-@extends('layouts.app',["title" => "Register"])
+@extends('layouts.admin',["title" => "Register"])
 
 @section('head')
     <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" />
