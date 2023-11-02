@@ -1,15 +1,22 @@
 // EditorJS Styles
 .codex-editor {
     .ce-block {
-        background-color: $gray-800;
+        background-color: #202124;
         color: $gray-300;
+
+        .cdx-block,
+        .ce-paragraph {
+            background-color: #202124 !important;
+        }
     }
-    .ce-block--selected {
-        background-color: $gray-700;
+    .ce-block--selected,
+    .ce-block--focused {
+        background-color: #202124;
         .ce-block__content {
             background-color: $gray-700 !important;
-            .cdx-block {
-                background-color: $gray-700 !important;
+            .cdx-block,
+            .ce-paragraph {
+                background-color: #202124 !important;
             }
         }
     }
