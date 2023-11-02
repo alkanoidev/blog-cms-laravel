@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $response = Http::get("https://source.boringavatars.com/beam/120?square=true");
+        $response = Http::withoutVerifying()->get("https://source.boringavatars.com/beam/120?square=true");
         $avatar = $response->body();
 
         DB::table('users')->insert([
