@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="card text-white bg-gray-800 mb-4">
                 <div class="card-header bg-gray-800 pb-0">
-                    <h6 class="text-white">Blog Dashboard</h6>
+                    <h2 class="text-white">Blog Dashboard</h2>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">

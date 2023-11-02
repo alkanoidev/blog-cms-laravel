@@ -17,7 +17,12 @@
                     <label for="title" class="text-white">Description:</label>
                     <textarea required name="desription" id="input-desription" rows="4" class="form-control mb-3"></textarea>
                 </div>
+                <div class="text-light">
+                    *Insert image as the first element to use as a thumbnail.
+                </div>
+
                 <div id="editorjs" class="text-black"></div>
+
                 <button id="save" class="btn-primary mt-3 btn">Save</button>
             </div>
         </div>
@@ -33,6 +38,12 @@
     </main>
 @endsection
 <style>
+    #editorjs {
+        background-color: #202124;
+        border: 1px solid #2d3135;
+        border-radius: 0.5rem;
+    }
+
     .input-title-group label {
         font-size: 1rem;
     }

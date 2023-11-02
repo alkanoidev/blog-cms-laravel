@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "alaminfirdows/laravel-editorjs": "^2.0",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^6.5|^7.0.1",
         "laravel-frontend-presets/argon": "^2.0",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
