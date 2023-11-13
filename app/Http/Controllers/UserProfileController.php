@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Zahtevi;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -11,8 +12,8 @@ class UserProfileController extends Controller
     public function index()
     {
         $users = User::all();
-
-        return view('pages.user-management')->with("users", $users);
+        $zahtevi = Zahtevi::all();
+        return view('pages.user-management')->with(["users" => $users, "zahtevi" => $zahtevi]);
     }
 
     public function show()
@@ -45,6 +46,6 @@ class UserProfileController extends Controller
             'postal' => $request->get('postal'),
             'about' => $request->get('about')
         ]);
-        return back()->with('succes', 'Profile succesfully updated');
+        return back()->with('success', 'Profile succesfully updated');
     }
 }

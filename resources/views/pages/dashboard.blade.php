@@ -13,7 +13,7 @@
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0">
+                        <table class="table table-borderless align-items-center mb-0">
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7">#
@@ -89,6 +89,7 @@
     .card {
         box-shadow: none !important;
     }
+
     svg {
         height: 3rem;
         width: 3rem;

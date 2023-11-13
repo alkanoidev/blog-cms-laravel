@@ -24,7 +24,6 @@ use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 
-
 Route::get('/', [HomeController::class, "index"])->name("home");
 Route::get('/post/{slug}', [BlogPostController::class, "show"])->name("home.post");
 Route::get("/search", BlogPostSearchController::class)->name("blogpost.search");
@@ -57,4 +56,6 @@ Route::prefix("dashboard")->middleware('auth')->group(function () {
 	Route::controller(UserController::class)->group(function () {
 		Route::post('/user/delete/{id}', "destroy")->name('user.delete');
 	});
+
+	Route::post('/register/approve/{id}', [RegisterController::class, 'approve'])->name('register.approve');
 });

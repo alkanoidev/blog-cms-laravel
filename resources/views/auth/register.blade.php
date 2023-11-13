@@ -25,6 +25,7 @@
                     <div class="card z-index-0 text-white bg-gray-800">
                         <div class="card-header text-center pt-4 pb-0 text-white bg-gray-800">
                             <h4 class="text-white">Register</h4>
+
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('register.perform') }}">
@@ -72,6 +73,8 @@
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-lg btn-primary w-100 my-4 mb-2">Sign up</button>
+
+                                    @include('components.alert')
                                 </div>
                                 <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{ route('login') }}"
                                         class="text-primary font-weight-bold">Sign in</a></p>

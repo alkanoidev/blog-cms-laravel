@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div id="alert">
+    <div id="alert" class="px-4">
         @include('components.alert')
     </div>
     <div class="container-fluid py-4">
@@ -119,7 +119,6 @@
                 </form>
             </div>
         </div>
-        @include('layouts.footers.auth.footer')
     </div>
 @endsection
 
