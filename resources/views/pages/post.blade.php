@@ -5,7 +5,7 @@
         <x-sidebar />
 
         <main id="main" class="lg:ml-64 w-full relative">
-            <div class="flex flex-shrink lg:pr-2 pr-24 pb-4 pt-2 px-2 lg:space-x-6 space-x-2 lg:px-6 items-center">
+            <div class="flex flex-shrink lg:pr-2 pr-24 pb-4 pt-2 px-2 lg:pt-4 lg:space-x-6 space-x-2 lg:px-6 items-center">
 
                 <x-buttons.button-tonal title="Nazad" icon="arrow_left_alt" href="{{ url()->previous() }}" />
                 <div class="lg:space-x-6 space-x-2 flex lg:justify-end justify-between w-full">
