@@ -1,16 +1,17 @@
 @extends('layouts.app', ['title' => $post->title])
 
 @section('content')
-    <div class="flex h-full relative z-0">
+    <div class="flex h-full bg-light dark:bg-dark relative z-0">
         <x-sidebar />
 
         <main id="main" class="lg:ml-64 w-full relative">
-            <div class="flex flex-shrink lg:pr-2 pr-24 pb-4 pt-2 px-2 lg:pt-4 lg:space-x-6 space-x-2 lg:px-6 items-center">
+            <div
+                class="flex flex-shrink lg:pr-2 pr-[4.2rem] pb-4 pt-3 px-2 lg:pt-4 lg:space-x-6 space-x-2 lg:px-6 items-center">
 
                 <x-buttons.button-tonal title="Nazad" icon="arrow_left_alt" href="{{ url()->previous() }}" />
-                <div class="lg:space-x-6 space-x-2 flex lg:justify-end justify-between w-full">
+                <div class="flex lg:space-x-6 space-x-2 lg:justify-end justify-end w-full">
 
-                    <div class="relative lg:w-80" id="search-container">
+                    <div class="sm:flex hidden relative lg:w-80" id="search-container">
                         <form action="/search" method="GET" id="search-form">
                             <x-text-input placeholder="Pretrazi" icon="search" name="q" id="search-input"
                                 classes="" />
@@ -19,16 +20,22 @@
                     <x-buttons.icon-button-tonal id="toggleThemeBtn" icon="dark_mode" type="large" />
                 </div>
             </div>
+            <div class="relative sm:hidden px-2" id="search-container">
+                <form action="/search" method="GET" id="search-form">
+                    <x-text-input placeholder="Pretrazi" icon="search" name="q" id="search-input" classes="" />
+                </form>
+            </div>
 
-
-            <img src="/img/ui/background.svg" class="w-full absolute -z-10 rounded-b-2xl hidden dark:block" alt="">
-            <img src="/img/ui/background-light.svg" class="w-full absolute -z-10 rounded-b-2xl block dark:hidden"
+            {{-- <img src="/img/ui/background.svg" class="w-full absolute -z-10 rounded-b-2xl hidden dark:block"
                 alt="">
+            <img src="/img/ui/background-light.svg"
+                class="w-full absolute -z-10 rounded-b-2xl block dark:hidden" alt=""> --}}
+
             <div
                 class="mx-auto 2xl:max-w-4xl xl:max-w-4xl lg:max-w-3xl md:max-w-md sm:max-w-sm max-w-5xl pt-4
-                        flex flex-col gap-4
-                        lg:px-0 px-2
-                        ">
+            flex flex-col gap-4
+            lg:px-0 px-2
+            ">
 
                 <h1 class="md:text-4xl text-3xl font-bold text-on-light dark:text-on-dark">{{ $post->title }}</h1>
                 <p class="text-on-light dark:text-on-dark text-lg">{{ $post->description }}</p>
