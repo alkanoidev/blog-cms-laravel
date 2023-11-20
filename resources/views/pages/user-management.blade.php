@@ -56,9 +56,17 @@
                                         </td>
                                         <td class="align-middle text-end">
                                             <div class="d-flex px-3 py-1 gap-1 justify-content-center align-items-center">
+                                                @if ($user->role != "admin")
+                                                    <form action="{{ route('user.promote_to_admin', $user->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <button class="btn btn-primary" type="submit">Promote to
+                                                            admin</button>
+                                                    </form>
+                                                @endif
                                                 <form action="{{ route('user.delete', $user->id) }}" method="POST">
                                                     @csrf
-                                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                                    <button class="btn btn-secondary" type="submit">Delete</button>
                                                 </form>
                                             </div>
                                         </td>
@@ -74,6 +82,9 @@
                 <div class="card-header bg-gray-800 pb-0">
                     <h2 class="text-white">User Requests</h2>
                 </div>
+
+                @include('components.alert')
+
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
@@ -120,11 +131,11 @@
                                             <div class="d-flex px-3 py-1 gap-1 justify-content-center align-items-center">
                                                 <form action="{{ route('register.approve', $user->id) }}" method="POST">
                                                     @csrf
-                                                    <button class="btn btn-success" type="submit">Approve</button>
+                                                    <button class="btn btn-primary" type="submit">Approve</button>
                                                 </form>
                                                 <form action="{{ route('user.delete', $user->id) }}" method="POST">
                                                     @csrf
-                                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                                    <button class="btn btn-secondary" type="submit">Delete</button>
                                                 </form>
                                             </div>
                                         </td>

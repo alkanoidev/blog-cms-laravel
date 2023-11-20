@@ -5,7 +5,7 @@
 
         <a class="navbar-brand m-0" href="{{ route('dashboard') }}">
             <img src="/img/logo.svg" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 text-white text-2xl font-weight-bold">Blog Dashboard</span>
+            <span class="ms-1 text-white text-2xl font-weight-bold">Dashboard</span>
 
         </a>
     </div>
@@ -36,18 +36,20 @@
                     <span class="nav-link-text ms-1 text-white">Profile</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'user-management') == true ? 'active' : '' }}"
-                    href="{{ route('user-management') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <span class="material-symbols-rounded text-white">
-                            manage_accounts
-                        </span>
-                    </div>
-                    <span class="nav-link-text ms-1 text-white">User Management</span>
-                </a>
-            </li>
+            @if (auth()->user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'user-management') == true ? 'active' : '' }}"
+                        href="{{ route('user-management') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <span class="material-symbols-rounded text-white">
+                                manage_accounts
+                            </span>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">User Management</span>
+                    </a>
+                </li>
+            @endif
             <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'create-new-post') == true ? 'active' : '' }}"
                     href="{{ route('create-new-post') }}">

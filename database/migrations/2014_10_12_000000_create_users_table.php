@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('postal')->nullable();
             $table->text('about')->nullable();
             $table->text("avatar");
+            $table->tinyInteger('role')->default(0);
+            /* Users: 0=>User, 1=>Admin */
             $table->rememberToken();
             $table->timestamps();
         });

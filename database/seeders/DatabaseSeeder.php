@@ -20,7 +20,16 @@ class DatabaseSeeder extends Seeder
         $avatar = $response->body();
 
         DB::table('users')->insert([
+            'username' => 'user',
+            'firstname' => 'User',
+            'lastname' => 'User',
+            'email' => 'user@user.com',
+            'password' => bcrypt('useruser'),
+            'avatar' => $avatar
+        ]);
+        DB::table('users')->insert([
             'username' => 'admin',
+            'role' => 1,
             'firstname' => 'Admin',
             'lastname' => 'Admin',
             'email' => 'admin@admin.com',

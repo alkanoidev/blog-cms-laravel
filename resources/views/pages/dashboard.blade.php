@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="card text-white bg-gray-800 mb-4">
                 <div class="card-header bg-gray-800 pb-0">
-                    <h2 class="text-white">Blog Dashboard</h2>
+                    <h2 class="text-white">Dashboard</h2>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
@@ -54,12 +54,12 @@
                                                 <form method="GET" class="m-0"
                                                     action="{{ route('blogpost.update', ['id' => $item->id]) }}">
                                                     @csrf
-                                                    <button class="btn btn-secondary m-0">Update</button>
+                                                    <button class="btn btn-primary m-0">Update</button>
                                                 </form>
                                                 <form method="POST" class="m-0"
                                                     action="/dashboard/blogpost/delete/{{ $item->id }}">
                                                     @csrf
-                                                    <button class="btn btn-danger m-0">Delete</button>
+                                                    <button class="btn btn-secondary m-0">Delete</button>
                                                 </form>
                                             </div>
                                         </td>
