@@ -158,7 +158,7 @@
                             thumbnail_image: thumbnailImage
                         },
                         success: function(data) {
-                            console.log(data);
+                            window.location.href = "/dashboard/";
                         }
                     });
                 })
