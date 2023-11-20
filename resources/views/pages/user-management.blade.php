@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="card text-white bg-gray-800 mb-4">
                 <div class="card-header bg-gray-800 pb-0">
-                    <h2 class="text-white">User Management</h2>
+                    <h3 class="text-white">User Management</h3>
                 </div>
                 @include('components.alert')
                 <div class="card-body px-0 pt-0 pb-2">
@@ -81,68 +81,77 @@
 
             <div class="card text-white bg-gray-800 mb-4">
                 <div class="card-header bg-gray-800 pb-0">
-                    <h2 class="text-white">User Requests</h2>
+                    <h3 class="text-white">User Requests</h3>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Avatar
-                                    </th>
-                                    <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7">Firstname
-                                    </th>
-                                    <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7">Lastname
-                                    </th>
-                                    <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Email
-                                    </th>
-                                    <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7">
-                                        Create Date</th>
-                                    <th class="text-center text-uppercase text-white text-xxs font-weight-bolder opacity-7">
-                                        Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($zahtevi as $user)
-                                    <tr class="text-white table-row">
-                                        <td>
-                                            <p class="text-sm font-weight-bold mb-0">
-                                                {!! $user->avatar !!}
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p class="text-sm font-weight-bold mb-0">{{ $user->firstname }}</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-sm font-weight-bold mb-0">{{ $user->lastname }}</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-sm font-weight-bold mb-0">{{ $user->email }}</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-sm font-weight-bold mb-0">
-                                                {{ date('d/m/Y', strtotime($user->created_at)) }}</p>
-                                        </td>
-                                        <td class="align-middle text-end">
-                                            <div class="d-flex px-3 py-1 gap-1 justify-content-center align-items-center">
-                                                <form action="{{ route('register.approve', $user->id) }}" method="POST">
-                                                    @csrf
-                                                    <button class="btn btn-primary" type="submit">Approve</button>
-                                                </form>
-                                                <form action="{{ route('user.delete', $user->id) }}" method="POST">
-                                                    @csrf
-                                                    <button class="btn btn-secondary" type="submit">Delete</button>
-                                                </form>
-                                            </div>
-                                        </td>
+                    @if (count($zahtevi) != 0)
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Avatar
+                                        </th>
+                                        <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7">
+                                            Firstname
+                                        </th>
+                                        <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7">Lastname
+                                        </th>
+                                        <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Email
+                                        </th>
+                                        <th class="text-uppercase text-white text-xxs font-weight-bolder opacity-7">
+                                            Create Date</th>
+                                        <th
+                                            class="text-center text-uppercase text-white text-xxs font-weight-bolder opacity-7">
+                                            Action</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody>
+                                    @foreach ($zahtevi as $user)
+                                        <tr class="text-white table-row">
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">
+                                                    {!! $user->avatar !!}
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">{{ $user->firstname }}</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">{{ $user->lastname }}</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">{{ $user->email }}</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">
+                                                    {{ date('d/m/Y', strtotime($user->created_at)) }}</p>
+                                            </td>
+                                            <td class="align-middle text-end">
+                                                <div
+                                                    class="d-flex px-3 py-1 gap-1 justify-content-center align-items-center">
+                                                    <form action="{{ route('register.approve', $user->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <button class="btn btn-primary" type="submit">Approve</button>
+                                                    </form>
+                                                    <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                                                        @csrf
+                                                        <button class="btn btn-secondary" type="submit">Delete</button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @else
+                        <p class="ps-4">No user requests.</p>
+                    @endif
                 </div>
+
             </div>
         </div>
     </div>

@@ -8,20 +8,6 @@
     border: 0;
   }
 
-  &:active,
-  &:active:focus,
-  &:active:hover {
-    box-shadow: $btn-hover-box-shadow;
-    transform: $btn-active-hover-transform;
-  }
-
-  @include hover {
-    &:not(.btn-icon-only){
-      box-shadow: $btn-hover-box-shadow;
-      transform: $btn-hover-transform;
-    }
-  }
-
   &.bg-white {
     @include hover {
       color: $body-color;
