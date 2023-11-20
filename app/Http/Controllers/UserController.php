@@ -16,8 +16,9 @@ class UserController extends Controller
     public function promote_to_admin($id)
     {
         $user = User::find($id);
+        
         if ($user->role == 1) {
-            return redirect()->back()->with("error", "The user is already an administrator.");
+            return redirect()->back();
         }
 
         $user->role = 1;

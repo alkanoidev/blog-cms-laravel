@@ -11,6 +11,7 @@
                 <div class="card-header bg-gray-800 pb-0">
                     <h2 class="text-white">User Management</h2>
                 </div>
+                @include('components.alert')
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
@@ -56,7 +57,7 @@
                                         </td>
                                         <td class="align-middle text-end">
                                             <div class="d-flex px-3 py-1 gap-1 justify-content-center align-items-center">
-                                                @if ($user->role != "admin")
+                                                @if ($user->role != 'admin')
                                                     <form action="{{ route('user.promote_to_admin', $user->id) }}"
                                                         method="POST">
                                                         @csrf
@@ -82,9 +83,6 @@
                 <div class="card-header bg-gray-800 pb-0">
                     <h2 class="text-white">User Requests</h2>
                 </div>
-
-                @include('components.alert')
-
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
