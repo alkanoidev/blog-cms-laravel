@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use AlAminFirdows\LaravelEditorJs\LaravelEditorJs;
+use Illuminate\Support\Str;
 
 class BlogPostController extends Controller
 {
@@ -60,7 +60,7 @@ class BlogPostController extends Controller
 
         $post->title = $request->title;
         $post->description = $request->description;
-        $post->slug = self::createSlug($request->title);
+        $post->slug = Str::slug($request->title);
         $post->body_json = $request->body_json;
         $post->thumbnail_image = $request->thumbnail_image;
 
@@ -84,7 +84,7 @@ class BlogPostController extends Controller
 
             $post->title = $request->title;
             $post->description = $request->description;
-            $post->slug = self::createSlug($request->title);
+            $post->slug = Str::slug($request->title);
             $post->body_json = $request->body_json;
             $post->thumbnail_image = $request->thumbnail_image;
 
@@ -107,17 +107,6 @@ class BlogPostController extends Controller
         $minutes = floor($totalWords / $wpm);
 
         return $minutes;
-    }
-
-    /*
-     * Ecapes spaces from title to generate valid slug for the route 
-     */
-    function createSlug(string $text): string
-    {
-        $data_slug = trim($text, " ");
-        $search = array('/', '\\', ':', ';', '!', '@', '#', '$', '%', '^', '*', '(', ')', '_', '+', '=', '|', '{', '}', '[', ']', '"', "'", '<', '>', ',', '?', '~', '`', '&', ' ', '.');
-        $data_slug = str_replace($search, "", $data_slug);
-        return $data_slug;
     }
 
     public function storeImage(Request $request)

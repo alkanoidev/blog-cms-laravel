@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -36,7 +37,7 @@ class CategoryController extends Controller
             "icon" => "required|image|mimes:svg"
         ]);
 
-        $slug = $this->createSlug($request->title);
+        $slug = Str::slug($request->title);
         $icon_name = $slug . time() . '.' . $request->icon->extension();
 
         $category = new Category;
@@ -51,14 +52,6 @@ class CategoryController extends Controller
         return redirect()
             ->route('category.index')
             ->with(["success" => "Category successfully created!"]);
-    }
-
-    function createSlug(string $text): string
-    {
-        $data_slug = trim($text, " ");
-        $search = array('/', '\\', ':', ';', '!', '@', '#', '$', '%', '^', '*', '(', ')', '_', '+', '=', '|', '{', '}', '[', ']', '"', "'", '<', '>', ',', '?', '~', '`', '&', ' ', '.');
-        $data_slug = str_replace($search, "", $data_slug);
-        return $data_slug;
     }
 
     /**
