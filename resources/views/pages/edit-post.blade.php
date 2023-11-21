@@ -1,9 +1,5 @@
 @extends('layouts.admin', ['class' => 'g-sidenav-show bg-gray-900'])
 
-@section('head')
-    {{-- <link id="pagestyle" href={{ asset('assets/css/argon-dashboard.css') }} rel="stylesheet" /> --}}
-@endsection
-
 @section('content')
     <main class="card mt-4 mx-4 bg-gray-800">
         <div class="card-body" id="container">
