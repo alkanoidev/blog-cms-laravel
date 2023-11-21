@@ -46,7 +46,21 @@
                                 manage_accounts
                             </span>
                         </div>
-                        <span class="nav-link-text ms-1 text-white">User Management</span>
+                        <span class="nav-link-text ms-1 text-white">*User Management</span>
+                    </a>
+                </li>
+            @endif
+            @if (auth()->user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'category') == true ? 'active' : '' }}"
+                        href="{{ route('category.index') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <span class="material-symbols-rounded text-white">
+                                category
+                            </span>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">*Category Management</span>
                     </a>
                 </li>
             @endif

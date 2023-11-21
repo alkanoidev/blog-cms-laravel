@@ -23,6 +23,7 @@ use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', [HomeController::class, "index"])->name("home");
 Route::get('/post/{slug}', [BlogPostController::class, "show"])->name("home.post");
@@ -60,6 +61,7 @@ Route::prefix("dashboard")->middleware(['auth'])->group(function () {
 			Route::post('/user/promote_to_admin/{id}', "promote_to_admin")->name('user.promote_to_admin');
 		});
 		Route::get("/user-management", [UserProfileController::class, "index"])->name("user-management");
+		Route::resource("category", CategoryController::class);
 
 		Route::post('/register/approve/{id}', [RegisterController::class, 'approve'])->name('register.approve');
 	});
