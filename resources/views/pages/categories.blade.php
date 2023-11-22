@@ -16,31 +16,31 @@
                             <h4>Create New Category</h4>
                             <div class="form-group">
                                 <label class="form-check-label text-light" for="input-title" ">Title</label>
-                                                <input type="text" name="title" id="input-title" value="{{ old('title') }}" class="form-control mb-3" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-check-label text-light" for="input-icon">Icon:</label>
-                                            <br>
-                                            <input type="file" name="icon" id="input-icon">
-                                        </div>
-                                        <div class="form-group text-end">
-                                            <button type="submit" class="btn btn-primary">Create</button>
-                                        </div>
-                                        @include('components.alert')
-                                    </form>
-                                </div>
-                                <ul class="container__all_categories">
-                                                                                                                         
-                                                                       @if (count($categories) != 0)
+                                                                <input type="text" name="title" id="input-title" value="{{ old('title') }}" class="form-control mb-3" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-check-label text-light" for="input-icon">Icon:</label>
+                                                            <br>
+                                                            <input type="file" name="icon" id="input-icon">
+                                                        </div>
+                                                        <div class="form-group text-end">
+                                                            <button type="submit" class="btn btn-primary">Create</button>
+                                                        </div>
+                                                        @include('components.alert')
+                                                    </form>
+                                                </div>
+                                        <ul class="container__all_categories">
+                                                                                                                                         
+                                               @if (count($categories) != 0)
                                     @foreach ($categories as $category)
                                         <li class="card_category">
                                             <h5>{{ $category->title }}</h5>
-                                            <img src="{{ asset('images/' . $category->icon_path) }}" />
+                                            <div class="icon">{!! $category->icon !!}</div>
                                             <div class="card_category_buttons">
                                                 <a href="{{ route('category.edit', $category) }}"
                                                     class="btn btn-primary">Edit</a>
 
-                                                <form method="POST" action="{{route('category.destroy', $category)}}">
+                                                <form method="POST" action="{{ route('category.destroy', $category) }}">
                                                     @method('DELETE')
                                                     @csrf
                                                     <button type="submit" class="btn btn-secondary">Delete</button>
@@ -174,7 +174,7 @@
         width: 18rem;
     }
 
-    .card_category img {
+    .card_category .icon {
         width: 52px;
         filter: invert();
         margin-bottom: 1rem;
@@ -189,12 +189,16 @@
         display: block;
     }
 
-    .card_category .card_category_buttons a, button, form {
+    .card_category .card_category_buttons a,
+    button,
+    form {
         margin-bottom: 0px;
     }
+
     .card_category .card_category_buttons form {
         display: inline;
     }
+
     .card_category .card_category_buttons form button {
         display: inline;
         margin-bottom: 0px;

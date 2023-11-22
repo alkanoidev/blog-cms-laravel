@@ -7,8 +7,9 @@
         : 'bg-none' }} 
         flex px-5 py-3 w-full rounded-full">
     <div class="space-x-2 flex items-center">
-        <span class="material-symbols-rounded text-2xl text-primary-container-dark dark:text-primary-container-light">
-            {{ $icon }}
+        <span
+            class="text-primary-container-dark fill-primary-container-dark dark:fill-primary-container-light">
+            {!! $icon !!}
         </span>
         <span
             class="text-base font-semibold text-primary-container-dark dark:text-primary-container-light">{{ $title }}</span>

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex h-full relative z-0">
-        <x-sidebar />
+        <x-sidebar :categories="$categories" />
         <main id="main" class="lg:ml-64 w-full pt-2 px-2 lg:pt-4 lg:px-6">
             <div class="lg:space-x-2 space-x-2 flex justify-end w-full lg:pr-0 pr-16 md:pt-0 pt-1">
                 <div class="relative lg:w-80" id="search-container">

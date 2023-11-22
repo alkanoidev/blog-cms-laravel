@@ -37,14 +37,11 @@ class CategoryController extends Controller
         ]);
 
         $slug = Str::slug($request->title);
-        $icon_name = $slug . time() . '.' . $request->icon->extension();
 
         $category = new Category;
-        $category->title = $request->title;
-        $category->icon_path = $icon_name;
+        $category->title = Str::headline($request->title);
+        $category->icon = File::get($request->icon);
         $category->slug = $slug;
-
-        $request->icon->move(public_path('images'), $icon_name);
 
         $category->save();
 
@@ -75,22 +72,15 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $validator = $request->validate([
-            "title" => "required|unique:category|max:30",
+            "title" => "required|max:30",
             "icon" => "required|image|mimes:svg"
         ]);
 
-        if (File::exists(public_path('images/' . $category->icon_path))) {
-            File::delete(public_path('images/' . $category->icon_path));
-        }
-
         $slug = Str::slug($request->title);
-        $icon_name = $slug . time() . '.' . $request->icon->extension();
 
-        $category->title = $request->title;
-        $category->icon_path = $icon_name;
+        $category->title = Str::headline($request->title);
+        $category->icon = File::get($request->icon);
         $category->slug = $slug;
-
-        $request->icon->move(public_path('images'), $icon_name);
 
         $category->save();
 

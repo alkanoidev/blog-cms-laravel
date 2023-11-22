@@ -1,3 +1,5 @@
+@props(['categories' => []])
+
 <aside
     class="sidebar w-64 fixed bg-surface-light dark:bg-surface-dark text-on-surface-light dark:text-on-surface-dark lg:h-full flex-col justify-between hidden lg:flex rounded-r-3xl">
     <div class="flex flex-col px-3 pt-[24px]">
@@ -10,13 +12,14 @@
         <div>
             <h2 class="font-semibold pb-2 pl-4 text-xl">Kategorije</h2>
             <div>
-                <x-sidebar.button selected="{{ Route::current()->getName() == 'home' }}" icon="change_history"
+                <x-sidebar.button selected="{{ Route::current()->getName() == 'home' }}"
+                    icon="<svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'><path d='M152-160q-23 0-35-20.5t1-40.5l328-525q12-19 34-19t34 19l328 525q13 20 1 40.5T808-160H152Zm72-80h512L480-650 224-240Zm256-205Z'/></svg>"
                     title="Sve Kategorije"></x-sidebar.button>
             </div>
-            <div>
-                <x-sidebar.button selected="{{ Route::current()->getName() == 'android' }}" icon="change_history"
-                    title="Android"></x-sidebar.button>
-            </div>
+            @foreach ($categories as $category)
+                <x-sidebar.button selected="{{ Route::current()->getName() == $category->slug }}"
+                    icon="{!! $category->icon !!}" title="{{ $category->title }}"></x-sidebar.button>
+            @endforeach
         </div>
     </div>
 </aside>
