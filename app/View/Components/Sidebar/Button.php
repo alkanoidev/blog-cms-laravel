@@ -12,10 +12,12 @@ class Button extends Component
      * @return void
      */
     public function __construct(
+        public string $href,
         public bool $selected,
-        public string $icon, 
-        public string $title 
-    ) {}
+        public string $icon,
+        public string $title
+    ) {
+    }
 
     /**
      * Get the view / contents that represent the component.

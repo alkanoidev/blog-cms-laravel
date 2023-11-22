@@ -25,8 +25,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 
+
 Route::get('/', [HomeController::class, "index"])->name("home");
 Route::get('/post/{slug}', [BlogPostController::class, "show"])->name("home.post");
+Route::get('/{category:slug}', [CategoryController::class, "show"])->name("home.category");
 Route::get("/search", BlogPostSearchController::class)->name("blogpost.search");
 
 Route::middleware("guest")->group(function () {

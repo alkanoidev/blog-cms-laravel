@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogPost;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\File;
@@ -55,9 +56,18 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category)
     {
-        //
+        $categories = Category::all();
+        $posts = BlogPost::paginate(10);
+        $highlightedPost = BlogPost::latest()->first();
+
+        return view('pages.category')->with([
+            'posts' => $posts,
+            'highlightedPost' => $highlightedPost,
+            'categories' => $categories,
+            'category' => $category
+        ]);
     }
 
     /**
