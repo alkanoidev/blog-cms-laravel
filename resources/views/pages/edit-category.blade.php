@@ -15,24 +15,29 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label class="form-check-label text-light" for="input-title" ">Title</label>
-                                        <input type="text" name="title" id="input-title" class="form-control mb-3" value="{{ $category->title }}" />
-                                    </div>
-                                    <div class="form-group">
-                                            <label class="form-check-label text-light" for="input-icon">Icon:</label>
-                                            <br>
-                                            <input type="file" name="icon" id="input-icon">
-                                    </div>
-                                    <div class="form-group text-end">
-                                        <button type="submit" class="btn btn-primary">Edit</button>
-                                    </div>
-                                    @include('components.alert')
-                                </form>
+                                <label class="form-check-label text-light"
+                                    for="input-title" ">Title</label>
+                                                    <input type="text" name="title" id="input-title" class="form-control mb-3" value="{{ $category->title }}" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-check-label text-light" for="input-description" ">Description</label>
+                                <textarea name="description" id="input-description" class="form-control mb-3" rows="5">{{ $category->description }}</textarea>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label class="form-check-label text-light" for="input-icon">Icon:</label>
+                                <br>
+                                <input type="file" name="icon" id="input-icon">
+                            </div>
+                            <div class="form-group text-end">
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                            </div>
+                            @include('components.alert')
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 @endsection
 
 <style scoped>
@@ -93,19 +98,84 @@
         content: "";
         fill: #94ccff;
         background-image: url(" data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5NGNjZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS11cGxvYWQiPjxwYXRoIGQ9Ik0yMSAxNXY0YTIgMiAwIDAgMS0yIDJINWEyIDIgMCAwIDEtMi0ydi00Ii8+PHBvbHlsaW5lIHBvaW50cz0iMTcgOCAxMiAzIDcgOCIvPjxsaW5lIHgxPSIxMiIgeDI9IjEyIiB5MT0iMyIgeTI9IjE1Ii8+PC9zdmc+");
-                                } input[type="file"]::after { position: absolute; pointer-events: none; top: 11px; left:
-                                40px; content: "Upload File" ; width: 100%; font-size: 0.875rem; font-weight: 400;
-                                color: #fff; border-radius: 0.5rem; } /* ------- From Step 1 ------- */ /* file upload
-                                button */ input[type="file"]::file-selector-button { border-radius: .8rem; padding: 0
-                                16px; height: 40px; cursor: pointer; background-color: #202124; border: 1px solid
-                                rgba(0, 0, 0, 0.16); box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05); margin-right: 16px;
-                                transition: background-color 200ms; } /* file upload button hover state */
-                                input[type="file"]::file-selector-button:hover { background-color: #202124; } /* file
-                                upload button active state */ input[type="file"]::file-selector-button:active {
-                                background-color: #202124; } .container__all_categories { list-style: none; display:
-                                flex; gap: 1rem; flex-wrap: wrap; } .card_category { display: flex; flex-direction:
-                                column; border-radius: 1rem; padding: 1rem; background-color: #202124; width: 18rem; }
-                                .card_category img { width: 52px; filter: invert(); margin-bottom: 1rem; }
-                                .card_category h5 { color: white; } .card_category .card_category_buttons { text-align:
-                                end; display: block; } .card_category .card_category_buttons button { margin-bottom:
-                                0px; } </style>
+    }
+
+    input[type="file"]::after {
+        position: absolute;
+        pointer-events: none;
+        top: 11px;
+        left:
+            40px;
+        content: "Upload File";
+        width: 100%;
+        font-size: 0.875rem;
+        font-weight: 400;
+        color: #fff;
+        border-radius: 0.5rem;
+    }
+
+    /* ------- From Step 1 ------- */
+    /* file upload
+                                button */
+    input[type="file"]::file-selector-button {
+        border-radius: .8rem;
+        padding: 0 16px;
+        height: 40px;
+        cursor: pointer;
+        background-color: #202124;
+        border: 1px solid rgba(0, 0, 0, 0.16);
+        box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+        margin-right: 16px;
+        transition: background-color 200ms;
+    }
+
+    /* file upload button hover state */
+    input[type="file"]::file-selector-button:hover {
+        background-color: #202124;
+    }
+
+    /* file
+                                upload button active state */
+    input[type="file"]::file-selector-button:active {
+        background-color: #202124;
+    }
+
+    .container__all_categories {
+        list-style: none;
+        display:
+            flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .card_category {
+        display: flex;
+        flex-direction:
+            column;
+        border-radius: 1rem;
+        padding: 1rem;
+        background-color: #202124;
+        width: 18rem;
+    }
+
+    .card_category img {
+        width: 52px;
+        filter: invert();
+        margin-bottom: 1rem;
+    }
+
+    .card_category h5 {
+        color: white;
+    }
+
+    .card_category .card_category_buttons {
+        text-align:
+            end;
+        display: block;
+    }
+
+    .card_category .card_category_buttons button {
+        margin-bottom:
+            0px;
+    }
+</style>

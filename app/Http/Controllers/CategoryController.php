@@ -33,6 +33,7 @@ class CategoryController extends Controller
     {
         $validator = $request->validate([
             "title" => "required|unique:category|max:30",
+            "description" => "max:256",
             "icon" => "required|image|mimes:svg"
         ]);
 
@@ -40,6 +41,7 @@ class CategoryController extends Controller
 
         $category = new Category;
         $category->title = Str::headline($request->title);
+        $category->description = $request->description;
         $category->icon = File::get($request->icon);
         $category->slug = $slug;
 
@@ -73,12 +75,14 @@ class CategoryController extends Controller
     {
         $validator = $request->validate([
             "title" => "required|max:30",
+            "description" => "max:256",
             "icon" => "required|image|mimes:svg"
         ]);
 
         $slug = Str::slug($request->title);
 
         $category->title = Str::headline($request->title);
+        $category->description = $request->description;
         $category->icon = File::get($request->icon);
         $category->slug = $slug;
 

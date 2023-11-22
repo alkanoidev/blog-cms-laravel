@@ -15,48 +15,53 @@
                             @csrf
                             <h4>Create New Category</h4>
                             <div class="form-group">
-                                <label class="form-check-label text-light" for="input-title" ">Title</label>
-                                                                <input type="text" name="title" id="input-title" value="{{ old('title') }}" class="form-control mb-3" />
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="form-check-label text-light" for="input-icon">Icon:</label>
-                                                            <br>
-                                                            <input type="file" name="icon" id="input-icon">
-                                                        </div>
-                                                        <div class="form-group text-end">
-                                                            <button type="submit" class="btn btn-primary">Create</button>
-                                                        </div>
-                                                        @include('components.alert')
-                                                    </form>
-                                                </div>
-                                        <ul class="container__all_categories">
-                                                                                                                                         
-                                               @if (count($categories) != 0)
-                                    @foreach ($categories as $category)
-                                        <li class="card_category">
-                                            <h5>{{ $category->title }}</h5>
-                                            <div class="icon">{!! $category->icon !!}</div>
-                                            <div class="card_category_buttons">
-                                                <a href="{{ route('category.edit', $category) }}"
-                                                    class="btn btn-primary">Edit</a>
-
-                                                <form method="POST" action="{{ route('category.destroy', $category) }}">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-secondary">Delete</button>
-                                                </form>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                @else
-                                    <p class="ps-4">No categories.</p>
-                                    @endif
-                                    </ul>
+                                <label class="form-check-label text-light"
+                                    for="input-title" ">Title</label>
+                                                                    <input type="text" name="title" id="input-title" value="{{ old('title') }}" class="form-control mb-3" />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-check-label text-light" for="input-description" ">Description</label>
+                                <textarea name="description" id="input-description" value="{{ old('description') }}"
+                                    class="form-control mb-3" rows="5"></textarea>
                             </div>
+                            <div class="form-group">
+                                <label class="form-check-label text-light" for="input-icon">Icon:</label>
+                                <br>
+                                <input type="file" name="icon" id="input-icon">
+                            </div>
+                            <div class="form-group text-end">
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                            @include('components.alert')
+                        </form>
                     </div>
+                    <ul class="container__all_categories">
+
+                        @if (count($categories) != 0)
+                            @foreach ($categories as $category)
+                                <li class="card_category">
+                                    <h5>{{ $category->title }}</h5>
+                                    <div class="icon">{!! $category->icon !!}</div>
+                                    <div class="card_category_buttons">
+                                        <a href="{{ route('category.edit', $category) }}" class="btn btn-primary">Edit</a>
+
+                                        <form method="POST" action="{{ route('category.destroy', $category) }}">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-secondary">Delete</button>
+                                        </form>
+                                    </div>
+                                </li>
+                            @endforeach
+                        @else
+                            <p class="ps-4">No categories.</p>
+                        @endif
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 @endsection
 
