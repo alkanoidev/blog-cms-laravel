@@ -61,7 +61,8 @@ class CategoryController extends Controller
         $categories = Category::all();
         $posts = Post::paginate(10);
         $highlightedPost = Post::latest()->first();
-
+        $category = Category::find($category->id);
+        
         return view('pages.category')->with([
             'posts' => $posts,
             'highlightedPost' => $highlightedPost,

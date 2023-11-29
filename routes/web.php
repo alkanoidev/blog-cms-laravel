@@ -46,11 +46,11 @@ Route::prefix("dashboard")->middleware(['auth'])->group(function () {
 	Route::get("/", [DashboardController::class, 'index'])->name("dashboard");
 	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
-	Route::get("/blogpost/create-new-post", [BlogPostController::class, "create"])->name("create-new-post");
 
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 	Route::controller(PostController::class)->group(function () {
+		Route::get("/blogpost/create-new-post", "create")->name("create-new-post");
 		Route::get("/blogpost/{id}", "index")->name('blogpost');
 		Route::post("/blogpost/store", "store")->name('blogpost.store');
 		Route::post("/blogpost/delete/{postId}", "destroy")->name('blogpost.delete');
