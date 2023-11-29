@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\BlogPostController;
-use App\Http\Controllers\BlogPostSearchController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +21,15 @@ use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostSearchController;
+use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, "index"])->name("home");
-Route::get('/post/{slug}', [BlogPostController::class, "show"])->name("home.post");
-Route::get('/{category:slug}', [CategoryController::class, "show"])->name("home.category");
-Route::get("/search", BlogPostSearchController::class)->name("blogpost.search");
+Route::get('/post/{slug}', [PostController::class, "show"])->name("home.post");
+Route::get('/category/{category:slug}', [CategoryController::class, "show"])->name("home.category");
+Route::get("/search", PostSearchController::class)->name("blogpost.search");
 
 Route::middleware("guest")->group(function () {
 	Route::get('/register', [RegisterController::class, 'create'])->name('register');
@@ -50,12 +50,14 @@ Route::prefix("dashboard")->middleware(['auth'])->group(function () {
 
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-	Route::get("/blogpost/{id}", [BlogPostController::class, "index"])->name('blogpost');
-	Route::post("/blogpost/store", [BlogPostController::class, "store"])->name('blogpost.store');
-	Route::post("/blogpost/delete/{postId}", [BlogPostController::class, "destroy"])->name('blogpost.delete');
-	Route::get("/blogpost/update/{id}", [BlogPostController::class, "update"])->name('blogpost.update');
-	Route::post("/blogpost/update/{id}", [BlogPostController::class, "update"])->name('blogpost.update');
-	Route::post("/blogpost/upload-image", [BlogPostController::class, "storeImage"])->name('blogpost.upload-image');
+	Route::controller(PostController::class)->group(function () {
+		Route::get("/blogpost/{id}", "index")->name('blogpost');
+		Route::post("/blogpost/store", "store")->name('blogpost.store');
+		Route::post("/blogpost/delete/{postId}", "destroy")->name('blogpost.delete');
+		Route::get("/blogpost/update/{id}", "update")->name('blogpost.update');
+		Route::post("/blogpost/update/{id}", "update")->name('blogpost.update');
+		Route::post("/blogpost/upload-image", "storeImage")->name('blogpost.upload-image');
+	});
 
 	Route::middleware("role:admin")->group(function () {
 		Route::controller(UserController::class)->group(function () {

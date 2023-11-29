@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BlogPost;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-class BlogPostController extends Controller
+class PostController extends Controller
 {
     public function index($id)
     {
-        $post = BlogPost::find($id);
+        $post = Post::find($id);
         return $post;
     }
 
     public function show($slug)
     {
-        $blogpost = BlogPost::where('slug', $slug)->firstOrFail();
+        $blogpost = Post::where('slug', $slug)->firstOrFail();
 
         $author = User::find($blogpost->user_id);
 
@@ -39,7 +39,7 @@ class BlogPostController extends Controller
     }
     public function store(Request $request)
     {
-        $post = new BlogPost;
+        $post = new Post;
 
         $validator = Validator::make($request->all(), $rules = [
             'title' => "required|max:255",
@@ -79,7 +79,7 @@ class BlogPostController extends Controller
             return view("pages.edit-post");
         }
         if ($request->isMethod("POST")) {
-            $post = BlogPost::find($id);
+            $post = Post::find($id);
             $readTime = $this->estimateReadingTime($request->body_html);
 
             $post->title = $request->title;
@@ -132,8 +132,8 @@ class BlogPostController extends Controller
 
     public function destroy($postId)
     {
-        BlogPost::destroy($postId);
+        Post::destroy($postId);
 
-        return redirect("/dashboard")->with(['posts' => BlogPost::all()]);
+        return redirect("/dashboard")->with(['posts' => Post::all()]);
     }
 }

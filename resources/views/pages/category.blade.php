@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div>
-                {{ $category }}
+
             </div>
             <div class="flex w-full flex-wrap justify-center gap-4 mt-4">
                 @if (isset($result))

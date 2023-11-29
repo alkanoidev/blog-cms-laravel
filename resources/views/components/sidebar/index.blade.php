@@ -18,7 +18,7 @@
             </div>
 
             @foreach ($categories as $category)
-                <x-sidebar.button selected="{{ request()->path() == $category->slug }}" :href="$category->slug"
+                <x-sidebar.button selected="{{ request()->path() == $category->slug }}" :href="'/category/' . $category->slug"
                     icon="{!! $category->icon !!}" title="{{ $category->title }}"></x-sidebar.button>
             @endforeach
         </div>
