@@ -8,10 +8,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('post', function (Blueprint $table) {
             $table->id();
@@ -23,16 +21,16 @@ return new class extends Migration
             $table->string("user_id");
             $table->string("thumbnail_image")->nullable();
             $table->text("description")->nullable();
+            $table->unsignedBigInteger('category_id')->index();
+            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('post');
     }

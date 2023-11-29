@@ -31,9 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div>
 
-            </div>
             <div class="flex w-full flex-wrap justify-center gap-4 mt-4">
                 @if (isset($result))
                     @foreach ($result as $post)

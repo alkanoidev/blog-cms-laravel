@@ -59,15 +59,15 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         $categories = Category::all();
-        $posts = Post::paginate(10);
         $highlightedPost = Post::latest()->first();
         $category = Category::find($category->id);
-        
+        $posts = $category->posts()->paginate(10);
+
         return view('pages.category')->with([
             'posts' => $posts,
             'highlightedPost' => $highlightedPost,
             'categories' => $categories,
-            'category' => Category::find($category->id),
+            'category' => $category,
         ]);
     }
 
