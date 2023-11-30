@@ -28,16 +28,15 @@
                 class="mx-auto 2xl:max-w-4xl xl:max-w-4xl lg:max-w-3xl md:max-w-md sm:max-w-sm max-w-5xl pt-4
                 flex flex-col gap-4
                 lg:px-0 px-2">
-                <a href=""
-                    class="flex gap-2 items-center text-xl font-semibold dark:text-primary-dark text-primary-light">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-badge">
-                        <path
-                            d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
-                    </svg>
-                    Kategorija
+
+                <a href="{{ '/category/' . $post->category->slug }}"
+                    class="flex gap-2 items-center text-xl font-semibold text-primary-container-dark dark:text-primary-container-light">
+                    <div class="text-primary-container-dark fill-primary-container-dark dark:fill-primary-container-light">
+                        {!! $post->category->icon !!}
+                    </div>
+                    {{ $post->category->title }}
                 </a>
+
                 <h1 class="md:text-4xl text-3xl font-bold text-on-light dark:text-on-dark">{{ $post->title }}</h1>
                 <p class="text-on-light dark:text-on-dark text-lg">{{ $post->description }}</p>
                 <ul class="flex gap-2 items-center">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Buttons;
 
 use Illuminate\View\Component;
 
@@ -15,7 +15,8 @@ class ButtonFilled extends Component
         public string $title,
         public string $icon,
         public string $href
-    ) {}  
+    ) {
+    }
 
     /**
      * Get the view / contents that represent the component.
@@ -24,6 +25,6 @@ class ButtonFilled extends Component
      */
     public function render()
     {
-        return view('components.button-filled');
+        return view('components.buttons.button-filled');
     }
 }

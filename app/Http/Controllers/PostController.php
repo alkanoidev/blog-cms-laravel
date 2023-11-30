@@ -23,11 +23,7 @@ class PostController extends Controller
 
         $author = User::find($blogpost->user_id);
 
-        // $parser = new LaravelEditorJs();
-        // $html = $parser->render($blogpost->body_json);
-
         return view("pages.post")->with([
-            // "body" => $html,
             "post" => $blogpost,
             "author" => $author
         ]);
@@ -63,6 +59,7 @@ class PostController extends Controller
         $post->slug = Str::slug($request->title);
         $post->body_json = $request->body_json;
         $post->thumbnail_image = $request->thumbnail_image;
+        $post->category_id = $request->category_id;
 
         $post->body_html = htmlspecialchars_decode($request->body_html);
         $post->reading_time = $readTime;

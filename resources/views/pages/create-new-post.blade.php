@@ -155,7 +155,8 @@
                             description: document.getElementById("input-desription").value,
                             body_json: JSON.stringify(outputData),
                             body_html: html,
-                            thumbnail_image: thumbnailImage
+                            thumbnail_image: thumbnailImage,
+                            category_id: 1
                         },
                         success: function(data) {
                             window.location.href = "/dashboard/";

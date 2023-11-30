@@ -22,12 +22,12 @@
                     ">
                 <div class="text-center px-3 lg:px-0">
                     <h1 class="sm:text-2xl text-3xl font-bold text-on-primary-light">
-                        {{ $highlightedPost->title }}
+                        {{ $posts[0]->title }}
                     </h1>
                     <p class="sm:text-lg text-base max-w-2xl mx-auto text-on-primary-light">
-                        {{ $highlightedPost->description }}</p>
+                        {{ $posts[0]->description }}</p>
                     <div class="mt-12">
-                        <x-buttons.button-filled title="Procitaj Vise" href="/post/{{ $highlightedPost->slug }}" />
+                        <x-buttons.button-filled title="Procitaj Vise" href="/post/{{ $posts[0]->slug }}" icon="" />
                     </div>
                 </div>
             </div>
@@ -37,13 +37,13 @@
                     @foreach ($result as $post)
                         <x-blog-post-card thumbnailImage="{{ $post->thumbnail_image }}" title="{{ $post->title }}"
                             description="{{ substr($post->description, 0, 120) . ' ...' }}"
-                            href="/post/{{ $post->slug }}" />
+                            href="/post/{{ $post->slug }}" :category="$post->category" />
                     @endforeach
                 @elseif (count($posts) != 0)
                     @foreach ($posts as $post)
                         <x-blog-post-card thumbnailImage="{{ $post->thumbnail_image }}" title="{{ $post->title }}"
                             description="{{ substr($post->description, 0, 120) . ' ...' }}"
-                            href="/post/{{ $post->slug }}" />
+                            href="/post/{{ $post->slug }}" :category="$post->category" />
                     @endforeach
                 @else
                     <h1 class="text-center text-on-light dark:text-on-dark mt-4 text-xl">Found 0 posts</h1>

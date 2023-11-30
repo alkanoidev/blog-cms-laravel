@@ -15,8 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view("pages.categories")->with("categories", $categories);
+        return view("pages.categories");
     }
 
     /**
@@ -61,7 +60,7 @@ class CategoryController extends Controller
         $categories = Category::all();
         $highlightedPost = Post::latest()->first();
         $category = Category::find($category->id);
-        $posts = $category->posts()->paginate(10);
+        $posts = $category->posts()->orderByDesc("updated_at")->paginate(10);
 
         return view('pages.category')->with([
             'posts' => $posts,
