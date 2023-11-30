@@ -10,7 +10,6 @@
                         <x-text-input placeholder="Pretrazi" icon="search" name="q" id="search-input"
                             classes="" />
                     </form>
-
                 </div>
                 <x-buttons.icon-button-tonal id="toggleThemeBtn" icon="dark_mode" type="large" />
             </div>
@@ -27,7 +26,7 @@
                     <p class="sm:text-lg text-base max-w-2xl mx-auto text-on-primary-light">
                         {{ $highlightedPost->description }}</p>
                     <div class="mt-12">
-                        <x-buttons.button-tonal title="Procitaj Vise" href="/post/{{ $highlightedPost->slug }}" />
+                        <x-buttons.button-filled title="Procitaj Vise" href="/post/{{ $highlightedPost->slug }}" />
                     </div>
                 </div>
             </div>

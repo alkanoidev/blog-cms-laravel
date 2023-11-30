@@ -7,12 +7,10 @@
         <main id="main" class="lg:ml-64 w-full relative">
             <div
                 class="flex flex-shrink lg:pr-2 pr-[4.2rem] pb-4 pt-3 px-2 lg:pt-4 lg:space-x-6 space-x-2 lg:px-6 items-center">
-
                 <x-buttons.button-tonal title="Nazad" icon="arrow_left_alt" href="{{ url()->previous() }}" />
                 <div class="flex lg:space-x-6 space-x-2 lg:justify-end justify-end w-full">
-
                     <div class="sm:flex hidden relative lg:w-80" id="search-container">
-                        <form action="/search" method="GET" id="search-form">
+                        <form action="/search" method="GET" id="search-form" role="search">
                             <x-text-input placeholder="Pretrazi" icon="search" name="q" id="search-input"
                                 classes="" />
                         </form>
@@ -25,11 +23,6 @@
                     <x-text-input placeholder="Pretrazi" icon="search" name="q" id="search-input" classes="" />
                 </form>
             </div>
-
-            {{-- <img src="/img/ui/background.svg" class="w-full absolute -z-10 rounded-b-2xl hidden dark:block"
-                alt="">
-            <img src="/img/ui/background-light.svg"
-                class="w-full absolute -z-10 rounded-b-2xl block dark:hidden" alt=""> --}}
 
             <div
                 class="mx-auto 2xl:max-w-4xl xl:max-w-4xl lg:max-w-3xl md:max-w-md sm:max-w-sm max-w-5xl pt-4
@@ -60,7 +53,7 @@
                     </li>
                 </ul>
                 <div class="flex items-center gap-2 text-on-light dark:text-on-dark text-lg">
-                    <span class="author-avatar">
+                    <span class="[&>svg]:rounded-full [&>svg]:h-16 [&>svg]:w-16">
                         {!! $author->avatar !!}
 
                     </span>
@@ -95,12 +88,4 @@
             document.querySelector("#search-form").submit();
         })
     </script>
-
-    <style scoped>
-        .author-avatar svg {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 1rem;
-        }
-    </style>
 @endsection
