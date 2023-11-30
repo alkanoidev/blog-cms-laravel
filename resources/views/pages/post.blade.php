@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex h-full bg-light dark:bg-dark relative z-0">
-        <x-sidebar />
+        <x-sidebar :categories="$categories" />
 
         <main id="main" class="lg:ml-64 w-full relative">
             <div
@@ -26,18 +26,20 @@
 
             <div
                 class="mx-auto 2xl:max-w-4xl xl:max-w-4xl lg:max-w-3xl md:max-w-md sm:max-w-sm max-w-5xl pt-4
-            flex flex-col gap-4
-            lg:px-0 px-2
-            ">
-
+                flex flex-col gap-4
+                lg:px-0 px-2">
+                <a href=""
+                    class="flex gap-2 items-center text-xl font-semibold dark:text-primary-dark text-primary-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-badge">
+                        <path
+                            d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+                    </svg>
+                    Kategorija
+                </a>
                 <h1 class="md:text-4xl text-3xl font-bold text-on-light dark:text-on-dark">{{ $post->title }}</h1>
                 <p class="text-on-light dark:text-on-dark text-lg">{{ $post->description }}</p>
-                <ul class="w-min">
-                    <li
-                        class="ring-2 ring-on-light dark:ring-on-dark text-sm text-on-light dark:text-on-dark font-semibold font-sans px-2 py-1 rounded-lg">
-                        Kategorija
-                    </li>
-                </ul>
                 <ul class="flex gap-2 items-center">
                     <li class="flex items-center gap-1 text-on-light dark:text-on-dark">
                         <span class="material-symbols-rounded">
@@ -62,9 +64,8 @@
                 <div>
                     <img class="rounded-xl" src="{{ $post->thumbnail_image }}" alt="{{ $post->title }}">
                 </div>
-                <article class="post-body">
+                <article class="prose prose-neutral dark:prose-invert">
                     {!! htmlspecialchars_decode($post->body_html) !!}
-
                 </article>
             </div>
         </main>

@@ -5,31 +5,37 @@
 .post-body h1 {
     font-size: 1.8rem;
     font-weight: 600;
+    @apply text-on-light dark:text-on-dark;
 }
 
 .post-body h2 {
     font-size: 1.6rem;
     font-weight: 600;
+    @apply text-on-light dark:text-on-dark;
 }
 
 .post-body h3 {
     font-size: 1.5rem;
     font-weight: 600;
+    @apply text-on-light dark:text-on-dark;
 }
 
 .post-body h4 {
     font-size: 1.4rem;
     font-weight: 600;
+    @apply text-on-light dark:text-on-dark;
 }
 
 .post-body h5 {
     font-size: 1.3rem;
     font-weight: 600;
+    @apply text-on-light dark:text-on-dark;
 }
 
 .post-body h6 {
     font-size: 1.2rem;
     font-weight: 600;
+    @apply text-on-light dark:text-on-dark;
 }
 
 .post-body p {
@@ -39,8 +45,10 @@
 .post-body b {
     font-weight: bold;
 }
-
 .post-body blockquote {
+    color: white;
+}
+/* .post-body blockquote {
     @apply bg-surface-light my-5 rounded-2xl dark:bg-surface-dark p-4 flex gap-2 items-center;
 }
 
@@ -52,7 +60,7 @@
 .post-body blockquote::before {
     content: ">";
     @apply text-3xl text-primary-light dark:text-primary-dark;
-}
+} */
 
 .post-body img {
     border-radius: 1rem;
