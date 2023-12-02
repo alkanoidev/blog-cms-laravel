@@ -6,7 +6,7 @@
     <div class="flex flex-col px-4 pt-4">
         <h1 class="font-bold text-2xl">{{ $title }}</h1>
         <a href="{{ '/category/' . $category->slug }}"
-            class="flex gap-2 items-center text-base font-semibold text-primary-container-dark dark:text-primary-container-light hover:underline">
+            class="flex gap-2 items-center text-sm font-semibold text-primary-container-dark dark:text-primary-container-light hover:underline">
             <div class="fill-primary-container-dark dark:fill-primary-container-light">
                 {!! $category->icon !!}
             </div>

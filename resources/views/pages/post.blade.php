@@ -30,7 +30,7 @@
                 lg:px-0 px-2">
 
                 <a href="{{ '/category/' . $post->category->slug }}"
-                    class="flex gap-2 items-center text-xl font-semibold text-primary-container-dark dark:text-primary-container-light">
+                    class="flex gap-2 items-center text-xl font-semibold text-primary-container-dark dark:text-primary-container-light hover:underline">
                     <div class="text-primary-container-dark fill-primary-container-dark dark:fill-primary-container-light">
                         {!! $post->category->icon !!}
                     </div>
