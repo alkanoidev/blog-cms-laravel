@@ -134,12 +134,10 @@
                     });
 
                     const placeholderImage = await fetch("https://picsum.photos/1000/500.webp").then(res =>
-                        res
-                        .url)
+                        res.url);
+
                     const thumbnailImage = typeof outputData.blocks[0].data.file !== "undefined" ?
-                        outputData
-                        .blocks[
-                            0].data.file.url : placeholderImage;
+                        outputData.blocks[0].data.file.url : placeholderImage;
 
                     if (outputData.blocks[0].type === "image") {
                         outputData.blocks.shift();

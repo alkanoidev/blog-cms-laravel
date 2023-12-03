@@ -112,6 +112,19 @@
                 const res = await fetch(`/dashboard/blogpost/${id}`);
                 const data = await res.json();
                 const body_json = JSON.parse(data.body_json);
+                body_json.blocks.unshift({
+                    data: {
+                        caption: "",
+                        file: {
+                            url: data.thumbnail_image
+                        },
+                        streched: false,
+                        withBackground: false,
+                        withBorders: false,
+                    },
+                    type: "image"
+                });
+
                 document.getElementById("input-title").value = data.title;
                 document.getElementById("input-desription").value = data.description;
 
@@ -124,6 +137,7 @@
         function codeParser(block) {
             return `<pre><code class="language-${block.data.languageCode}"> ${block.data.code} </code></pre>`;
         }
+
         $("#save").on("click", () => {
             editor
                 .save()
@@ -134,15 +148,18 @@
                     const edjsParser = edjsHTML({
                         code: codeParser
                     });
-                    const html = edjsParser.parse(outputData).join(' ').toString();
 
-                    const placeholderImage = await fetch("https://picsum.photos/1000/500.webp").then(res =>
-                        res
-                        .url)
-                    const thumbnailImage = typeof outputData.blocks[0].data.file !== "undefined" ?
-                        outputData
-                        .blocks[
-                            0].data.file.url : placeholderImage;
+                    let thumbnailImage;
+                    if (outputData.blocks[0].data.file !== undefined) {
+                        thumbnailImage = outputData.blocks[0].data.file.url;
+                        outputData.blocks.shift();
+                    } else {
+                        const placeholderImage = await fetch("https://picsum.photos/1000/500.webp").then(
+                            res => res.url);
+                        thumbnailImage = placeholderImage;
+                    }
+
+                    const html = edjsParser.parse(outputData).join(' ').toString();
 
                     $.ajax({
                         type: 'post',
@@ -152,10 +169,11 @@
                             description: document.getElementById("input-desription").value,
                             body_json: JSON.stringify(outputData),
                             body_html: html,
-                            thumbnail_image: thumbnailImage
+                            thumbnail_image: thumbnailImage,
+                            category_id: 1
                         },
                         success: function(data) {
-                            console.log(data);
+                            window.location.href = "/dashboard/";
                         }
                     });
                 })

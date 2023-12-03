@@ -49,14 +49,14 @@ Route::prefix("dashboard")->middleware(['auth'])->group(function () {
 
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-	Route::controller(PostController::class)->group(function () {
-		Route::get("/blogpost/create-new-post", "create")->name("create-new-post");
-		Route::get("/blogpost/{id}", "index")->name('blogpost');
-		Route::post("/blogpost/store", "store")->name('blogpost.store');
-		Route::post("/blogpost/delete/{postId}", "destroy")->name('blogpost.delete');
-		Route::get("/blogpost/update/{id}", "update")->name('blogpost.update');
-		Route::post("/blogpost/update/{id}", "update")->name('blogpost.update');
-		Route::post("/blogpost/upload-image", "storeImage")->name('blogpost.upload-image');
+	Route::controller(PostController::class)->prefix('blogpost')->group(function () {
+		Route::get("/create-new-post", "create")->name("create-new-post");
+		Route::get("/{id}", "index")->name('blogpost');
+		Route::post("/store", "store")->name('blogpost.store');
+		Route::post("/delete/{postId}", "destroy")->name('blogpost.delete');
+		Route::get("/update/{id}", "update")->name('blogpost.update');
+		Route::post("/update/{id}", "update")->name('blogpost.update');
+		Route::post("/upload-image", "storeImage")->name('blogpost.upload-image');
 	});
 
 	Route::middleware("role:admin")->group(function () {
