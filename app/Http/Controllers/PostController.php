@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -17,15 +16,10 @@ class PostController extends Controller
         return $post;
     }
 
-    public function show($slug)
+    public function show(Post $post)
     {
-        $blogpost = Post::where('slug', $slug)->firstOrFail();
-
-        $author = User::find($blogpost->user_id);
-
         return view("pages.post")->with([
-            "post" => $blogpost,
-            "author" => $author
+            "post" => $post,
         ]);
     }
 
@@ -33,6 +27,7 @@ class PostController extends Controller
     {
         return view("pages.create-new-post");
     }
+
     public function store(Request $request)
     {
         $post = new Post;
@@ -42,8 +37,7 @@ class PostController extends Controller
             'body_json' => "required",
             'body_html' => 'required'
         ], $messages = [
-            'title.required' => 'Please specify the title by entering and heading block.',
-            'content.required' => 'Please enter the blog post content.',
+            'title.required' => 'Please specify the title by entering a heading block.',
         ]);
 
         if ($validator->fails()) {
@@ -66,8 +60,6 @@ class PostController extends Controller
         $post->user_id = Auth::id();
 
         $post->save();
-
-        return redirect()->route("dashboard");
     }
 
     public function update(Request $request, $id)
@@ -84,14 +76,13 @@ class PostController extends Controller
             $post->slug = Str::slug($request->title);
             $post->body_json = $request->body_json;
             $post->thumbnail_image = $request->thumbnail_image;
+            $post->category_id = $request->category_id;
 
             $post->body_html = htmlspecialchars_decode($request->body_html);
             $post->reading_time = $readTime;
             $post->user_id = Auth::id();
 
             $post->save();
-
-            return redirect()->route("dashboard");
         }
     }
 

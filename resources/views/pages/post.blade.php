@@ -29,6 +29,10 @@
                 flex flex-col gap-4
                 lg:px-0 px-2">
 
+                <div>
+                    <img class="rounded-xl aspect-video" src="{{ $post->thumbnail_image }}" alt="{{ $post->title }}">
+                </div>
+
                 <a href="{{ '/category/' . $post->category->slug }}"
                     class="flex gap-2 items-center text-xl font-semibold text-primary-container-dark dark:text-primary-container-light hover:underline">
                     <div class="text-primary-container-dark fill-primary-container-dark dark:fill-primary-container-light">
@@ -36,6 +40,7 @@
                     </div>
                     {{ $post->category->title }}
                 </a>
+
 
                 <h1 class="md:text-4xl text-3xl font-bold text-on-light dark:text-on-dark">{{ $post->title }}</h1>
                 <p class="text-on-light dark:text-on-dark text-lg">{{ $post->description }}</p>
@@ -55,15 +60,12 @@
                 </ul>
                 <div class="flex items-center gap-2 text-on-light dark:text-on-dark text-lg">
                     <span class="[&>svg]:rounded-full [&>svg]:h-16 [&>svg]:w-16">
-                        {!! $author->avatar !!}
+                        {!! $post->user->avatar !!}
 
                     </span>
-                    <h2>{{ $author->firstname }} {{ $author->lastname }}</h2>
+                    <h2>{{ $post->user->firstname }} {{ $post->user->lastname }}</h2>
                 </div>
-                <div>
-                    <img class="rounded-xl" src="{{ $post->thumbnail_image }}" alt="{{ $post->title }}">
-                </div>
-                <article class="prose prose-neutral dark:prose-invert">
+                <article class="prose prose-neutral dark:prose-invert prose-img:rounded-xl">
                     {!! htmlspecialchars_decode($post->body_html) !!}
                 </article>
             </div>

@@ -11,7 +11,7 @@
             <p class="max-w-sm text-on-light dark:text-on-dark">Stranica nije pronađena. Moguće je da tražena stranica više
                 ne postoji ili je link
                 pogrešan/promenjen.</p>
-            <x-buttons.button-filled title="Nazad" href="{{ url()->previous() }}" />
+            <x-buttons.button-filled title="Nazad" href="{{ url()->previous() }}" icon="" />
         </main>
 
     </div>

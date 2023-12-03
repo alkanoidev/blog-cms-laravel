@@ -13,16 +13,20 @@ return new class extends Migration
     {
         Schema::create('post', function (Blueprint $table) {
             $table->id();
+
             $table->string("title");
             $table->string('slug');
             $table->json("body_json");
             $table->smallInteger('reading_time');
             $table->longText('body_html');
-            $table->string("user_id");
             $table->string("thumbnail_image")->nullable();
             $table->text("description")->nullable();
+
             $table->unsignedBigInteger('category_id')->index();
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -36,14 +36,14 @@
                 @if (isset($result))
                     @foreach ($result as $post)
                         <x-blog-post-card thumbnailImage="{{ $post->thumbnail_image }}" title="{{ $post->title }}"
-                            description="{{ substr($post->description, 0, 120) . ' ...' }}"
-                            href="/post/{{ $post->slug }}" :category="$post->category" />
+                            description="{{ substr($post->description, 0, 120) . '...' }}" :href="'/post/' . $post->slug"
+                            :category="$post->category" />
                     @endforeach
                 @elseif (count($posts) != 0)
                     @foreach ($posts as $post)
                         <x-blog-post-card thumbnailImage="{{ $post->thumbnail_image }}" title="{{ $post->title }}"
-                            description="{{ substr($post->description, 0, 120) . ' ...' }}"
-                            href="/post/{{ $post->slug }}" :category="$post->category" />
+                            description="{{ substr($post->description, 0, 120) . '...' }}" :href="'/post/' . $post->slug"
+                            :category="$post->category" />
                     @endforeach
                 @else
                     <h1 class="text-center text-on-light dark:text-on-dark mt-4 text-xl">Found 0 posts</h1>
