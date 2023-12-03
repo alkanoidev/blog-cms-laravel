@@ -26,6 +26,6 @@ class Button extends Component
      */
     public function render()
     {
-        return view('components.sidebar.button');
+        return view('components.ui.sidebar.button');
     }
 }

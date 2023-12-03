@@ -2,16 +2,10 @@
 
 @section('content')
     <div class="flex h-full relative z-0">
-        <x-sidebar :categories="$categories" />
+        <x-ui.sidebar :categories="$categories" />
         <main id="main" class="lg:ml-64 w-full pt-2 px-2 lg:pt-4 lg:px-6">
             <div class="lg:space-x-2 space-x-2 flex justify-end w-full lg:pr-0 pr-16 md:pt-0 pt-1">
-                <div class="relative lg:w-80" id="search-container">
-                    <form action="/search" method="GET" id="search-form">
-                        <x-text-input placeholder="Pretrazi" icon="search" name="q" id="search-input"
-                            classes="" />
-                    </form>
-
-                </div>
+                <x-ui.search-box />
                 <x-buttons.icon-button-tonal id="toggleThemeBtn" icon="dark_mode" type="large" />
             </div>
             <div

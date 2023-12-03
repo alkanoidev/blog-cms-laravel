@@ -2,19 +2,14 @@
 
 @section('content')
     <div class="flex h-full bg-light dark:bg-dark relative z-0">
-        <x-sidebar :categories="$categories" />
+        <x-ui.sidebar :categories="$categories" />
 
         <main id="main" class="lg:ml-64 w-full relative">
             <div
                 class="flex flex-shrink lg:pr-2 pr-[4.2rem] pb-4 pt-3 px-2 lg:pt-4 lg:space-x-6 space-x-2 lg:px-6 items-center">
                 <x-buttons.button-tonal title="Nazad" icon="arrow_left_alt" href="{{ url()->previous() }}" />
                 <div class="flex lg:space-x-6 space-x-2 lg:justify-end justify-end w-full">
-                    <div class="sm:flex hidden relative lg:w-80" id="search-container">
-                        <form action="/search" method="GET" id="search-form" role="search">
-                            <x-text-input placeholder="Pretrazi" icon="search" name="q" id="search-input"
-                                classes="" />
-                        </form>
-                    </div>
+                    <x-ui.search-box />
                     <x-buttons.icon-button-tonal id="toggleThemeBtn" icon="dark_mode" type="large" />
                 </div>
             </div>

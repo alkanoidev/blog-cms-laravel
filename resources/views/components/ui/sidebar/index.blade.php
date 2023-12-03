@@ -12,14 +12,14 @@
         <div>
             <h2 class="font-semibold pb-2 pl-4 text-xl">Kategorije</h2>
             <div>
-                <x-sidebar.button selected="{{ Route::current()->getName() == 'home' }}" :href="route('home')"
+                <x-ui.sidebar.button selected="{{ Route::current()->getName() == 'home' }}" :href="route('home')"
                     icon="<svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'><path d='M152-160q-23 0-35-20.5t1-40.5l328-525q12-19 34-19t34 19l328 525q13 20 1 40.5T808-160H152Zm72-80h512L480-650 224-240Zm256-205Z'/></svg>"
-                    title="Sve Kategorije"></x-sidebar.button>
+                    title="Sve Kategorije"></x-ui.sidebar.button>
             </div>
                 @foreach ($categories as $category)
-                    <x-sidebar.button selected="{{ request()->path() == 'category/' . $category->slug }}"
+                    <x-ui.sidebar.button selected="{{ request()->path() == 'category/' . $category->slug }}"
                         :href="'/category/' . $category->slug" icon="{!! $category->icon !!}"
-                        title="{{ $category->title }}"></x-sidebar.button>
+                        title="{{ $category->title }}"></x-ui.sidebar.button>
                 @endforeach
         </div>
     </div>

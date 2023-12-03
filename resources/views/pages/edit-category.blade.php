@@ -15,12 +15,11 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label class="form-check-label text-light"
-                                    for="input-title" ">Title</label>
-                                                    <input type="text" name="title" id="input-title" class="form-control mb-3" value="{{ $category->title }}" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="form-check-label text-light" for="input-description" ">Description</label>
+                                <label class="form-check-label text-light" for="input-title" ">Title</label>
+                                <input type="text" name="title" id="input-title" class="form-control mb-3" value="{{ $category->title }}" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-check-label text-light" for="input-description" ">Description</label>
                                 <textarea name="description" id="input-description" class="form-control mb-3" rows="5">{{ $category->description }}</textarea>
                             </div>
                             <div class="form-group">
