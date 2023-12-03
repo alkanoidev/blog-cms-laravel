@@ -5,7 +5,9 @@
         <x-ui.sidebar :categories="$categories" />
         <main id="main" class="lg:ml-64 w-full pt-2 px-2 lg:pt-4 lg:px-6">
             <div class="lg:space-x-2 space-x-2 flex justify-end w-full lg:pr-0 pr-16 md:pt-0 pt-1">
-                <x-ui.search-box />
+                <div class="relative lg:w-80" id="search-container">
+                    <x-ui.search-box />
+                </div>
                 <x-buttons.icon-button-tonal id="toggleThemeBtn" icon="dark_mode" type="large" />
             </div>
             <div
@@ -53,27 +55,4 @@
             </div>
         </main>
     </div>
-
-    <script>
-        const searchInput = document.querySelector("#search-input");
-
-        if (window.matchMedia("(min-width: 768px)").matches) {
-            searchInput.addEventListener("focus", () => {
-                document.querySelector("#search-container").children[0].style.width = "100%";
-                gsap.to("#search-container", {
-                    width: "100%",
-                    duration: 0.5
-                })
-            })
-            searchInput.addEventListener("blur", () => {
-                gsap.to("#search-container", {
-                    width: "20rem",
-                    duration: 0.3
-                })
-            })
-            searchInput.addEventListener("submit", (e) => {
-                document.querySelector("#search-form").submit();
-            })
-        }
-    </script>
 @endsection

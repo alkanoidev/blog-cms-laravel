@@ -5,7 +5,9 @@
         <x-ui.sidebar :categories="$categories" />
         <main id="main" class="lg:ml-64 w-full pt-2 px-2 lg:pt-4 lg:px-6">
             <div class="lg:space-x-2 space-x-2 flex justify-end w-full lg:pr-0 pr-16 md:pt-0 pt-1">
-                <x-ui.search-box />
+                <div class="relative lg:w-80" id="search-container">
+                    <x-ui.search-box />
+                </div>
                 <x-buttons.icon-button-tonal id="toggleThemeBtn" icon="dark_mode" type="large" />
             </div>
             <div
