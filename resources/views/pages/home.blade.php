@@ -29,21 +29,39 @@
                 </div>
             </div>
             <div class="flex w-full flex-wrap justify-center gap-4 mt-4">
-                @if (isset($result))
-                    @foreach ($result as $post)
-                        <x-blog-post-card thumbnailImage="{{ $post->thumbnail_image }}" title="{{ $post->title }}"
-                            description="{{ substr($post->description, 0, 120) . '...' }}" :href="'/post/' . $post->slug"
-                            :category="$post->category" />
-                    @endforeach
-                @elseif (count($posts) != 0)
-                    @foreach ($posts as $post)
-                        <x-blog-post-card thumbnailImage="{{ $post->thumbnail_image }}" title="{{ $post->title }}"
-                            description="{{ substr($post->description, 0, 120) . '...' }}" :href="'/post/' . $post->slug"
-                            :category="$post->category" />
-                    @endforeach
-                @else
-                    <h1 class="text-center text-on-light dark:text-on-dark mt-4 text-xl">Found 0 posts</h1>
-                @endif
+                @isset($result)
+                    @if (count($result) != 0)
+                        @foreach ($result as $post)
+                            <x-blog-post-card thumbnailImage="{{ $post->thumbnail_image }}" title="{{ $post->title }}"
+                                description="{{ substr($post->description, 0, 120) . '...' }}" :href="'/post/' . $post->slug"
+                                :category="$post->category" />
+                        @endforeach
+                    @else
+                        <div class="flex items-center gap-2 text-on-light dark:text-on-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-search-x">
+                                <path d="m13.5 8.5-5 5" />
+                                <path d="m8.5 8.5 5 5" />
+                                <circle cx="11" cy="11" r="8" />
+                                <path d="m21 21-4.3-4.3" />
+                            </svg>
+                            <h2 class="text-xl">Found 0 posts.</h2>
+                        </div>
+                    @endif
+                @endisset
+
+                @isset($posts)
+                    @if (count($posts) != 0)
+                        @foreach ($posts as $post)
+                            <x-blog-post-card thumbnailImage="{{ $post->thumbnail_image }}" title="{{ $post->title }}"
+                                description="{{ substr($post->description, 0, 120) . '...' }}" :href="'/post/' . $post->slug"
+                                :category="$post->category" />
+                        @endforeach
+                    @else
+                        <h1 class="text-center text-on-light dark:text-on-dark mt-4 text-xl">Found 0 posts</h1>
+                    @endif
+                @endisset
             </div>
             <div class="flex justify-center mt-4">
                 @isset($posts)

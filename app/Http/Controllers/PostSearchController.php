@@ -11,7 +11,10 @@ class PostSearchController extends Controller
     {
         $searchQuerey = $request->query('q');
 
-        $result = Post::query()->where('title', 'LIKE', "%" . $searchQuerey . "%")->paginate(10);
+        $result = Post::query()
+            ->where('title', 'LIKE', "%" . $searchQuerey . "%")
+            ->orderByDesc('updated_at')
+            ->paginate(10);
 
         $highlightedPost = Post::latest()->first();
 

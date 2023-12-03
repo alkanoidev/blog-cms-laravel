@@ -29,13 +29,7 @@
             </div>
 
             <div class="flex w-full flex-wrap justify-center gap-4 mt-4">
-                @if (isset($result))
-                    @foreach ($result as $post)
-                        <x-blog-post-card thumbnailImage="{{ $post->thumbnail_image }}" title="{{ $post->title }}"
-                            description="{{ substr($post->description, 0, 120) . '...' }}" :href="'/post/' . $post->slug"
-                            :category="$post->category" />
-                    @endforeach
-                @elseif (count($posts) != 0)
+                @if (count($posts) != 0)
                     @foreach ($posts as $post)
                         <x-blog-post-card thumbnailImage="{{ $post->thumbnail_image }}" title="{{ $post->title }}"
                             description="{{ substr($post->description, 0, 120) . '...' }}" :href="'/post/' . $post->slug"
