@@ -10,24 +10,26 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    /**
+     * Return the specified resource.
+     */
     public function index($id)
     {
         $post = Post::find($id);
         return $post;
     }
 
-    public function show(Post $post)
-    {
-        return view("pages.post")->with([
-            "post" => $post,
-        ]);
-    }
-
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         return view("pages.create-new-post");
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $post = new Post;
@@ -62,28 +64,44 @@ class PostController extends Controller
         $post->save();
     }
 
+    /**
+     * Display the specified resource.
+     */
+    public function show(Post $post)
+    {
+        return view("pages.post")->with([
+            "post" => $post,
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit()
+    {
+        return view("pages.edit-post");
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, $id)
     {
-        if ($request->isMethod("GET")) {
-            return view("pages.edit-post");
-        }
-        if ($request->isMethod("POST")) {
-            $post = Post::find($id);
-            $readTime = $this->estimateReadingTime($request->body_html);
+        $post = Post::find($id);
+        $readTime = $this->estimateReadingTime($request->body_html);
 
-            $post->title = $request->title;
-            $post->description = $request->description;
-            $post->slug = Str::slug($request->title);
-            $post->body_json = $request->body_json;
-            $post->thumbnail_image = $request->thumbnail_image;
-            $post->category_id = $request->category_id;
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->slug = Str::slug($request->title);
+        $post->body_json = $request->body_json;
+        $post->thumbnail_image = $request->thumbnail_image;
+        $post->category_id = $request->category_id;
 
-            $post->body_html = htmlspecialchars_decode($request->body_html);
-            $post->reading_time = $readTime;
-            $post->user_id = Auth::id();
+        $post->body_html = htmlspecialchars_decode($request->body_html);
+        $post->reading_time = $readTime;
+        $post->user_id = Auth::id();
 
-            $post->save();
-        }
+        $post->save();
     }
 
     /* 
