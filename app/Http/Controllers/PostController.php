@@ -10,26 +10,17 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
-    /**
-     * Return the specified resource.
-     */
     public function index($id)
     {
         $post = Post::find($id);
         return $post;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view("pages.create-new-post");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $post = new Post;
@@ -64,9 +55,6 @@ class PostController extends Controller
         $post->save();
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Post $post)
     {
         return view("pages.post")->with([
@@ -74,17 +62,11 @@ class PostController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit()
     {
         return view("pages.edit-post");
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $post = Post::find($id);

@@ -23,6 +23,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostSearchController;
+use App\Http\Controllers\ZahtevController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -54,7 +55,7 @@ Route::prefix("dashboard")->middleware(['auth'])->group(function () {
 		Route::get("/{id}", "index")->name('blogpost');
 		Route::post("/store", "store")->name('blogpost.store');
 		Route::post("/delete/{postId}", "destroy")->name('blogpost.delete');
-		Route::get("/update/{id}", "update")->name('blogpost.update');
+		Route::get("/update/{id}", "edit")->name('blogpost.update');
 		Route::post("/update/{id}", "update")->name('blogpost.update');
 		Route::post("/upload-image", "storeImage")->name('blogpost.upload-image');
 	});
@@ -62,10 +63,12 @@ Route::prefix("dashboard")->middleware(['auth'])->group(function () {
 	Route::middleware("role:admin")->group(function () {
 		Route::controller(UserController::class)->group(function () {
 			Route::post('/user/delete/{id}', "destroy")->name('user.delete');
-			Route::post('/user/promote_to_admin/{id}', "promote_to_admin")->name('user.promote_to_admin');
+			Route::post('/user/promote_to_admin/{id}', "promoteToAdmin")->name('user.promote-to-admin');
 		});
 		Route::get("/user-management", [UserProfileController::class, "index"])->name("user-management");
 		Route::resource("category", CategoryController::class);
+
+		Route::delete("/zahtevi/delete/{zahtev}", [ZahtevController::class, 'destroy'])->name('zahtev.destroy');
 
 		Route::post('/register/approve/{id}', [RegisterController::class, 'approve'])->name('register.approve');
 	});

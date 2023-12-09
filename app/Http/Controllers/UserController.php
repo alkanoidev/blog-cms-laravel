@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
 
 class UserController extends Controller
@@ -13,7 +12,7 @@ class UserController extends Controller
 
         return back();
     }
-    public function promote_to_admin($id)
+    public function promoteToAdmin($id)
     {
         $user = User::find($id);
         

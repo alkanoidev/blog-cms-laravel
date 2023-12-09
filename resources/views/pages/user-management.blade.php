@@ -58,7 +58,7 @@
                                         <td class="align-middle text-end">
                                             <div class="d-flex px-3 py-1 gap-1 justify-content-center align-items-center">
                                                 @if ($user->role != 'admin')
-                                                    <form action="{{ route('user.promote_to_admin', $user->id) }}"
+                                                    <form action="{{ route('user.promote-to-admin', $user->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         <button class="btn btn-primary" type="submit">Promote to
@@ -108,35 +108,36 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($zahtevi as $user)
+                                    @foreach ($zahtevi as $zahtev)
                                         <tr class="text-white table-row">
                                             <td>
                                                 <p class="text-sm font-weight-bold mb-0">
-                                                    {!! $user->avatar !!}
+                                                    {!! $zahtev->avatar !!}
                                                 </p>
                                             </td>
                                             <td>
-                                                <p class="text-sm font-weight-bold mb-0">{{ $user->firstname }}</p>
+                                                <p class="text-sm font-weight-bold mb-0">{{ $zahtev->firstname }}</p>
                                             </td>
                                             <td>
-                                                <p class="text-sm font-weight-bold mb-0">{{ $user->lastname }}</p>
+                                                <p class="text-sm font-weight-bold mb-0">{{ $zahtev->lastname }}</p>
                                             </td>
                                             <td>
-                                                <p class="text-sm font-weight-bold mb-0">{{ $user->email }}</p>
+                                                <p class="text-sm font-weight-bold mb-0">{{ $zahtev->email }}</p>
                                             </td>
                                             <td>
                                                 <p class="text-sm font-weight-bold mb-0">
-                                                    {{ date('d/m/Y', strtotime($user->created_at)) }}</p>
+                                                    {{ date('d/m/Y', strtotime($zahtev->created_at)) }}</p>
                                             </td>
                                             <td class="align-middle text-end">
                                                 <div
                                                     class="d-flex px-3 py-1 gap-1 justify-content-center align-items-center">
-                                                    <form action="{{ route('register.approve', $user->id) }}"
+                                                    <form action="{{ route('register.approve', $zahtev->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         <button class="btn btn-primary" type="submit">Approve</button>
                                                     </form>
-                                                    <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                                                    <form action="{{ route('zahtev.destroy', $zahtev->id) }}"
+                                                        method="POST">
                                                         @csrf
                                                         <button class="btn btn-secondary" type="submit">Delete</button>
                                                     </form>

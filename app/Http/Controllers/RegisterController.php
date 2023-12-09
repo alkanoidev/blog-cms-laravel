@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-// use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use App\Models\Zahtevi;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -32,18 +32,18 @@ class RegisterController extends Controller
             "avatar" => $avatar,
         ]);
 
-        // auth()->login($user);
-
         return redirect("/register")->with(
             "success",
             "Zahtev za administratora je poslat! Sačekajte odobrenje."
         );
     }
 
-    public function approve()
+    public function approve(Request $request)
     {
-        $userZahtev = Zahtevi::find(request()->id)->firstOrFail()->makeVisible(["password"]);
+        $userZahtev = Zahtevi::find($request->id)->firstOrFail()->makeVisible(["password"]);
+        // if vec postoji
 
+        dd($userZahtev);
         User::create($userZahtev->toArray());
 
         $userZahtev->delete();

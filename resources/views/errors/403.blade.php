@@ -9,7 +9,7 @@
                 <h2 class="text-3xl text-primary-light dark:text-primary-dark font-bold">403</h2>
             </div>
             <p class="max-w-sm text-on-light dark:text-on-dark">Nemate dozvolu da pristupite ovoj stranici.</p>
-            <x-buttons.button-filled title="Nazad" href="{{ url()->previous() }}" />
+            <x-buttons.button-filled title="Nazad" href="{{ url()->previous() }}" icon="" />
         </main>
 
     </div>

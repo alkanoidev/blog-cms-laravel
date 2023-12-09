@@ -46,6 +46,7 @@ class UserProfileController extends Controller
             'postal' => $request->get('postal'),
             'about' => $request->get('about')
         ]);
+
         return back()->with('success', 'Profile succesfully updated');
     }
 }
