@@ -136,8 +136,7 @@
                                                         @csrf
                                                         <button class="btn btn-primary" type="submit">Approve</button>
                                                     </form>
-                                                    <form action="{{ route('zahtev.destroy', $zahtev->id) }}"
-                                                        method="POST">
+                                                    <form action="{{ route('zahtev.destroy', $zahtev->id) }}" method="POST">
                                                         @csrf
                                                         <button class="btn btn-secondary" type="submit">Delete</button>
                                                     </form>

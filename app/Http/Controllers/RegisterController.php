@@ -19,7 +19,7 @@ class RegisterController extends Controller
         $attributes = request()->validate([
             'firstname' => 'required|max:255|min:2',
             'lastname' => 'required|max:255|min:2',
-            'email' => 'required|email|max:255|unique:zahtevis,email',
+            'email' => 'required|email|max:255|unique:zahtevis',
             'password' => 'required|min:5|max:255',
             'terms' => 'required'
         ]);
@@ -41,9 +41,7 @@ class RegisterController extends Controller
     public function approve(Request $request)
     {
         $userZahtev = Zahtevi::find($request->id)->firstOrFail()->makeVisible(["password"]);
-        // if vec postoji
 
-        dd($userZahtev);
         User::create($userZahtev->toArray());
 
         $userZahtev->delete();

@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 
 class ZahtevController extends Controller
 {
-    public function destroy(Zahtevi $zahtev)
+    public function destroy(Request $request)
     {
+        $zahtev = Zahtevi::find($request->id);
         $zahtev->delete();
+
+        return back();
     }
 }

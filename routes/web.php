@@ -68,7 +68,7 @@ Route::prefix("dashboard")->middleware(['auth'])->group(function () {
 		Route::get("/user-management", [UserProfileController::class, "index"])->name("user-management");
 		Route::resource("category", CategoryController::class);
 
-		Route::delete("/zahtevi/delete/{zahtev}", [ZahtevController::class, 'destroy'])->name('zahtev.destroy');
+		Route::post("/zahtevi/delete/{id}", [ZahtevController::class, 'destroy'])->name('zahtev.destroy');
 
 		Route::post('/register/approve/{id}', [RegisterController::class, 'approve'])->name('register.approve');
 	});
