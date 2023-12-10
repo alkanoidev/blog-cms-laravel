@@ -28,7 +28,7 @@ class PostController extends Controller
         $validator = Validator::make($request->all(), $rules = [
             'title' => "required|max:255",
             'body_json' => "required",
-            'body_html' => 'required'
+            'body_html' => 'required',
         ], $messages = [
             'title.required' => 'Please specify the title by entering a heading block.',
         ]);

@@ -13,6 +13,16 @@
                     <label for="title" class="text-white">Description:</label>
                     <textarea required name="desription" id="input-desription" rows="4" class="form-control mb-3"></textarea>
                 </div>
+
+                <div class="input-title-group">
+                    <label for="title" class="text-white">Category:</label>
+                    <select id="category-select" class="form-control mb-3">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div id="editorjs" class="text-black"></div>
                 <button id="save" class="btn-primary mt-3 btn">Save</button>
             </div>
@@ -125,6 +135,13 @@
                     type: "image"
                 });
 
+                const categoryOptions = [...document.getElementById('category-select').children];
+                categoryOptions.map(option => {
+                    if (data.category_id == option.value) {
+                        option.defaultSelected = true;
+                    }
+                })
+
                 document.getElementById("input-title").value = data.title;
                 document.getElementById("input-desription").value = data.description;
 
@@ -170,7 +187,7 @@
                             body_json: JSON.stringify(outputData),
                             body_html: html,
                             thumbnail_image: thumbnailImage,
-                            category_id: 1
+                            category_id: document.getElementById('category-select').value
                         },
                         success: function(data) {
                             window.location.href = "/dashboard/";

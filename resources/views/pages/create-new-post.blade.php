@@ -17,15 +17,24 @@
                     <label for="title" class="text-white">Description:</label>
                     <textarea required name="desription" id="input-desription" rows="4" class="form-control mb-3"></textarea>
                 </div>
+
+                <select id="category-select">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                    @endforeach
+                </select>
+
                 <div class="text-light">
                     *Insert image as the first element to use as a thumbnail.
                 </div>
+
 
                 <div id="editorjs" class="text-black"></div>
 
                 <button id="save" class="btn-primary mt-3 btn">Save</button>
             </div>
         </div>
+
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -154,7 +163,7 @@
                             body_json: JSON.stringify(outputData),
                             body_html: html,
                             thumbnail_image: thumbnailImage,
-                            category_id: 1
+                            category_id: document.getElementById('category-select').value
                         },
                         success: function(data) {
                             window.location.href = "/dashboard/";
