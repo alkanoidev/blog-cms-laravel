@@ -73,7 +73,7 @@ class CategoryController extends Controller
 
         $slug = Str::slug($request->title);
 
-        $category->title = Str::headline($request->title);
+        $category->title = $request->title;
         $category->description = $request->description;
         $category->icon = File::get($request->icon);
         $category->slug = $slug;
