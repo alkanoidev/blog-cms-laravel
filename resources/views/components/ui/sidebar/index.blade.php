@@ -26,7 +26,7 @@
 </aside>
 
 <aside
-    class="w-64 z-40 fixed inset-0 bg-surface-light dark:bg-surface-dark text-on-surface-light dark:text-on-surface-dark lg:hidden flex transition duration-150 ease-in-out rounded-r-3xl"
+    class="w-64 z-40 fixed -translate-x-64 inset-0 bg-surface-light dark:bg-surface-dark text-on-surface-light dark:text-on-surface-dark lg:hidden flex transition duration-150 ease-in-out rounded-r-3xl"
     id="mobile-nav">
     <div class="flex flex-col px-3 pt-[24px] w-full">
         <a class="navbar-brand m-0 pl-4 pb-6 flex items-center space-x-2" href="{{ route('home') }}">
@@ -65,13 +65,16 @@
     var sideBar = document.getElementById("mobile-nav");
     var openSidebar = document.getElementById("openSideBar");
     var closeSidebar = document.getElementById("closeSideBar");
-    sideBar.style.transform = "translateX(-16rem)";
+    // sideBar.style.transform = "translateX(-16rem)";
+    closeSidebar.classList.add("hidden");
 
     function sidebarHandler(flag) {
         if (flag) {
             sideBar.style.transform = "translateX(0px)";
+
             openSidebar.classList.add("hidden");
             closeSidebar.classList.remove("hidden");
+
             document.getElementById("main").classList.add("blur-sm");
             document.getElementById("main").classList.add("bg-black/10");
 
@@ -79,8 +82,10 @@
             document.body.style.top = `-${window.scrollY}px`;
         } else {
             sideBar.style.transform = "translateX(-16rem)";
+
             closeSidebar.classList.add("hidden");
             openSidebar.classList.remove("hidden");
+
             document.getElementById("main").classList.remove("blur-sm");
             document.getElementById("main").classList.remove("bg-black/10");
 
