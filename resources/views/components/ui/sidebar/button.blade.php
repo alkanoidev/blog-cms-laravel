@@ -12,6 +12,6 @@
             {!! $icon !!}
         </span>
         <span
-            class="text-base font-semibold text-primary-container-dark dark:text-primary-container-light">{{ $title }}</span>
+            class="sm:text-base text-sm font-semibold text-primary-container-dark dark:text-primary-container-light">{{ $title }}</span>
     </div>
 </a>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Sidebar;
+namespace App\View\Components\UI\Sidebar;
 
 use Illuminate\View\Component;
 
