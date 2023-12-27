@@ -1,0 +1,18 @@
+{
+    "plugins": [
+        "prettier-plugin-tailwindcss",
+        "@shufo/prettier-plugin-blade"
+    ],
+    "sortTailwindcssClasses": true,
+    "overrides": [
+        {
+            "files": [
+                "*.blade.php"
+            ],
+            "options": {
+                "parser": "blade",
+                "tabWidth": 4
+            }
+        }
+    ]
+}
