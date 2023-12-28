@@ -85,6 +85,33 @@
             return `<pre><code class="language-${block.data.languageCode}"> ${block.data.code} </code></pre>`;
         }
 
+        function linkToolParser(data) {
+            let html = '';
+
+            if (data && data.type === 'linkTool') {
+                const linkData = data.data;
+
+                if (linkData.link) {
+                    html +=
+                        `<a href="${linkData.link}" class="text-on-light border border-off-light dark:border-off-dark px-2 py-3 rounded-xl dark:text-on-dark mx-auto no-underline flex w-full items-start justify-between">`;
+
+                    if (linkData.meta.title) {
+                        html += `<div>
+                                    <div class="font-bold text-base mb-1">${linkData.meta.title}</div>
+                                    <p class="text-sm m-0">${linkData.meta.description}</p>
+                                </div>`;
+                    }
+                    if (linkData.meta.image) {
+                        html +=
+                            `<img src=${linkData.meta.image.url} alt=${linkData.meta.title} class="w-48 h-full object-cover m-0">`;
+                    }
+                    html += `</a>`;
+                }
+            }
+
+            return html;
+        }
+
         let token = "{{ csrf_token() }}";
 
         const editor = new EditorJS({
@@ -94,21 +121,20 @@
                 image: {
                     class: ImageTool,
                     config: {
-
                         additionalRequestHeaders: {
                             "X-CSRF-TOKEN": token
                         },
                         endpoints: {
                             accept: 'images/*',
-                            byFile: "/dashboard/blogpost/upload-image", // Your backend file uploader endpoint
-                            byUrl: "{{ url('/images/') }}", // Your endpoint that provides uploading by Url
+                            byFile: "/dashboard/blogpost/upload-image",
+                            byUrl: "{{ url('/images/') }}",
                         },
                     },
                 },
                 linkTool: {
                     class: LinkTool,
                     config: {
-                        endpoint: "http://localhost:8000/fetchUrl", // Your backend endpoint for url data fetching,
+                        endpoint: "/dashboard/link/process",
                     },
                 },
                 underline: Underline,
@@ -139,7 +165,8 @@
                 .save()
                 .then(async (outputData) => {
                     const edjsParser = edjsHTML({
-                        code: codeParser
+                        code: codeParser,
+                        linkTool: linkToolParser
                     });
 
                     const placeholderImage = await fetch("https://picsum.photos/1000/500.webp").then(res =>

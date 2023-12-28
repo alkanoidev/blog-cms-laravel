@@ -21,6 +21,7 @@ use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LinkHandlerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostSearchController;
 use App\Http\Controllers\ZahtevController;
@@ -59,6 +60,8 @@ Route::prefix("dashboard")->middleware(['auth'])->group(function () {
 		Route::post("/update/{id}", "update")->name('blogpost.update');
 		Route::post("/upload-image", "storeImage")->name('blogpost.upload-image');
 	});
+
+	Route::get('/link/process', LinkHandlerController::class);
 
 	Route::middleware("role:admin")->group(function () {
 		Route::controller(UserController::class)->group(function () {

@@ -69,7 +69,7 @@
             {{-- @include('components.fixed-plugin') --}}
         @endif
     @endauth
-
+    
     <!--   Core JS Files   -->
     <script src={{ asset('assets/js/core/popper.min.js') }}></script>
     <script src={{ asset('assets/js/core/bootstrap.min.js') }}></script>
@@ -84,9 +84,6 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
     </script>
-    <!-- Github buttons -->
-    {{-- <script async defer src="https://buttons.github.io/buttons.js"></script> --}}
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/image@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
@@ -102,7 +99,6 @@
     <script src="https://cdn.jsdelivr.net/npm/editorjs-html@3.4.0/build/edjsHTML.js"></script>
     <script src="/assets/js/prism.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/paraswaykole/editor-js-code@latest/dist/bundle.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
