@@ -68,23 +68,4 @@
             </div>
         </main>
     </div>
-    <script>
-        // const searchInput = document.querySelector("#search-input");
-        // searchInput.addEventListener("focus", () => {
-        //     document.querySelector("#search-container").children[0].style.width = "100%";
-        //     gsap.to("#search-container", {
-        //         width: "100%",
-        //         duration: 0.5
-        //     })
-        // })
-        // searchInput.addEventListener("blur", () => {
-        //     gsap.to("#search-container", {
-        //         width: "20rem",
-        //         duration: 0.3
-        //     })
-        // })
-        // searchInput.addEventListener("submit", (e) => {
-        //     document.querySelector("#search-form").submit();
-        // })
-    </script>
 @endsection

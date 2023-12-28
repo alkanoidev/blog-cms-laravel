@@ -70,9 +70,6 @@
         let token = "{{ csrf_token() }}";
 
         const editor = new EditorJS({
-            /**
-             * Id of Element that should contain Editor instance
-             */
             holder: "editorjs",
             tools: {
                 header: Header,
@@ -92,7 +89,7 @@
                 linkTool: {
                     class: LinkTool,
                     config: {
-                        endpoint: "http://localhost:8000/fetchUrl", // Your backend endpoint for url data fetching,
+                        endpoint: "/dashboard/link/process",
                     },
                 },
                 underline: Underline,
@@ -155,6 +152,29 @@
             return `<pre><code class="language-${block.data.languageCode}"> ${block.data.code} </code></pre>`;
         }
 
+        function linkToolParser(data) {
+            let html = '';
+            if (data && data.type === 'linkTool') {
+                const linkData = data.data;
+                if (linkData.link) {
+                    html +=
+                        `<a href="${linkData.link}" class="mb-2 text-on-light border border-off-light dark:border-off-dark px-2 py-3 rounded-xl dark:text-on-dark mx-auto no-underline flex w-full items-start justify-between gap-2">`;
+                    if (linkData.meta.title) {
+                        html += `<div>
+                                    <div class="font-bold text-base mb-1">${linkData.meta.title}</div>
+                                    <p class="sm:text-sm text-xs m-0">${linkData.meta.description}</p>
+                                </div>`;
+                    }
+                    if (linkData.meta.image) {
+                        html +=
+                            `<img src=${linkData.meta.image.url} alt=${linkData.meta.title} class="sm:w-48 w-32 h-full object-cover m-0">`;
+                    }
+                    html += `</a>`;
+                }
+            }
+            return html;
+        }
+
         $("#save").on("click", () => {
             editor
                 .save()
@@ -163,7 +183,8 @@
                     const id = exp.exec(window.location.pathname)[1];
 
                     const edjsParser = edjsHTML({
-                        code: codeParser
+                        code: codeParser,
+                        linkTool: linkToolParser
                     });
 
                     let thumbnailImage;

@@ -87,14 +87,11 @@
 
         function linkToolParser(data) {
             let html = '';
-
             if (data && data.type === 'linkTool') {
                 const linkData = data.data;
-
                 if (linkData.link) {
                     html +=
-                        `<a href="${linkData.link}" class="text-on-light border border-off-light dark:border-off-dark px-2 py-3 rounded-xl dark:text-on-dark mx-auto no-underline flex w-full items-start justify-between">`;
-
+                        `<a href="${linkData.link}" class="text-on-light border border-off-light dark:border-off-dark px-2 py-3 rounded-xl dark:text-on-dark mx-auto no-underline flex w-full items-start justify-between gap-2">`;
                     if (linkData.meta.title) {
                         html += `<div>
                                     <div class="font-bold text-base mb-1">${linkData.meta.title}</div>
@@ -103,12 +100,11 @@
                     }
                     if (linkData.meta.image) {
                         html +=
-                            `<img src=${linkData.meta.image.url} alt=${linkData.meta.title} class="w-48 h-full object-cover m-0">`;
+                            `<img src=${linkData.meta.image.url} alt=${linkData.meta.title} class="sm:w-48 w-32 h-full object-cover m-0">`;
                     }
                     html += `</a>`;
                 }
             }
-
             return html;
         }
 
