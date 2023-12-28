@@ -18,19 +18,8 @@
         rel="stylesheet">
     @vite('resources/css/app.css')
     @yield('head')
-</head>
 
-<body class="{{ $class ?? '' }} bg-light dark:bg-dark h-full w-full lg:px-0">
-    @yield('content')
-
-    {{-- GSAP --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"
-        integrity="sha512-JO6JyFPJupQKZf7icgZkHwuq/rAQxH7COqvEd4WdK52AtHPedwHog05T69pIelI69jVN/zZbW6TuHfH2mS8j/Q=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script defer>
-        const toggleThemeBtn = document.getElementById("toggleThemeBtn");
-
+    <script>
         const html = document.documentElement;
 
         if (localStorage.getItem("theme") != null) {
@@ -50,6 +39,19 @@
                 localStorage.setItem("theme", "light");
             }
         }
+    </script>
+</head>
+
+<body class="{{ $class ?? '' }} bg-light dark:bg-dark h-full w-full lg:px-0">
+    @yield('content')
+
+    {{-- GSAP --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"
+        integrity="sha512-JO6JyFPJupQKZf7icgZkHwuq/rAQxH7COqvEd4WdK52AtHPedwHog05T69pIelI69jVN/zZbW6TuHfH2mS8j/Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script defer>
+        const toggleThemeBtn = document.getElementById("toggleThemeBtn");
 
         toggleThemeBtn.addEventListener("click", () => {
             const theme = html.classList.contains("dark") ? "dark" : "light";
