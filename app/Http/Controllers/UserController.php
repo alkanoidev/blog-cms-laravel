@@ -12,20 +12,20 @@ class UserController extends Controller
 
         return back();
     }
-    // public function promoteToAdmin($id)
-    // {
-    //     $user = User::find($id);
+    public function promoteToAdmin($id)
+    {
+        $user = User::find($id);
         
-    //     if ($user->role == 1) {
-    //         return redirect()->back();
-    //     }
+        if ($user->role == 1) {
+            return redirect()->back();
+        }
 
-    //     $user->role = 1;
-    //     $user->save();
+        $user->role = 1;
+        $user->save();
 
-    //     return redirect(route("user-management"))->with(
-    //         "success",
-    //         "The user was successfully promoted to administrator."
-    //     );
-    // }
+        return redirect(route("user-management"))->with(
+            "success",
+            "The user was successfully promoted to an administrator."
+        );
+    }
 }
